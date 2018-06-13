@@ -11,7 +11,7 @@ public class RéductionTest {
     @Test
     public void moins_30_pourcent_à_l_année() {
 
-        Réduction tested = new Réduction(
+        Réduction tested = Réduction.pourAbonnement(
             Adhérent.nouveau("bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(400)
         );
@@ -22,7 +22,7 @@ public class RéductionTest {
     @Test
     public void moins_20_pourcent_pour_les_étudiants() {
 
-        Réduction tested = new Réduction(
+        Réduction tested = Réduction.pourAbonnement(
             Adhérent.étudiant("bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(400)
         );
@@ -33,7 +33,7 @@ public class RéductionTest {
     @Test
     public void moins_50_pourcent_pour_les_étudiants_à_l_année() {
 
-        Réduction tested = new Réduction(
+        Réduction tested = Réduction.pourAbonnement(
             Adhérent.étudiant("bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(400)
         );

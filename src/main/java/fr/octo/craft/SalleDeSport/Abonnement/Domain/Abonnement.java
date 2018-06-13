@@ -50,7 +50,7 @@ public final class Abonnement {
             adhérent,
             formule,
             dateDeSouscription,
-            new Réduction(
+            Réduction.pourAbonnement(
                 adhérent,
                 formule
             )
