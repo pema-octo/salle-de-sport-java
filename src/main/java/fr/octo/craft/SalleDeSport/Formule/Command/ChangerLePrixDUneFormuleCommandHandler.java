@@ -1,9 +1,6 @@
 package fr.octo.craft.SalleDeSport.Formule.Command;
 
-import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
-import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleRepositoryException;
-import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleRepository;
-import fr.octo.craft.SalleDeSport.Formule.Domain.PrixFormuleChangé;
+import fr.octo.craft.SalleDeSport.Formule.Domain.*;
 
 final class ChangerLePrixDUneFormuleCommandHandler {
 
@@ -16,7 +13,7 @@ final class ChangerLePrixDUneFormuleCommandHandler {
     PrixFormuleChangé handle(ChangerLePrixDUneFormuleCommand command) throws FormuleRepositoryException {
         Formule formule = formuleRepository.get(command.formuleId);
 
-        double ancienPrix = formule.prixDeBase();
+        Prix ancienPrix = formule.prixDeBase();
 
         formule.changeDePrix(command.nouveauPrix);
 

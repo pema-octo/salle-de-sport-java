@@ -13,7 +13,7 @@ public final class SouscrireAUnAbonnementCommandHandler {
     }
 
     public AbonnementSouscrit handle(SouscrireAUnAbonnementCommand command) {
-        Abonnement abonnement = Abonnement.souscrire(
+        Abonnement abonnement = new Abonnement(
             command.adhérent,
             command.formule,
             command.date

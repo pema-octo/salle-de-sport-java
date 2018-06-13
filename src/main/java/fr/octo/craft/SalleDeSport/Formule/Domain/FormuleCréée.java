@@ -7,4 +7,8 @@ public final class FormuleCréée {
     public FormuleCréée(FormuleId formuleId) {
         this.formuleId = formuleId;
     }
+
+    public FormuleId formuleId() {
+        return formuleId;
+    }
 }

@@ -23,7 +23,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
         AdhérentRepository adhérentRepository = mock(AdhérentRepository.class);
         when(adhérentRepository.get(adhérentId)).thenReturn(adhérent);
 
-        Abonnement abonnement = Abonnement.souscrire(adhérent, formule, new Date());
+        Abonnement abonnement = new Abonnement(adhérent, formule, new Date());
         AbonnementRepository abonnementRepository = mock(AbonnementRepository.class);
         when(abonnementRepository.get(abonnementId)).thenReturn(abonnement);
 

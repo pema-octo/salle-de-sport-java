@@ -3,15 +3,15 @@ package fr.octo.craft.SalleDeSport.Formule.Domain;
 public final class Formule {
 
     private final FormuleId id;
-    private double prixDeBase;
+    private Prix prixDeBase;
     private final DuréeFormule durée;
     private final String nom;
 
     public Formule(FormuleId id, double prixDeBase, DuréeFormule durée) {
         this.id = id;
-        this.prixDeBase = prixDeBase;
+        this.prixDeBase = new Prix(prixDeBase);
         this.durée = durée;
-        this.nom = "Formule "+durée.getNbMois()+" mois à "+prixDeBase+" euros";
+        this.nom = "Formule "+durée.nbMois()+" mois à "+prixDeBase+" euros";
     }
 
     public static Formule nouvelle(double prixDeBase, DuréeFormule durée) {
@@ -34,12 +34,12 @@ public final class Formule {
         return id;
     }
 
-    public double prixDeBase() {
+    public Prix prixDeBase() {
         return prixDeBase;
     }
 
     public void changeDePrix(double nouveauPrix) {
-        prixDeBase = nouveauPrix;
+        prixDeBase = new Prix(nouveauPrix);
     }
 
     public DuréeFormule durée() {

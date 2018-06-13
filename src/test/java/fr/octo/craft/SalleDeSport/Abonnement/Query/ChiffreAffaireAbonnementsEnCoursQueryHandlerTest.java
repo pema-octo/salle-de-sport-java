@@ -34,14 +34,14 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
         abonnementRepository.store(
-            Abonnement.souscrire(
+            new Abonnement(
                 Adhérent.nouveau(AdhérentId.generate(), "bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
-            Abonnement.souscrire(
+            new Abonnement(
                 Adhérent.nouveau(AdhérentId.generate(), "lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()

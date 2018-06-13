@@ -21,9 +21,9 @@ public final class Abonnement {
     private final Période période;
     private final double prix;
 
-    private Abonnement(AbonnementId id, Adhérent adhérent, Formule formule, Date dateSouscription, Réduction réduction) {
+    public Abonnement(Adhérent adhérent, Formule formule, Date dateSouscription) {
 
-        this.id = id;
+        this.id = AbonnementId.generate();
 
         this.adhérentId = adhérent.id();
 
@@ -33,28 +33,10 @@ public final class Abonnement {
 
         this.période = new Période(
             dateSouscription,
-            formule.durée().getNbMois()
+            formule.durée().nbMois()
         );
 
-        this.prix = calculPrix(formule, réduction);
-    }
-
-    private double calculPrix(Formule formule, Réduction réduction) {
-        return formule.prixDeBase() * (1 - réduction.taux());
-    }
-
-    public static Abonnement souscrire(Adhérent adhérent, Formule formule, Date dateDeSouscription) {
-
-        return new Abonnement(
-            AbonnementId.generate(),
-            adhérent,
-            formule,
-            dateDeSouscription,
-            Réduction.pourAbonnement(
-                adhérent,
-                formule
-            )
-        );
+        this.prix = Réduction.pourAbonnement(adhérent, formule).appliquer(formule.prixDeBase());
     }
 
     public AbonnementId id() {

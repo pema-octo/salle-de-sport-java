@@ -50,10 +50,6 @@ public final class Adhérent {
         return new Adhérent(email, prénom, true);
     }
 
-    public static Adhérent étudiant(AdhérentId id, String email, String prénom) {
-        return new Adhérent(id, email, prénom, true);
-    }
-
     public AdhérentId id() {
         return id;
     }

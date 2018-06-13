@@ -1,7 +1,6 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Domain;
 
-import fr.octo.craft.SalleDeSport.Adherent.Domain.Adhérent;
-import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
+import fr.octo.craft.SalleDeSport.Formule.Domain.Prix;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,35 +8,22 @@ import static org.junit.Assert.assertEquals;
 public class RéductionTest {
 
     @Test
-    public void moins_30_pourcent_à_l_année() {
+    public void moins_25_pourcent() {
 
-        Réduction réductionAbonnementAnnuel = Réduction.pourAbonnement(
-            Adhérent.nouveau("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(400)
+        assertEquals(
+            300,
+            Réduction.auTaux(0.25).appliquer(new Prix(400)),
+            0
         );
-
-        assertEquals(Réduction.REDUC_ANNEE, réductionAbonnementAnnuel.taux(), 0);
     }
 
     @Test
-    public void moins_20_pourcent_pour_les_étudiants() {
+    public void moins_20_pourcent() {
 
-        Réduction réductionAbonnementEtudiant = Réduction.pourAbonnement(
-            Adhérent.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(400)
+        assertEquals(
+            80,
+            Réduction.auTaux(0.20).appliquer(new Prix(100)),
+            0
         );
-
-        assertEquals(Réduction.REDUC_ETUDIANT, réductionAbonnementEtudiant.taux(), 0);
-    }
-
-    @Test
-    public void moins_50_pourcent_pour_les_étudiants_à_l_année() {
-
-        Réduction réductionAbonnementEtudiantAnnuel = Réduction.pourAbonnement(
-            Adhérent.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(400)
-        );
-
-        assertEquals(Réduction.REDUC_ETUDIANT + Réduction.REDUC_ANNEE, réductionAbonnementEtudiantAnnuel.taux(), 0);
     }
 }

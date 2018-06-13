@@ -4,6 +4,7 @@ import fr.octo.craft.SalleDeSport.Abonnement.Domain.Abonnement;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepository;
 
 final class ChiffreAffaireAbonnementsEnCoursQueryHandler {
+
     private AbonnementRepository abonnementRepository;
 
     ChiffreAffaireAbonnementsEnCoursQueryHandler(AbonnementRepository abonnementRepository) {

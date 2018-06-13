@@ -10,7 +10,7 @@ public enum DuréeFormule {
         this.nbMois = nbMois;
     }
 
-    public int getNbMois() {
+    public int nbMois() {
         return nbMois;
     }
 }
