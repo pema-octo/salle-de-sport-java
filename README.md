@@ -16,3 +16,8 @@ et le premier mois est gratuit
 - En tant que commercial, je peux changer le prix d'une formule
 
 - Un abonnement se renouvelle automatiquement
+
+## Liens
+
+- [vidéo](https://www.youtube.com/watch?v=qBLtZN3p3FU)
+- [slides](https://speakerdeck.com/lilobase/ddd-and-cqrs-php-tour-2018)
