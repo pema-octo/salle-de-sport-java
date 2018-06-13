@@ -2,7 +2,7 @@ package fr.octo.craft.SalleDeSport.Formule.Domain;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class FormuleTest {
 
@@ -11,5 +11,7 @@ public class FormuleTest {
         Formule formule = Formule.nouvelleAuMois(400);
 
         assertTrue(formule.id() instanceof FormuleId);
+        assertEquals(400, formule.prixDeBase(), 0);
+        assertFalse(formule.estALannée());
     }
 }

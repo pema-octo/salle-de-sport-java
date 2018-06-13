@@ -16,52 +16,54 @@ public class AbonnementTest {
 
     @Test
     public void prix_de_base_pour_une_souscription_d_un_mois() {
-        Abonnement abonnement = Abonnement.souscrire(
+        Abonnement abonnementSansRéduc = Abonnement.souscrire(
             Adhérent.nouveau(AdhérentId.generate(), "bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(300),
             premierJuin()
         );
 
-        assertEquals(abonnement.prix(), 300, 0);
+        assertEquals(abonnementSansRéduc.prix(), 300, 0);
     }
 
     @Test
     public void moins_30_pourcent_pour_une_souscription_à_l_année() {
-        Abonnement abonnement = Abonnement.souscrire(
+        Abonnement abonnementAvecRéducAnnée = Abonnement.souscrire(
             Adhérent.nouveau(AdhérentId.generate(), "bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(100),
             premierJuin()
         );
 
-        assertEquals(abonnement.prix(), 70, 0);
+        assertEquals(abonnementAvecRéducAnnée.prix(), 70, 0);
     }
 
     @Test
     public void moins_20_pourcent_pour_la_souscription_d_un_étudiant() {
-        Abonnement abonnementMois = Abonnement.souscrire(
+        Abonnement abonnementEtudiantAuMois = Abonnement.souscrire(
             Adhérent.étudiant(AdhérentId.generate(), "bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(100),
             premierJuin()
         );
-        assertEquals(abonnementMois.prix(), 80, 0);
+        assertEquals(abonnementEtudiantAuMois.prix(), 80, 0);
 
-        Abonnement abonnementAnnée = Abonnement.souscrire(
+        Abonnement abonnementEtudiantAnnée = Abonnement.souscrire(
             Adhérent.étudiant(AdhérentId.generate(), "bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(100),
             premierJuin()
         );
-        assertEquals(abonnementAnnée.prix(), 50, 0);
+        assertEquals(abonnementEtudiantAnnée.prix(), 50, 0);
     }
 
     @Test
     public void un_abonnement_peut_être_en_cours() throws ParseException {
-        Abonnement abonnement = Abonnement.souscrire(
-            Adhérent.nouveau(AdhérentId.generate(), "bob@octo.com", "Bob"),
+        Abonnement abonnementEnCours = Abonnement.souscrire(
+            Adhérent.nouveau("bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(100),
             premierJuin()
         );
 
-        assertTrue(abonnement.estEnCours(new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-09")));
+        Date dateCourantJuin = new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-09");
+
+        assertTrue(abonnementEnCours.estEnCours(dateCourantJuin));
     }
 
     private Date premierJuin() {

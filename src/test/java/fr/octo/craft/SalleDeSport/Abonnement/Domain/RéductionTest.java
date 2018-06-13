@@ -11,33 +11,33 @@ public class RéductionTest {
     @Test
     public void moins_30_pourcent_à_l_année() {
 
-        Réduction tested = Réduction.pourAbonnement(
+        Réduction réductionAbonnementAnnuel = Réduction.pourAbonnement(
             Adhérent.nouveau("bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(400)
         );
 
-        assertEquals(Réduction.REDUC_ANNEE, tested.taux(), 0);
+        assertEquals(Réduction.REDUC_ANNEE, réductionAbonnementAnnuel.taux(), 0);
     }
 
     @Test
     public void moins_20_pourcent_pour_les_étudiants() {
 
-        Réduction tested = Réduction.pourAbonnement(
+        Réduction réductionAbonnementEtudiant = Réduction.pourAbonnement(
             Adhérent.étudiant("bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(400)
         );
 
-        assertEquals(Réduction.REDUC_ETUDIANT, tested.taux(), 0);
+        assertEquals(Réduction.REDUC_ETUDIANT, réductionAbonnementEtudiant.taux(), 0);
     }
 
     @Test
     public void moins_50_pourcent_pour_les_étudiants_à_l_année() {
 
-        Réduction tested = Réduction.pourAbonnement(
+        Réduction réductionAbonnementEtudiantAnnuel = Réduction.pourAbonnement(
             Adhérent.étudiant("bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(400)
         );
 
-        assertEquals(Réduction.REDUC_ETUDIANT + Réduction.REDUC_ANNEE, tested.taux(), 0);
+        assertEquals(Réduction.REDUC_ETUDIANT + Réduction.REDUC_ANNEE, réductionAbonnementEtudiantAnnuel.taux(), 0);
     }
 }
