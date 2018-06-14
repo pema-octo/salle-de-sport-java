@@ -17,7 +17,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
         AdhérentId adhérentId = AdhérentId.generate();
         AbonnementId abonnementId = AbonnementId.generate();
 
-        Formule formule = Formule.nouvelleALAnnée(500);
+        Formule formule = Formule.nouvelleALAnnée(500.0);
 
         Adhérent adhérent = Adhérent.nouveau(adhérentId, "bob@octo.com", "Bob");
         AdhérentRepository adhérentRepository = mock(AdhérentRepository.class);

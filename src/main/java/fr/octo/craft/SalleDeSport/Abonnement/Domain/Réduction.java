@@ -2,25 +2,24 @@ package fr.octo.craft.SalleDeSport.Abonnement.Domain;
 
 import fr.octo.craft.SalleDeSport.Adherent.Domain.Adhérent;
 import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
-import fr.octo.craft.SalleDeSport.Formule.Domain.Prix;
 
-final class Réduction {
+public final class Réduction {
 
-    private static final double REDUC_ETUDIANT = 0.2;
-    private static final double REDUC_ANNEE = 0.3;
+    static final Double REDUC_ETUDIANT = 0.2;
+    static final Double REDUC_ANNEE = 0.3;
 
-    private final double taux;
+    private final Double taux;
 
-    private Réduction(double taux) {
+    private Réduction(Double taux) {
         this.taux = taux;
     }
 
-    static Réduction auTaux(double taux) {
+    public static Réduction auTaux(Double taux) {
         return new Réduction(taux);
     }
 
     static Réduction pourAbonnement(Adhérent adhérent, Formule formule) {
-        double tauxCalculé = 0;
+        Double tauxCalculé = 0.0;
 
         if (adhérent.estEtudiant()) {
             tauxCalculé += REDUC_ETUDIANT;
@@ -33,7 +32,7 @@ final class Réduction {
         return new Réduction(tauxCalculé);
     }
 
-    double appliquer(Prix prix) {
-        return prix.prix() * (1 - taux);
+    public Double taux() {
+        return taux;
     }
 }

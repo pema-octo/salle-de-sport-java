@@ -22,7 +22,7 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
             new AbonnementInMemoryRepository()
         );
 
-        double chiffreAffaire = tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(new Date()));
+        Double chiffreAffaire = tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(new Date()));
 
         assertEquals(0, chiffreAffaire, 0);
     }
@@ -30,7 +30,7 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     @Test
     public void chiffre_d_affaire_avec_abonnements_en_cours() {
 
-        Formule formule = Formule.nouvelleALAnnée(200);
+        Formule formule = Formule.nouvelleALAnnée(200.0);
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
         abonnementRepository.store(

@@ -7,14 +7,14 @@ public final class Formule {
     private final DuréeFormule durée;
     private final String nom;
 
-    public Formule(FormuleId id, double prixDeBase, DuréeFormule durée) {
+    public Formule(FormuleId id, Double prixDeBase, DuréeFormule durée) {
         this.id = id;
         this.prixDeBase = new Prix(prixDeBase);
         this.durée = durée;
         this.nom = "Formule "+durée.nbMois()+" mois à "+prixDeBase+" euros";
     }
 
-    public static Formule nouvelle(double prixDeBase, DuréeFormule durée) {
+    public static Formule nouvelle(Double prixDeBase, DuréeFormule durée) {
         return new Formule(
             FormuleId.generate(),
             prixDeBase,
@@ -22,11 +22,11 @@ public final class Formule {
         );
     }
 
-    public static Formule nouvelleAuMois(double prixDeBase) {
+    public static Formule nouvelleAuMois(Double prixDeBase) {
         return Formule.nouvelle(prixDeBase, DuréeFormule.MOIS);
     }
 
-    public static Formule nouvelleALAnnée(double prixDeBase) {
+    public static Formule nouvelleALAnnée(Double prixDeBase) {
         return Formule.nouvelle(prixDeBase, DuréeFormule.ANNEE);
     }
 
@@ -38,7 +38,7 @@ public final class Formule {
         return prixDeBase;
     }
 
-    public void changeDePrix(double nouveauPrix) {
+    public void changeDePrix(Double nouveauPrix) {
         prixDeBase = new Prix(nouveauPrix);
     }
 

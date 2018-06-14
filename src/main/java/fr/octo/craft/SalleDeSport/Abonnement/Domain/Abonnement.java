@@ -19,7 +19,7 @@ public final class Abonnement {
     private final String nomFormule;
 
     private final Période période;
-    private final double prix;
+    private final Double prix;
 
     public Abonnement(Adhérent adhérent, Formule formule, Date dateSouscription) {
 
@@ -36,7 +36,8 @@ public final class Abonnement {
             formule.durée().nbMois()
         );
 
-        this.prix = Réduction.pourAbonnement(adhérent, formule).appliquer(formule.prixDeBase());
+        Réduction réduction = Réduction.pourAbonnement(adhérent, formule);
+        this.prix = formule.prixDeBase().appliqueRéduction(réduction).montant();
     }
 
     public AbonnementId id() {
@@ -47,15 +48,15 @@ public final class Abonnement {
         return nomFormule;
     }
 
-    double prix() {
+    Double prix() {
         return prix;
     }
 
-    public boolean estEnCours(Date date) {
+    public Boolean estEnCours(Date date) {
         return période.contient(date);
     }
 
-    public double restantDu() {
+    public Double restantDu() {
         return prix;
     }
 }

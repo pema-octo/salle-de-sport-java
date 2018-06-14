@@ -16,7 +16,7 @@ public class CréerUneNouvelleFormuleCommandHandlerTest {
             new FormuleInMemoryRepository()
         );
 
-        FormuleCréée formuleCréée = tested.handle(new CréerUneNouvelleFormuleCommand(300, DuréeFormule.MOIS));
+        FormuleCréée formuleCréée = tested.handle(new CréerUneNouvelleFormuleCommand(300.0, DuréeFormule.MOIS));
 
         assertTrue(formuleCréée instanceof FormuleCréée);
     }

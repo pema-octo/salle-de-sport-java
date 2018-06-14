@@ -5,9 +5,9 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 final class ChangerLePrixDUneFormuleCommand {
 
     final FormuleId formuleId;
-    final double nouveauPrix;
+    final Double nouveauPrix;
 
-    ChangerLePrixDUneFormuleCommand(FormuleId formuleId, double nouveauPrix) {
+    ChangerLePrixDUneFormuleCommand(FormuleId formuleId, Double nouveauPrix) {
         this.formuleId = formuleId;
         this.nouveauPrix = nouveauPrix;
     }

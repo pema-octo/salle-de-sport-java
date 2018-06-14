@@ -8,10 +8,10 @@ public class FormuleTest {
 
     @Test
     public void on_peut_creer_une_nouvelle_formule_avec_un_prix_de_base_et_et_une_durée() {
-        Formule formule = Formule.nouvelleAuMois(400);
+        Formule formule = Formule.nouvelleAuMois(400.0);
 
         assertTrue(formule.id() instanceof FormuleId);
-        assertEquals(400, formule.prixDeBase().prix(), 0);
+        assertEquals(400, formule.prixDeBase().montant(), 0);
         assertFalse(formule.estALannée());
     }
 }

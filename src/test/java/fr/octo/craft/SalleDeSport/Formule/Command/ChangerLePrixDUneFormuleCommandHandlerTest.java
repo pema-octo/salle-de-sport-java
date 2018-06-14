@@ -12,7 +12,7 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
     @Test
     public void handle() throws FormuleRepositoryException {
         FormuleId formuleId = FormuleId.generate();
-        Formule formule = new Formule(formuleId, 450, DuréeFormule.ANNEE);
+        Formule formule = new Formule(formuleId, 450.0, DuréeFormule.ANNEE);
 
         FormuleRepository formuleRepository = mock(FormuleRepository.class);
         when(formuleRepository.get(formuleId)).thenReturn(formule);
@@ -22,10 +22,10 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
         PrixFormuleChangé event = tested.handle(
             new ChangerLePrixDUneFormuleCommand(
                 formuleId,
-                400
+                400.0
             )
         );
 
-        assertEquals(400, event.nouveauPrix.prix(), 0);
+        assertEquals(400, event.nouveauPrix.montant(), 0);
     }
 }

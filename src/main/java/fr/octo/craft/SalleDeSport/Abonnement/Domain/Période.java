@@ -16,7 +16,7 @@ final class Période {
         this.dateDeFin = cal.getTime();
     }
 
-    boolean contient(Date date) {
+    Boolean contient(Date date) {
         return date.after(dateDeDébut) && date.before(dateDeFin);
     }
 
