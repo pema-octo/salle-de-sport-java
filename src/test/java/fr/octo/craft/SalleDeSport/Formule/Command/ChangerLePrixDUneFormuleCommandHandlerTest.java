@@ -3,6 +3,8 @@ package fr.octo.craft.SalleDeSport.Formule.Command;
 import fr.octo.craft.SalleDeSport.Formule.Domain.*;
 import org.junit.Test;
 
+import java.util.UUID;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -11,8 +13,8 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
 
     @Test
     public void handle() throws FormuleRepositoryException {
-        FormuleId formuleId = FormuleId.generate();
-        Formule formule = new Formule(formuleId, 450.0, DuréeFormule.ANNEE);
+        FormuleId formuleId = FormuleId.fromString(UUID.randomUUID().toString());
+        Formule formule = Formule.nouvelleALAnnée(formuleId, 450.0);
 
         FormuleRepository formuleRepository = mock(FormuleRepository.class);
         when(formuleRepository.get(formuleId)).thenReturn(formule);

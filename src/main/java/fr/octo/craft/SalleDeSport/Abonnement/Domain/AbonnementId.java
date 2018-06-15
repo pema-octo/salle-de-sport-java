@@ -1,21 +1,20 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public final class AbonnementId {
 
-    private final UUID id;
+    private final String id;
 
-    private AbonnementId(UUID id) {
+    private AbonnementId(String id) {
         this.id = id;
     }
 
-    public static AbonnementId generate() {
-        return new AbonnementId(UUID.randomUUID());
+    public static AbonnementId fromString(String id) {
+        return new AbonnementId(id);
     }
 
-    public UUID id() {
+    public String id() {
         return id;
     }
 

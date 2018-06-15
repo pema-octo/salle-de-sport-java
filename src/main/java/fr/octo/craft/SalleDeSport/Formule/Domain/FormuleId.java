@@ -1,21 +1,20 @@
 package fr.octo.craft.SalleDeSport.Formule.Domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public final class FormuleId {
 
-    private final UUID id;
+    private final String id;
 
-    private FormuleId(UUID id) {
+    private FormuleId(String id) {
         this.id = id;
     }
 
-    public static FormuleId generate() {
-        return new FormuleId(UUID.randomUUID());
+    public static FormuleId fromString(String id) {
+        return new FormuleId(id);
     }
 
-    public UUID id() {
+    public String id() {
         return id;
     }
 

@@ -1,15 +1,18 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Query;
 
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.Abonnement;
+import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementId;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepository;
 import fr.octo.craft.SalleDeSport.Abonnement.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.Adhérent;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.AdhérentId;
 import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
+import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,19 +33,24 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     @Test
     public void chiffre_d_affaire_avec_abonnements_en_cours() {
 
-        Formule formule = Formule.nouvelleALAnnée(200.0);
+        Formule formule = Formule.nouvelleALAnnée(
+            FormuleId.fromString(UUID.randomUUID().toString()),
+            200.0
+        );
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
         abonnementRepository.store(
             new Abonnement(
-                Adhérent.nouveau(AdhérentId.generate(), "bob@octo.com", "Bob"),
+                AbonnementId.fromString(UUID.randomUUID().toString()),
+                Adhérent.nouveau(AdhérentId.fromString(UUID.randomUUID().toString()), "bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                Adhérent.nouveau(AdhérentId.generate(), "lucy@octo.com", "Lucy"),
+                AbonnementId.fromString(UUID.randomUUID().toString()),
+                Adhérent.nouveau(AdhérentId.fromString(UUID.randomUUID().toString()), "lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )

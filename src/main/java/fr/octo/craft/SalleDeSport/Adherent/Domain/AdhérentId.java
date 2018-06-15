@@ -1,21 +1,20 @@
 package fr.octo.craft.SalleDeSport.Adherent.Domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public final class AdhérentId {
 
-    private final UUID id;
+    private final String id;
 
-    private AdhérentId(UUID id) {
+    private AdhérentId(String id) {
         this.id = id;
     }
 
-    public static AdhérentId generate() {
-        return new AdhérentId(UUID.randomUUID());
+    public static AdhérentId fromString(String id) {
+        return new AdhérentId(id);
     }
 
-    public UUID id() {
+    public String id() {
         return id;
     }
 

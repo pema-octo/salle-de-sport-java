@@ -2,36 +2,28 @@ package fr.octo.craft.SalleDeSport.Formule.Domain;
 
 public final class Formule {
 
-    private final FormuleId id;
+    private final FormuleId formuleId;
     private Prix prixDeBase;
     private final DuréeFormule durée;
     private final String nom;
 
-    public Formule(FormuleId id, Double prixDeBase, DuréeFormule durée) {
-        this.id = id;
+    public Formule(FormuleId formuleId, Double prixDeBase, DuréeFormule durée) {
+        this.formuleId = formuleId;
         this.prixDeBase = new Prix(prixDeBase);
         this.durée = durée;
         this.nom = "Formule "+durée.nbMois()+" mois à "+prixDeBase+" euros";
     }
 
-    public static Formule nouvelle(Double prixDeBase, DuréeFormule durée) {
-        return new Formule(
-            FormuleId.generate(),
-            prixDeBase,
-            durée
-        );
+    public static Formule nouvelleAuMois(FormuleId formuleId, Double prixDeBase) {
+        return new Formule(formuleId, prixDeBase, DuréeFormule.MOIS);
     }
 
-    public static Formule nouvelleAuMois(Double prixDeBase) {
-        return Formule.nouvelle(prixDeBase, DuréeFormule.MOIS);
-    }
-
-    public static Formule nouvelleALAnnée(Double prixDeBase) {
-        return Formule.nouvelle(prixDeBase, DuréeFormule.ANNEE);
+    public static Formule nouvelleALAnnée(FormuleId formuleId, Double prixDeBase) {
+        return new Formule(formuleId, prixDeBase, DuréeFormule.ANNEE);
     }
 
     public FormuleId id() {
-        return id;
+        return formuleId;
     }
 
     public Prix prixDeBase() {

@@ -21,9 +21,9 @@ public final class Abonnement {
     private final Période période;
     private final Double prix;
 
-    public Abonnement(Adhérent adhérent, Formule formule, Date dateSouscription) {
+    public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, Date dateSouscription) {
 
-        this.id = AbonnementId.generate();
+        this.id = abonnementId;
 
         this.adhérentId = adhérent.id();
 
