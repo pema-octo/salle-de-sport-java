@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 
@@ -34,23 +33,23 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     public void chiffre_d_affaire_avec_abonnements_en_cours() {
 
         Formule formule = Formule.nouvelleALAnnée(
-            FormuleId.fromString(UUID.randomUUID().toString()),
+            FormuleId.fromString("some unique string"),
             200.0
         );
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
         abonnementRepository.store(
             new Abonnement(
-                AbonnementId.fromString(UUID.randomUUID().toString()),
-                Adhérent.nouveau(AdhérentId.fromString(UUID.randomUUID().toString()), "bob@octo.com", "Bob"),
+                AbonnementId.fromString("some unique string"),
+                Adhérent.nouveau(AdhérentId.fromString("some unique string"), "bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                AbonnementId.fromString(UUID.randomUUID().toString()),
-                Adhérent.nouveau(AdhérentId.fromString(UUID.randomUUID().toString()), "lucy@octo.com", "Lucy"),
+                AbonnementId.fromString("some unique string"),
+                Adhérent.nouveau(AdhérentId.fromString("some unique string"), "lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )

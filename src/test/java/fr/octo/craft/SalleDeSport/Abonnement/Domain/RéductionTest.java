@@ -6,8 +6,6 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
 import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
-import java.util.UUID;
-
 import static org.junit.Assert.assertEquals;
 
 public class RéductionTest {
@@ -17,11 +15,11 @@ public class RéductionTest {
 
         Réduction réductionAbonnementAnnuel = Réduction.pourAbonnement(
             Adhérent.nouveau(
-                AdhérentId.fromString(UUID.randomUUID().toString()),
+                AdhérentId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
-            Formule.nouvelleALAnnée(FormuleId.fromString(UUID.randomUUID().toString()), 400.0)
+            Formule.nouvelleALAnnée(FormuleId.fromString("some unique string"), 400.0)
         );
 
         assertEquals(Réduction.REDUC_ANNEE, réductionAbonnementAnnuel.taux(), 0);
@@ -32,11 +30,11 @@ public class RéductionTest {
 
         Réduction réductionAbonnementEtudiant = Réduction.pourAbonnement(
             Adhérent.étudiant(
-                AdhérentId.fromString(UUID.randomUUID().toString()),
+                AdhérentId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
-            Formule.nouvelleAuMois(FormuleId.fromString(UUID.randomUUID().toString()), 400.0)
+            Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 400.0)
         );
 
         assertEquals(Réduction.REDUC_ETUDIANT, réductionAbonnementEtudiant.taux(), 0);
@@ -47,11 +45,11 @@ public class RéductionTest {
 
         Réduction réductionAbonnementEtudiantAnnuel = Réduction.pourAbonnement(
             Adhérent.étudiant(
-                AdhérentId.fromString(UUID.randomUUID().toString()),
+                AdhérentId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
-            Formule.nouvelleALAnnée(FormuleId.fromString(UUID.randomUUID().toString()), 400.0)
+            Formule.nouvelleALAnnée(FormuleId.fromString("some unique string"), 400.0)
         );
 
         assertEquals(Réduction.REDUC_ETUDIANT + Réduction.REDUC_ANNEE, réductionAbonnementEtudiantAnnuel.taux(), 0);

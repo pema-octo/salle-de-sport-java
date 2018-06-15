@@ -5,7 +5,7 @@ import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepository;
 
 final class ChiffreAffaireAbonnementsEnCoursQueryHandler {
 
-    private AbonnementRepository abonnementRepository;
+    private final AbonnementRepository abonnementRepository;
 
     ChiffreAffaireAbonnementsEnCoursQueryHandler(AbonnementRepository abonnementRepository) {
         this.abonnementRepository = abonnementRepository;

@@ -2,8 +2,8 @@ package fr.octo.craft.SalleDeSport.Formule.Domain;
 
 public final class PrixFormuleChangé {
 
-    public final FormuleId formuleId;
-    public final Prix ancienPrix;
+    private final FormuleId formuleId;
+    private final Prix ancienPrix;
     public final Prix nouveauPrix;
 
     public PrixFormuleChangé(FormuleId formuleId, Prix ancienPrix, Prix nouveauPrix) {

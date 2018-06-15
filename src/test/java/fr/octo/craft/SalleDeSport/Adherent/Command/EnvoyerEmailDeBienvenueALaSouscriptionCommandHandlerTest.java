@@ -7,20 +7,18 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
 import java.util.Date;
-import java.util.UUID;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException, AdhérentRepositoryException {
-        AdhérentId adhérentId = AdhérentId.fromString(UUID.randomUUID().toString());
-        AbonnementId abonnementId = AbonnementId.fromString(UUID.randomUUID().toString());
+        AdhérentId adhérentId = AdhérentId.fromString("some unique string");
+        AbonnementId abonnementId = AbonnementId.fromString("some unique string");
 
         Formule formule = Formule.nouvelleALAnnée(
-            FormuleId.fromString(UUID.randomUUID().toString()),
+            FormuleId.fromString("some unique string"),
             500.0
         );
 

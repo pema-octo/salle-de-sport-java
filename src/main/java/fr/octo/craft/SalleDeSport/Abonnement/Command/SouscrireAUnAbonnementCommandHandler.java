@@ -7,7 +7,7 @@ import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementSouscrit;
 
 import java.util.UUID;
 
-public final class SouscrireAUnAbonnementCommandHandler {
+final class SouscrireAUnAbonnementCommandHandler {
 
     private final AbonnementRepository abonnementRepository;
 
