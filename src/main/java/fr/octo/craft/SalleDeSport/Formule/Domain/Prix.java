@@ -8,7 +8,7 @@ public final class Prix {
 
     private final Double montant;
 
-    Prix(Double montant) {
+    public Prix(Double montant) {
         this.montant = montant;
     }
 
@@ -21,6 +21,11 @@ public final class Prix {
     }
 
     @Override
+    public String toString() {
+        return String.valueOf(montant);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -30,7 +35,6 @@ public final class Prix {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(montant);
     }
 }

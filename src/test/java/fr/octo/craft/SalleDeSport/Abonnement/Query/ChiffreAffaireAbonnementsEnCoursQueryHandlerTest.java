@@ -10,6 +10,7 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
 import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,19 +19,19 @@ import static org.junit.Assert.assertEquals;
 public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
 
     @Test
-    public void chiffre_d_affaire_avec_aucun_abonnement_en_cours() {
+    public void chiffre_d_affaire_avec_aucun_abonnement_en_cours() throws ParseException {
 
         ChiffreAffaireAbonnementsEnCoursQueryHandler tested = new ChiffreAffaireAbonnementsEnCoursQueryHandler(
             new AbonnementInMemoryRepository()
         );
 
-        Double chiffreAffaire = tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(new Date()));
+        Double chiffreAffaire = tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(aujourdhui()));
 
         assertEquals(0, chiffreAffaire, 0);
     }
 
     @Test
-    public void chiffre_d_affaire_avec_abonnements_en_cours() {
+    public void chiffre_d_affaire_avec_abonnements_en_cours() throws ParseException {
 
         Formule formule = Formule.nouvelleALAnnée(
             FormuleId.fromString("some unique string"),
@@ -38,18 +39,19 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
         );
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
+
         abonnementRepository.store(
             new Abonnement(
-                AbonnementId.fromString("some unique string"),
-                Adhérent.nouveau(AdhérentId.fromString("some unique string"), "bob@octo.com", "Bob"),
+                AbonnementId.fromString("unique string 1"),
+                Adhérent.nouveau(AdhérentId.fromString("unique string 2"), "bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                AbonnementId.fromString("some unique string"),
-                Adhérent.nouveau(AdhérentId.fromString("some unique string"), "lucy@octo.com", "Lucy"),
+                AbonnementId.fromString("unique string 3"),
+                Adhérent.nouveau(AdhérentId.fromString("unique string 4"), "lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )
@@ -59,11 +61,11 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
             abonnementRepository
         );
 
-        assertEquals(280, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(dansDeuxMois())), 0);
-        assertEquals(2, abonnementRepository.abonnementsEnCours(dansDeuxMois()).size());
-
         assertEquals(140, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(dansUnMois())), 0);
         assertEquals(1, abonnementRepository.abonnementsEnCours(dansUnMois()).size());
+
+        assertEquals(280, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(dansDeuxMois())), 0);
+        assertEquals(2, abonnementRepository.abonnementsEnCours(dansDeuxMois()).size());
     }
 
     private Date aujourdhui() {

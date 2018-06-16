@@ -30,8 +30,8 @@ public final class Formule {
         return prixDeBase;
     }
 
-    public void changeDePrix(Double nouveauPrix) {
-        prixDeBase = new Prix(nouveauPrix);
+    public void changeDePrix(Prix nouveauPrix) {
+        prixDeBase = nouveauPrix;
     }
 
     public DuréeFormule durée() {

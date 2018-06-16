@@ -15,11 +15,13 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
 
     @Override
     public void store(Abonnement abonnement) {
+
         abonnements.add(abonnement);
     }
 
     @Override
     public Abonnement get(AbonnementId abonnementId) throws AbonnementRepositoryException {
+
         for (Abonnement abonnement : abonnements) {
             if (abonnement.id().equals(abonnementId)) {
                 return abonnement;
@@ -31,6 +33,7 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
 
     @Override
     public Collection<Abonnement> abonnementsEnCours(Date date) {
+
         Collection<Abonnement> abonnementsEnCours = new ArrayList<>();
 
         for (Abonnement abonnement : abonnements) {

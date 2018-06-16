@@ -1,14 +1,23 @@
 package fr.octo.craft.SalleDeSport.Formule.Command;
 
 import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
+import fr.octo.craft.SalleDeSport.Formule.Domain.Prix;
 
 final class ChangerLePrixDUneFormuleCommand {
 
-    final FormuleId formuleId;
-    final Double nouveauPrix;
+    private final String formuleId;
+    private final String nouveauPrix;
 
-    ChangerLePrixDUneFormuleCommand(FormuleId formuleId, Double nouveauPrix) {
-        this.formuleId = formuleId;
-        this.nouveauPrix = nouveauPrix;
+    ChangerLePrixDUneFormuleCommand(FormuleId formuleId, Prix nouveauPrix) {
+        this.formuleId = formuleId.toString();
+        this.nouveauPrix = nouveauPrix.toString();
+    }
+
+    FormuleId formuleId() {
+        return FormuleId.fromString(formuleId);
+    }
+
+    Prix nouveauPrix() {
+        return new Prix(Double.valueOf(nouveauPrix));
     }
 }

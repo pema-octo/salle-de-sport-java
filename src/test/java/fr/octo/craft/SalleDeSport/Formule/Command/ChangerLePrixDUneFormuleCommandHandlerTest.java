@@ -22,10 +22,10 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
         PrixFormuleChangé event = tested.handle(
             new ChangerLePrixDUneFormuleCommand(
                 formuleId,
-                400.0
+                new Prix(400.0)
             )
         );
 
-        assertEquals(400, event.nouveauPrix.montant(), 0);
+        assertEquals(400, event.nouveauPrix().montant(), 0);
     }
 }

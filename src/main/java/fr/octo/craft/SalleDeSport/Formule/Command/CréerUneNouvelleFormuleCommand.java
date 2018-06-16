@@ -4,11 +4,19 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.DuréeFormule;
 
 final class CréerUneNouvelleFormuleCommand {
 
-    final Double prixDeBase;
-    final DuréeFormule duréeFormule;
+    private final String prixDeBase;
+    private final String duréeFormule;
 
-    CréerUneNouvelleFormuleCommand(Double prixDeBase, DuréeFormule duréeFormule) {
+    CréerUneNouvelleFormuleCommand(String prixDeBase, String duréeFormule) {
         this.prixDeBase = prixDeBase;
         this.duréeFormule = duréeFormule;
+    }
+
+    Double prixDeBase() {
+        return Double.valueOf(prixDeBase);
+    }
+
+    DuréeFormule duréeFormule() {
+        return DuréeFormule.valueOf(duréeFormule);
     }
 }

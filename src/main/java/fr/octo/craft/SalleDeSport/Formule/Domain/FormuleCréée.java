@@ -2,13 +2,13 @@ package fr.octo.craft.SalleDeSport.Formule.Domain;
 
 public final class FormuleCréée {
 
-    private final FormuleId formuleId;
+    private final String formuleId;
 
     public FormuleCréée(FormuleId formuleId) {
-        this.formuleId = formuleId;
+        this.formuleId = formuleId.toString();
     }
 
     public FormuleId formuleId() {
-        return formuleId;
+        return FormuleId.fromString(formuleId);
     }
 }
