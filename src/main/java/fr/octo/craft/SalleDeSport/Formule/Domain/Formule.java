@@ -38,6 +38,10 @@ public final class Formule {
         return durée;
     }
 
+    public int duréeEnMois() {
+        return durée.nbMois();
+    }
+
     public boolean estALannée() {
         return DuréeFormule.ANNEE.equals(durée);
     }

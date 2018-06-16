@@ -7,8 +7,6 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -79,16 +77,16 @@ public class AbonnementTest {
             premierJuin()
         );
 
-        Date dateCourantJuin = new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-09");
+        MaDate dateCourantJuin = MaDate.fromString("2018-06-09");
 
         assertTrue(abonnementEnCours.estEnCours(dateCourantJuin));
     }
 
-    private Date premierJuin() {
+    private MaDate premierJuin() {
         try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-01");
+            return MaDate.fromString("2018-06-01");
         } catch (Exception e) {
-            return new Date();
+            return new MaDate();
         }
     }
 }

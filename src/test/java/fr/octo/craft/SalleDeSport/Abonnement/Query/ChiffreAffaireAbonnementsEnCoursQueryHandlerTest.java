@@ -3,6 +3,7 @@ package fr.octo.craft.SalleDeSport.Abonnement.Query;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.Abonnement;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementId;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepository;
+import fr.octo.craft.SalleDeSport.Abonnement.Domain.MaDate;
 import fr.octo.craft.SalleDeSport.Abonnement.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.Adhérent;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.AdhérentId;
@@ -11,8 +12,6 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
@@ -68,25 +67,25 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
         assertEquals(2, abonnementRepository.abonnementsEnCours(dansDeuxMois()).size());
     }
 
-    private Date aujourdhui() {
+    private MaDate aujourdhui() {
         try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-09");
+            return MaDate.fromString("2018-06-09");
+        } catch (Exception e) {
+            return new MaDate();
+        }
+    }
+
+    private MaDate dansUnMois() {
+        try {
+            return MaDate.fromString("2018-07-09");
         } catch (Exception e) {
             return aujourdhui();
         }
     }
 
-    private Date dansUnMois() {
+    private MaDate dansDeuxMois() {
         try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse("2018-07-09");
-        } catch (Exception e) {
-            return aujourdhui();
-        }
-    }
-
-    private Date dansDeuxMois() {
-        try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse("2018-08-09");
+            return MaDate.fromString("2018-08-09");
         } catch (Exception e) {
             return aujourdhui();
         }

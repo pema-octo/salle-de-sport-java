@@ -3,6 +3,7 @@ package fr.octo.craft.SalleDeSport.Abonnement.Command;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.Abonnement;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepository;
 import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementSouscrit;
+import fr.octo.craft.SalleDeSport.Abonnement.Domain.MaDate;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.Adhérent;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.AdhérentId;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.AdhérentRepository;
@@ -14,7 +15,6 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleRepositoryException;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -51,7 +51,7 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
             new SouscrireAUnAbonnementCommand(
                 adhérent,
                 formule,
-                new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-10")
+                MaDate.fromString("2018-06-10")
             )
         );
 

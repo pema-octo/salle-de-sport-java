@@ -1,18 +1,18 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Query;
 
+import fr.octo.craft.SalleDeSport.Abonnement.Domain.MaDate;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 final class ChiffreAffaireAbonnementsEnCoursQuery {
 
     private final String date;
 
-    ChiffreAffaireAbonnementsEnCoursQuery(Date date) {
-        this.date = new SimpleDateFormat("yyyy-MM-dd").format(date);
+    ChiffreAffaireAbonnementsEnCoursQuery(MaDate date) {
+        this.date = date.toString();
     }
 
-    public Date date() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+    public MaDate date() throws ParseException {
+        return MaDate.fromString(date);
     }
 }

@@ -1,13 +1,9 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Infrastructure.Database;
 
-import fr.octo.craft.SalleDeSport.Abonnement.Domain.Abonnement;
-import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementId;
-import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepository;
-import fr.octo.craft.SalleDeSport.Abonnement.Domain.AbonnementRepositoryException;
+import fr.octo.craft.SalleDeSport.Abonnement.Domain.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 public final class AbonnementInMemoryRepository implements AbonnementRepository {
 
@@ -32,7 +28,7 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
     }
 
     @Override
-    public Collection<Abonnement> abonnementsEnCours(Date date) {
+    public Collection<Abonnement> abonnementsEnCours(MaDate date) {
 
         Collection<Abonnement> abonnementsEnCours = new ArrayList<>();
 

@@ -1,30 +1,34 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Domain;
 
 import java.util.Calendar;
-import java.util.Date;
 
 final class Période {
 
-    private final Date dateDeDébut;
-    private final Date dateDeFin;
+    private final MaDate dateDeDébut;
+    private final MaDate dateDeFin;
 
-    Période(Date dateDeDébut, int nbMois) {
+    Période(MaDate dateDeDébut, int nbMois) {
         this.dateDeDébut = dateDeDébut;
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, nbMois);
-        this.dateDeFin = cal.getTime();
+        this.dateDeFin = new MaDate(cal.getTime());
     }
 
-    Boolean contient(Date date) {
-        return date.after(dateDeDébut) && date.before(dateDeFin);
+    MaDate dateDeDébut() {
+        return dateDeDébut;
+    }
+
+    MaDate dateDeFin() {
+        return dateDeFin;
+    }
+
+    Boolean contient(MaDate date) {
+        return date.toDate().after(dateDeDébut.toDate()) && date.toDate().before(dateDeFin.toDate());
     }
 
     @Override
     public String toString() {
-        return "Période{" +
-            "dateDeDébut=" + dateDeDébut +
-            ", dateDeFin=" + dateDeFin +
-            '}';
+        return "Période{" + "dateDeDébut=" + dateDeDébut + ", dateDeFin=" + dateDeFin + '}';
     }
 }

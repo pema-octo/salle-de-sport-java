@@ -6,8 +6,6 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.DuréeFormule;
 import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
 import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 
-import java.util.Date;
-
 public final class Abonnement {
 
     private final AbonnementId id;
@@ -21,7 +19,7 @@ public final class Abonnement {
     private final Période période;
     private final Double prix;
 
-    public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, Date dateSouscription) {
+    public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, MaDate date) {
 
         this.id = abonnementId;
 
@@ -32,8 +30,8 @@ public final class Abonnement {
         this.nomFormule = formule.nom();
 
         this.période = new Période(
-            dateSouscription,
-            formule.durée().nbMois()
+            date,
+            formule.duréeEnMois()
         );
 
         Réduction réduction = Réduction.pourAbonnement(adhérent, formule);
@@ -52,7 +50,11 @@ public final class Abonnement {
         return prix;
     }
 
-    public Boolean estEnCours(Date date) {
+    public MaDate dateDeSouscription() {
+        return période.dateDeDébut();
+    }
+
+    public Boolean estEnCours(MaDate date) {
         return période.contient(date);
     }
 

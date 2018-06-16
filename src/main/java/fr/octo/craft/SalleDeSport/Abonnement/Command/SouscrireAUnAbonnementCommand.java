@@ -1,13 +1,12 @@
 package fr.octo.craft.SalleDeSport.Abonnement.Command;
 
+import fr.octo.craft.SalleDeSport.Abonnement.Domain.MaDate;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.Adhérent;
 import fr.octo.craft.SalleDeSport.Adherent.Domain.AdhérentId;
 import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
 import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 final class SouscrireAUnAbonnementCommand {
 
@@ -15,10 +14,10 @@ final class SouscrireAUnAbonnementCommand {
     private final String formuleId;
     private final String date;
 
-    SouscrireAUnAbonnementCommand(Adhérent adhérentId, Formule formuleId, Date date) {
+    SouscrireAUnAbonnementCommand(Adhérent adhérentId, Formule formuleId, MaDate date) {
         this.adhérentId = adhérentId.id().toString();
         this.formuleId = formuleId.id().toString();
-        this.date = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        this.date = date.toString();
     }
 
     AdhérentId adhérentId() {
@@ -29,7 +28,7 @@ final class SouscrireAUnAbonnementCommand {
         return FormuleId.fromString(formuleId);
     }
 
-    public Date date() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+    public MaDate date() throws ParseException {
+        return MaDate.fromString(date);
     }
 }

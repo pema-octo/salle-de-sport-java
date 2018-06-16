@@ -6,8 +6,6 @@ import fr.octo.craft.SalleDeSport.Formule.Domain.Formule;
 import fr.octo.craft.SalleDeSport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
-import java.util.Date;
-
 import static org.mockito.Mockito.*;
 
 public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
@@ -30,7 +28,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
             abonnementId,
             adhérent,
             formule,
-            new Date()
+            new MaDate()
         );
         AbonnementRepository abonnementRepository = mock(AbonnementRepository.class);
         when(abonnementRepository.get(abonnementId)).thenReturn(abonnement);
