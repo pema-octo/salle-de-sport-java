@@ -19,5 +19,5 @@ et le premier mois est gratuit
 
 ## Liens
 
-- [vidéo](https://www.youtube.com/watch?v=qBLtZN3p3FU)
+- [Prez d'Arnaud Lemaire "DDD & CQRS"](https://www.youtube.com/watch?v=qBLtZN3p3FU)
 - [slides](https://speakerdeck.com/lilobase/ddd-and-cqrs-php-tour-2018)
