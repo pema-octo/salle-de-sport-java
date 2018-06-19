@@ -11,7 +11,7 @@ public final class Abonnement {
     private final String adhérentId;
 
     private final String formuleId;
-    private final String nomFormule;
+    private final String descriptionFormule;
 
     private final Période période;
     private final Double prix;
@@ -23,12 +23,9 @@ public final class Abonnement {
         this.adhérentId = adhérent.id().toString();
 
         this.formuleId = formule.id().toString();
-        this.nomFormule = formule.description();
+        this.descriptionFormule = formule.description();
 
-        this.période = new Période(
-            date,
-            formule.duréeEnMois()
-        );
+        this.période = new Période(date, formule.duréeEnMois());
 
         Réduction réduction = Réduction.pourAbonnement(adhérent, formule);
         this.prix = formule.prixDeBase().appliqueRéduction(réduction).montant();
@@ -39,7 +36,7 @@ public final class Abonnement {
     }
 
     public String nomFormule() {
-        return nomFormule;
+        return descriptionFormule;
     }
 
     Prix prix() {

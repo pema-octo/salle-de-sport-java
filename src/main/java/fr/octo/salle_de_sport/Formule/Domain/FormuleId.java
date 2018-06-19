@@ -14,10 +14,6 @@ public final class FormuleId {
         return new FormuleId(id);
     }
 
-    public String id() {
-        return id;
-    }
-
     @Override
     public String toString() {
         return id;

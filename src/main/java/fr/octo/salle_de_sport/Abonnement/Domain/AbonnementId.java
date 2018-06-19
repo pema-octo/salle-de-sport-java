@@ -14,10 +14,6 @@ public final class AbonnementId {
         return new AbonnementId(id);
     }
 
-    public String id() {
-        return id;
-    }
-
     @Override
     public String toString() {
         return id;

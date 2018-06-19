@@ -14,10 +14,6 @@ public final class AdhérentId {
         return new AdhérentId(id);
     }
 
-    public String id() {
-        return id;
-    }
-
     @Override
     public String toString() {
         return id;
