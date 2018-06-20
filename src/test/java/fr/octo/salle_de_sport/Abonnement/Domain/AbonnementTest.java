@@ -6,10 +6,7 @@ import fr.octo.salle_de_sport.Formule.Domain.Formule;
 import fr.octo.salle_de_sport.Formule.Domain.FormuleId;
 import org.junit.Test;
 
-import java.text.ParseException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AbonnementTest {
 
@@ -65,7 +62,7 @@ public class AbonnementTest {
     }
 
     @Test
-    public void un_abonnement_peut_être_en_cours() throws ParseException {
+    public void un_abonnement_peut_être_en_cours() {
         Abonnement abonnementEnCours = new Abonnement(
             AbonnementId.fromString("some unique string"),
             Adhérent.nouveau(
@@ -82,11 +79,46 @@ public class AbonnementTest {
         assertTrue(abonnementEnCours.estEnCours(dateCourantJuin));
     }
 
+    @Test
+    public void permet_de_déterminer_s_il_sera_fini_à_une_date() {
+        Abonnement abonnementFiniFinJuin = new Abonnement(
+            AbonnementId.fromString("some unique string"),
+            Adhérent.nouveau(
+                AdhérentId.fromString("some unique string"),
+                "bob@octo.com",
+                "Bob"
+            ),
+            Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 100.0),
+            premierJuin()
+        );
+
+        assertFalse(abonnementFiniFinJuin.seraFiniLe(MaDate.fromString("2018-06-30")));
+        assertTrue(abonnementFiniFinJuin.seraFiniLe(MaDate.fromString("2018-07-01")));
+    }
+
+    @Test
+    public void peut_être_renouvellé() {
+        Abonnement abonnement = new Abonnement(
+            AbonnementId.fromString("some unique string"),
+            Adhérent.nouveau(
+                AdhérentId.fromString("some unique string"),
+                "bob@octo.com",
+                "Bob"
+            ),
+            Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 100.0),
+            premierJuin()
+        );
+
+        assertFalse(abonnement.seraFiniLe(MaDate.fromString("2018-06-30")));
+        assertTrue(abonnement.seraFiniLe(MaDate.fromString("2018-07-01")));
+
+        abonnement.renouveller();
+
+        assertFalse(abonnement.seraFiniLe(MaDate.fromString("2018-07-31")));
+        assertTrue(abonnement.seraFiniLe(MaDate.fromString("2018-08-01")));
+    }
+
     private MaDate premierJuin() {
-        try {
-            return MaDate.fromString("2018-06-01");
-        } catch (Exception e) {
-            return new MaDate();
-        }
+        return MaDate.fromString("2018-06-01");
     }
 }

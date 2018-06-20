@@ -11,8 +11,14 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
 
     @Override
     public void store(Abonnement abonnement) {
-
         abonnements.add(abonnement);
+    }
+
+    @Override
+    public void storeAll(Collection<Abonnement> abonnements) {
+        for (Abonnement abonnement : abonnements) {
+            store(abonnement);
+        }
     }
 
     @Override
@@ -39,5 +45,19 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
         }
 
         return abonnementsEnCours;
+    }
+
+    @Override
+    public Collection<Abonnement> abonnementsFinisAPartirDe(MaDate date) {
+
+        Collection<Abonnement> abonnementsFinisAPartirDe = new ArrayList<>();
+
+        for (Abonnement abonnement : abonnements) {
+            if (abonnement.seraFiniLe(date)) {
+                abonnementsFinisAPartirDe.add(abonnement);
+            }
+        }
+
+        return abonnementsFinisAPartirDe;
     }
 }

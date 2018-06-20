@@ -2,8 +2,6 @@ package fr.octo.salle_de_sport.Abonnement.Query;
 
 import fr.octo.salle_de_sport.Abonnement.Domain.MaDate;
 
-import java.text.ParseException;
-
 final class ChiffreAffaireAbonnementsEnCoursQuery {
 
     private final String date;
@@ -12,7 +10,7 @@ final class ChiffreAffaireAbonnementsEnCoursQuery {
         this.date = date.toString();
     }
 
-    public MaDate date() throws ParseException {
+    public MaDate date() {
         return MaDate.fromString(date);
     }
 }

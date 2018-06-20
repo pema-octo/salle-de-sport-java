@@ -29,7 +29,7 @@ final class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandler {
 
         mailer.sendEmail(
             adhérent.email(),
-            "Bienvenu(e) chez CraftGym "+adhérent.prénom()+", profite bien de ton abonnement "+abonnement.nomFormule()+"."
+            "Bienvenu(e) chez CraftGym "+adhérent.prénom()+", profite bien de ton abonnement "+abonnement.descriptionFormule()+"."
         );
 
         return new EmailDeBienvenueALaSouscriptionEnvoyé(

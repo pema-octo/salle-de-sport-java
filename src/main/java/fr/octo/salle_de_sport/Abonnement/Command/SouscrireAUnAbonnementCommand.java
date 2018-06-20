@@ -6,8 +6,6 @@ import fr.octo.salle_de_sport.Adherent.Domain.AdhérentId;
 import fr.octo.salle_de_sport.Formule.Domain.Formule;
 import fr.octo.salle_de_sport.Formule.Domain.FormuleId;
 
-import java.text.ParseException;
-
 final class SouscrireAUnAbonnementCommand {
 
     private final String adhérentId;
@@ -28,7 +26,7 @@ final class SouscrireAUnAbonnementCommand {
         return FormuleId.fromString(formuleId);
     }
 
-    public MaDate date() throws ParseException {
+    public MaDate date() {
         return MaDate.fromString(date);
     }
 }

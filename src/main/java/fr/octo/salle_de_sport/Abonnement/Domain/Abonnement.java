@@ -13,7 +13,7 @@ public final class Abonnement {
     private final String formuleId;
     private final String descriptionFormule;
 
-    private final Période période;
+    private String période;
     private final Double prix;
 
     public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, MaDate date) {
@@ -25,7 +25,7 @@ public final class Abonnement {
         this.formuleId = formule.id().toString();
         this.descriptionFormule = formule.description();
 
-        this.période = new Période(date, formule.duréeEnMois());
+        this.période = new Période(date, formule.duréeEnMois()).toString();
 
         Réduction réduction = Réduction.pourAbonnement(adhérent, formule);
         this.prix = formule.prixDeBase().appliqueRéduction(réduction).montant();
@@ -35,7 +35,11 @@ public final class Abonnement {
         return AbonnementId.fromString(id);
     }
 
-    public String nomFormule() {
+    MaDate dateDeSouscription() {
+        return Période.fromString(période).dateDeDébut();
+    }
+
+    public String descriptionFormule() {
         return descriptionFormule;
     }
 
@@ -43,15 +47,19 @@ public final class Abonnement {
         return new Prix(prix);
     }
 
-    MaDate dateDeSouscription() {
-        return période.dateDeDébut();
+    public Double restantDu() {
+        return prix;
     }
 
     public Boolean estEnCours(MaDate date) {
-        return période.contient(date);
+        return Période.fromString(période).contient(date);
     }
 
-    public Double restantDu() {
-        return prix;
+    public Boolean seraFiniLe(MaDate date) {
+        return Période.fromString(période).avantLaDate(date);
+    }
+
+    public void renouveller() {
+        période = Période.fromString(période).suivante().toString();
     }
 }

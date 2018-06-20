@@ -11,7 +11,6 @@ import fr.octo.salle_de_sport.Formule.Domain.Formule;
 import fr.octo.salle_de_sport.Formule.Domain.FormuleRepository;
 import fr.octo.salle_de_sport.Formule.Domain.FormuleRepositoryException;
 
-import java.text.ParseException;
 import java.util.UUID;
 
 final class SouscrireAUnAbonnementCommandHandler {
@@ -30,7 +29,7 @@ final class SouscrireAUnAbonnementCommandHandler {
         return SouscrireAUnAbonnementCommand.class.getCanonicalName();
     }
 
-    public AbonnementSouscrit handle(SouscrireAUnAbonnementCommand command) throws AdhérentRepositoryException, FormuleRepositoryException, ParseException {
+    public AbonnementSouscrit handle(SouscrireAUnAbonnementCommand command) throws AdhérentRepositoryException, FormuleRepositoryException {
 
         Adhérent adhérent = adhérentRepository.get(command.adhérentId());
         Formule formule = formuleRepository.get(command.formuleId());

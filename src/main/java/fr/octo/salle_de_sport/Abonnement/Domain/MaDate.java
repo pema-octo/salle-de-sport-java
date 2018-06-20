@@ -1,42 +1,57 @@
 package fr.octo.salle_de_sport.Abonnement.Domain;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public final class MaDate {
 
-    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
-    private final Date date;
+    private final LocalDate date;
 
     public MaDate() {
-        this.date = new Date();
+        this.date = LocalDate.now();
     }
 
-    MaDate(Date date) {
+    private MaDate(LocalDate date) {
         this.date = date;
     }
 
-    public static MaDate fromString(String dateStr) throws ParseException {
+    public static MaDate fromString(String dateStr) {
         return new MaDate(
-            format.parse(dateStr)
+            LocalDate.parse(dateStr, FORMATTER)
         );
     }
 
+    @Override
     public String toString() {
-        return format.format(date);
-    }
-
-    Date toDate() {
-        return date;
+        return date.format(FORMATTER);
     }
 
     Boolean après(MaDate dateDeDébut) {
-        return this.date.after(dateDeDébut.date);
+        return date.isAfter(dateDeDébut.date);
     }
 
     Boolean avant(MaDate dateDeFin) {
-        return this.date.before(dateDeFin.date);
+        return date.isBefore(dateDeFin.date);
+    }
+
+    MaDate plusXMois(int nbMois) {
+        return new MaDate(
+            date.plus(nbMois, ChronoUnit.MONTHS)
+        );
+    }
+
+    MaDate jourDAvant() {
+        return new MaDate(date.minusDays(1));
+    }
+
+    MaDate jourSuivant() {
+        return new MaDate(date.plusDays(1));
+    }
+
+    LocalDate toLocalDate() {
+        return date;
     }
 }
