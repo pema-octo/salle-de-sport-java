@@ -57,7 +57,7 @@ public class MaDateTest {
         MaDate tested = MaDate.fromString("2018-06-16");
 
         assertEquals(
-            "2018-09-17",
+            "2018-06-17",
             tested.jourSuivant().toString()
         );
     }
