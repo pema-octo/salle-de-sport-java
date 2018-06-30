@@ -13,6 +13,7 @@ et le premier mois est gratuit
 
 ## Choix
 
+- métier en français => code métier en français, on est en 2018 et Java gère très bien les accents
 - utilisation de patterns tactiques du DDD
   - Aggregate [à lire](https://vaughnvernon.co/?p=838)
   - Entity [à lire](http://thepaulrayner.com/blog/aggregates-and-entities-in-domain-driven-design/)
