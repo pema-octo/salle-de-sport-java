@@ -28,6 +28,7 @@ et le premier mois est gratuit
 - toutes les classes sont `final` par défaut [explication](https://ocramius.github.io/blog/when-to-declare-classes-final/)
 - pas de préfixes get/set [explication](https://blog.pragmatists.com/refactoring-from-anemic-model-to-ddd-880d3dd3d45f)
 - les messages des exceptions sont centralisés dans les exceptions [explication](http://rosstuck.com/formatting-exception-messages)
+- named constructors [à lire](http://verraes.net/2014/06/named-constructors-in-php/)
 
 ## Liens
 
