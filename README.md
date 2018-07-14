@@ -23,7 +23,7 @@ et le premier mois est gratuit
 - CQRS
 - les Aggregate ids ont leur propres types
 - les Aggregate ids pourraient être des UUID, à voir plus tard si ça simplifierait quelque chose
-- les entités stockent des types primitifs pour faciliter l'éventuel stockage [explication](https://matthiasnoback.nl/2018/06/doctrine-orm-and-ddd-aggregates/)
+- les évènements et les commands stockent des types primitifs pour faciliter l'éventuel stockage [explication](https://matthiasnoback.nl/2018/06/doctrine-orm-and-ddd-aggregates/)
 - utilisation d'une classe MaDate pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage [explication](https://matthiasnoback.nl/2018/02/mocking-at-architectural-boundaries-persistence-and-time/)
 - toutes les classes sont `final` par défaut [explication](https://ocramius.github.io/blog/when-to-declare-classes-final/)
 - pas de préfixes get/set [explication](https://blog.pragmatists.com/refactoring-from-anemic-model-to-ddd-880d3dd3d45f)

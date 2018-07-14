@@ -2,13 +2,13 @@ package fr.octo.salle_de_sport.Formules.Domain;
 
 public final class Formule {
 
-    private final String formuleId;
-    private Double prixDeBase;
+    private final FormuleId formuleId;
+    private Prix prixDeBase;
     private final int duréeEnMois;
 
     public Formule(FormuleId formuleId, Double prixDeBase, DuréeFormule duréeEnMois) {
-        this.formuleId = formuleId.toString();
-        this.prixDeBase = new Prix(prixDeBase).montant();
+        this.formuleId = formuleId;
+        this.prixDeBase = new Prix(prixDeBase);
         this.duréeEnMois = duréeEnMois.nbMois();
     }
 
@@ -21,15 +21,15 @@ public final class Formule {
     }
 
     public FormuleId id() {
-        return FormuleId.fromString(formuleId);
+        return formuleId;
     }
 
     public Prix prixDeBase() {
-        return new Prix(prixDeBase);
+        return prixDeBase;
     }
 
     public void changeDePrix(Prix nouveauPrix) {
-        prixDeBase = nouveauPrix.montant();
+        prixDeBase = nouveauPrix;
     }
 
     public int duréeEnMois() {

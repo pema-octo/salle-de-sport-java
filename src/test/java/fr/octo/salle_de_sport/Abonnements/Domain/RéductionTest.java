@@ -13,7 +13,7 @@ public class RéductionTest {
     @Test
     public void moins_30_pourcent_à_l_année() {
 
-        Réduction réductionAbonnementAnnuel = Réduction.pourAbonnement(
+        Réduction réductionAbonnementAnnuel = new Réduction(
             Adhérent.nouveau(
                 AdhérentId.fromString("some unique string"),
                 "bob@octo.com",
@@ -28,7 +28,7 @@ public class RéductionTest {
     @Test
     public void moins_20_pourcent_pour_les_étudiants() {
 
-        Réduction réductionAbonnementEtudiant = Réduction.pourAbonnement(
+        Réduction réductionAbonnementEtudiant = new Réduction(
             Adhérent.étudiant(
                 AdhérentId.fromString("some unique string"),
                 "bob@octo.com",
@@ -43,7 +43,7 @@ public class RéductionTest {
     @Test
     public void moins_50_pourcent_pour_les_étudiants_à_l_année() {
 
-        Réduction réductionAbonnementEtudiantAnnuel = Réduction.pourAbonnement(
+        Réduction réductionAbonnementEtudiantAnnuel = new Réduction(
             Adhérent.étudiant(
                 AdhérentId.fromString("some unique string"),
                 "bob@octo.com",

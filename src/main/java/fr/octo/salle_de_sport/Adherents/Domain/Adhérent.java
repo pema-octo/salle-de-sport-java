@@ -2,13 +2,13 @@ package fr.octo.salle_de_sport.Adherents.Domain;
 
 public final class Adhérent {
 
-    private final String id;
+    private final AdhérentId id;
     private final String email;
     private final String prénom;
     private final boolean estEtudiant;
 
     private Adhérent(AdhérentId adhérentId, String email, String prénom, boolean estEtudiant) {
-        this.id = adhérentId.toString();
+        this.id = adhérentId;
         this.email = email;
         this.prénom = prénom;
         this.estEtudiant = estEtudiant;
@@ -23,7 +23,7 @@ public final class Adhérent {
     }
 
     public AdhérentId id() {
-        return AdhérentId.fromString(id);
+        return id;
     }
 
     public String email() {

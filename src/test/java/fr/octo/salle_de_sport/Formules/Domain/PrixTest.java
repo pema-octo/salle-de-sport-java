@@ -13,7 +13,7 @@ public class PrixTest {
 
         Prix prix = new Prix(400.0);
 
-        assertEquals(400, prix.montant(), 0);
+        assertEquals(new Prix(400), prix);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class PrixTest {
 
         Prix prixAprèsRéduction = prix.appliqueRéduction(réduction);
 
-        assertEquals(300, prixAprèsRéduction.montant(), 0);
+        assertEquals(new Prix(300), prixAprèsRéduction);
         assertNotEquals(prix, prixAprèsRéduction);
     }
 }

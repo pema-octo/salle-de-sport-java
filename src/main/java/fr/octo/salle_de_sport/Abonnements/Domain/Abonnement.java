@@ -4,62 +4,61 @@ import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class Abonnement {
 
-    private final String id;
-
-    private final String adhérentId;
-
-    private final String formuleId;
-    private final String descriptionFormule;
-
-    private String période;
-    private final Double prix;
+    private final AbonnementId id;
+    private final FormuleChoisie formuleChoisie;
+    private final List<Période> périodes = new ArrayList<>();
+    private final Prix prix;
 
     public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, MaDate date) {
 
-        this.id = abonnementId.toString();
+        this.id = abonnementId;
 
-        this.adhérentId = adhérent.id().toString();
+        this.formuleChoisie = new FormuleChoisie(formule);
 
-        this.formuleId = formule.id().toString();
-        this.descriptionFormule = formule.description();
+        this.périodes.add(
+            new Période(date, formule.duréeEnMois())
+        );
 
-        this.période = new Période(date, formule.duréeEnMois()).toString();
-
-        Réduction réduction = Réduction.pourAbonnement(adhérent, formule);
-        this.prix = formule.prixDeBase().appliqueRéduction(réduction).montant();
+        Réduction réduction = new Réduction(adhérent, formule);
+        this.prix = formule.prixDeBase().appliqueRéduction(réduction);
     }
 
     public AbonnementId id() {
-        return AbonnementId.fromString(id);
-    }
-
-    MaDate dateDeSouscription() {
-        return Période.fromString(période).dateDeDébut();
+        return id;
     }
 
     public String descriptionFormule() {
-        return descriptionFormule;
+        return formuleChoisie.descriptionFormule;
     }
 
     Prix prix() {
-        return new Prix(prix);
-    }
-
-    public Double restantDu() {
         return prix;
     }
 
+    public Double restantDu() {
+        return Double.valueOf(prix.toString());
+    }
+
+    private Période dernièrePériode() {
+        return périodes.get(périodes.size() - 1);
+    }
+
     public Boolean estEnCours(MaDate date) {
-        return Période.fromString(période).contient(date);
+        return dernièrePériode().contient(date);
     }
 
     public Boolean seraFiniLe(MaDate date) {
-        return Période.fromString(période).avantLaDate(date);
+        return dernièrePériode().avantLaDate(date);
     }
 
     public void renouveller() {
-        période = Période.fromString(période).suivante().toString();
+        périodes.add(
+            dernièrePériode().suivante()
+        );
     }
 }

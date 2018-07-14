@@ -8,8 +8,8 @@ public final class PrixFormuleChangé {
 
     public PrixFormuleChangé(Formule formule, Prix ancienPrix, Prix nouveauPrix) {
         this.formuleId = formule.id().toString();
-        this.ancienPrix = String.valueOf(ancienPrix.montant());
-        this.nouveauPrix = String.valueOf(nouveauPrix.montant());
+        this.ancienPrix = String.valueOf(ancienPrix);
+        this.nouveauPrix = String.valueOf(nouveauPrix);
     }
 
     public FormuleId formuleId() {

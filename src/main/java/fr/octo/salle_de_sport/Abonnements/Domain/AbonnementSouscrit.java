@@ -10,13 +10,11 @@ public final class AbonnementSouscrit {
     private final String adhérentId;
     private final String formuleId;
     private final String abonnementId;
-    private final String dateDeSouscription;
 
     public AbonnementSouscrit(Adhérent adhérent, Formule formule, Abonnement abonnement) {
         this.adhérentId = adhérent.id().toString();
         this.formuleId = formule.id().toString();
         this.abonnementId = abonnement.id().toString();
-        this.dateDeSouscription = abonnement.dateDeSouscription().toString();
     }
 
     public AdhérentId adhérentId() {
@@ -29,9 +27,5 @@ public final class AbonnementSouscrit {
 
     public AbonnementId abonnementId() {
         return AbonnementId.fromString(abonnementId);
-    }
-
-    public MaDate dateDeSouscription() {
-        return MaDate.fromString(dateDeSouscription);
     }
 }

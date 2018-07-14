@@ -12,8 +12,8 @@ public final class Prix {
         this.montant = montant;
     }
 
-    public Double montant() {
-        return montant;
+    public Prix(Integer montant) {
+        this.montant = montant.doubleValue();
     }
 
     public Prix appliqueRéduction(Réduction réduction) {

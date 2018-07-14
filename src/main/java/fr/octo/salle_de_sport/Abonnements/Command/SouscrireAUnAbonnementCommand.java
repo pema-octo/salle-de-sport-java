@@ -12,9 +12,9 @@ final class SouscrireAUnAbonnementCommand {
     private final String formuleId;
     private final String date;
 
-    SouscrireAUnAbonnementCommand(Adhérent adhérentId, Formule formuleId, MaDate date) {
-        this.adhérentId = adhérentId.id().toString();
-        this.formuleId = formuleId.id().toString();
+    SouscrireAUnAbonnementCommand(Adhérent adhérent, Formule formule, MaDate date) {
+        this.adhérentId = adhérent.id().toString();
+        this.formuleId = formule.id().toString();
         this.date = date.toString();
     }
 

@@ -26,6 +26,6 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
             )
         );
 
-        assertEquals(400, event.nouveauPrix().montant(), 0);
+        assertEquals(new Prix(400), event.nouveauPrix());
     }
 }

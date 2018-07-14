@@ -4,6 +4,7 @@ import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
 import fr.octo.salle_de_sport.Adherents.Domain.AdhérentId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
+import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -19,7 +20,7 @@ public class AbonnementTest {
             premierJuin()
         );
 
-        assertEquals(300, abonnementSansRéduc.prix().montant(), 0);
+        assertEquals(new Prix(300), abonnementSansRéduc.prix());
     }
 
     @Test
@@ -31,7 +32,7 @@ public class AbonnementTest {
             premierJuin()
         );
 
-        assertEquals(70, abonnementAvecRéducAnnée.prix().montant(), 0);
+        assertEquals(new Prix(70), abonnementAvecRéducAnnée.prix());
     }
 
     @Test
@@ -46,7 +47,7 @@ public class AbonnementTest {
             Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 100.0),
             premierJuin()
         );
-        assertEquals(80, abonnementEtudiantAuMois.prix().montant(), 0);
+        assertEquals(new Prix(80), abonnementEtudiantAuMois.prix());
 
         Abonnement abonnementEtudiantAnnée = new Abonnement(
             AbonnementId.fromString("some unique string"),
@@ -58,7 +59,7 @@ public class AbonnementTest {
             Formule.nouvelleALAnnée(FormuleId.fromString("some unique string"), 100.0),
             premierJuin()
         );
-        assertEquals(50, abonnementEtudiantAnnée.prix().montant(), 0);
+        assertEquals(new Prix(50), abonnementEtudiantAnnée.prix());
     }
 
     @Test

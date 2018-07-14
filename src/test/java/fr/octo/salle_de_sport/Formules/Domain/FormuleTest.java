@@ -11,7 +11,7 @@ public class FormuleTest {
         Formule formule = Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 400.0);
 
         assertTrue(formule.id() instanceof FormuleId);
-        assertEquals(400, formule.prixDeBase().montant(), 0);
+        assertEquals(new Prix(400), formule.prixDeBase());
         assertFalse(formule.estALannée());
     }
 }

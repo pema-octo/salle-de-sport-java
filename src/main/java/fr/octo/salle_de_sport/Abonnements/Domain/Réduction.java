@@ -14,11 +14,7 @@ public final class Réduction {
         this.taux = taux;
     }
 
-    public static Réduction auTaux(Double taux) {
-        return new Réduction(taux);
-    }
-
-    static Réduction pourAbonnement(Adhérent adhérent, Formule formule) {
+    Réduction(Adhérent adhérent, Formule formule) {
         Double tauxCalculé = 0.0;
 
         if (adhérent.estEtudiant()) {
@@ -29,7 +25,11 @@ public final class Réduction {
             tauxCalculé += REDUC_ANNEE;
         }
 
-        return new Réduction(tauxCalculé);
+        this.taux = tauxCalculé;
+    }
+
+    public static Réduction auTaux(Double taux) {
+        return new Réduction(taux);
     }
 
     public Double taux() {
