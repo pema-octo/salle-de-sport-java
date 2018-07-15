@@ -1,7 +1,7 @@
 package fr.octo.salle_de_sport.Abonnements.Domain;
 
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
-import fr.octo.salle_de_sport.Adherents.Domain.AdhérentId;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
@@ -15,7 +15,7 @@ public class AbonnementTest {
     public void prix_de_base_pour_une_souscription_d_un_mois() {
         Abonnement abonnementSansRéduc = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.nouveau(AdhérentId.fromString("some unique string"), "bob@octo.com", "Bob"),
+            Abonné.nouveau(AbonnéId.fromString("some unique string"), "bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 300.0),
             premierJuin()
         );
@@ -27,7 +27,7 @@ public class AbonnementTest {
     public void moins_30_pourcent_pour_une_souscription_à_l_année() {
         Abonnement abonnementAvecRéducAnnée = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.nouveau(AdhérentId.fromString("some unique string"), "bob@octo.com", "Bob"),
+            Abonné.nouveau(AbonnéId.fromString("some unique string"), "bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(FormuleId.fromString("some unique string"), 100.0),
             premierJuin()
         );
@@ -39,8 +39,8 @@ public class AbonnementTest {
     public void moins_20_pourcent_pour_la_souscription_d_un_étudiant() {
         Abonnement abonnementEtudiantAuMois = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.étudiant(
-                AdhérentId.fromString("some unique string"),
+            Abonné.étudiant(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
@@ -51,8 +51,8 @@ public class AbonnementTest {
 
         Abonnement abonnementEtudiantAnnée = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.étudiant(
-                AdhérentId.fromString("some unique string"),
+            Abonné.étudiant(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
@@ -66,8 +66,8 @@ public class AbonnementTest {
     public void un_abonnement_peut_être_en_cours() {
         Abonnement abonnementEnCours = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.nouveau(
-                AdhérentId.fromString("some unique string"),
+            Abonné.nouveau(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
@@ -84,8 +84,8 @@ public class AbonnementTest {
     public void permet_de_déterminer_s_il_sera_fini_à_une_date() {
         Abonnement abonnementFiniFinJuin = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.nouveau(
-                AdhérentId.fromString("some unique string"),
+            Abonné.nouveau(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
@@ -101,8 +101,8 @@ public class AbonnementTest {
     public void peut_être_renouvellé() {
         Abonnement abonnement = new Abonnement(
             AbonnementId.fromString("some unique string"),
-            Adhérent.nouveau(
-                AdhérentId.fromString("some unique string"),
+            Abonné.nouveau(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),

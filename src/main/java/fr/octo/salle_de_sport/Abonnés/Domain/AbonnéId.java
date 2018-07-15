@@ -1,17 +1,17 @@
-package fr.octo.salle_de_sport.Adherents.Domain;
+package fr.octo.salle_de_sport.Abonnés.Domain;
 
 import java.util.Objects;
 
-public final class AdhérentId {
+public final class AbonnéId {
 
     private final String id;
 
-    private AdhérentId(String id) {
+    private AbonnéId(String id) {
         this.id = id;
     }
 
-    public static AdhérentId fromString(String id) {
-        return new AdhérentId(id);
+    public static AbonnéId fromString(String id) {
+        return new AbonnéId(id);
     }
 
     @Override
@@ -23,7 +23,7 @@ public final class AdhérentId {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AdhérentId that = (AdhérentId) o;
+        AbonnéId that = (AbonnéId) o;
         return Objects.equals(id, that.id);
     }
 

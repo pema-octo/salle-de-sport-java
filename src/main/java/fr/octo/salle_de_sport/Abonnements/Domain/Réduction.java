@@ -1,6 +1,6 @@
 package fr.octo.salle_de_sport.Abonnements.Domain;
 
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 
 public final class Réduction {
@@ -14,10 +14,10 @@ public final class Réduction {
         this.taux = taux;
     }
 
-    Réduction(Adhérent adhérent, Formule formule) {
+    Réduction(Abonné abonné, Formule formule) {
         Double tauxCalculé = 0.0;
 
-        if (adhérent.estEtudiant()) {
+        if (abonné.estEtudiant()) {
             tauxCalculé += REDUC_ETUDIANT;
         }
 

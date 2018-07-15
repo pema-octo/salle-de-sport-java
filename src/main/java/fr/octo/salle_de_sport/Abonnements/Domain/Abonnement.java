@@ -1,6 +1,6 @@
 package fr.octo.salle_de_sport.Abonnements.Domain;
 
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 
@@ -14,13 +14,13 @@ public final class Abonnement {
     private final Prix prix;
     private final List<Période> périodes = new ArrayList<>();
 
-    public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, MaDate date) {
+    public Abonnement(AbonnementId abonnementId, Abonné abonné, Formule formule, MaDate date) {
 
         this.id = abonnementId;
 
         this.formuleChoisie = new FormuleChoisie(formule);
 
-        Réduction réduction = new Réduction(adhérent, formule);
+        Réduction réduction = new Réduction(abonné, formule);
         this.prix = formule.prixDeBase().aprèsRéduction(réduction);
 
         this.périodes.add(

@@ -2,8 +2,8 @@ package fr.octo.salle_de_sport.Abonnements.Command;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.*;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
-import fr.octo.salle_de_sport.Adherents.Domain.AdhérentId;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
         abonnementRepository.store(
             new Abonnement(
                 abonnementId,
-                Adhérent.nouveau(AdhérentId.fromString("unique string 2"), "bob@octo.com", "Bob"),
+                Abonné.nouveau(AbonnéId.fromString("unique string 2"), "bob@octo.com", "Bob"),
                 formule,
                 MaDate.fromString("2018-06-09")
             )

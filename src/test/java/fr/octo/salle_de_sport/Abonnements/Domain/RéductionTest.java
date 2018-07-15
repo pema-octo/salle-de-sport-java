@@ -1,7 +1,7 @@
 package fr.octo.salle_de_sport.Abonnements.Domain;
 
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
-import fr.octo.salle_de_sport.Adherents.Domain.AdhérentId;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import org.junit.Test;
@@ -14,8 +14,8 @@ public class RéductionTest {
     public void moins_30_pourcent_à_l_année() {
 
         Réduction réductionAbonnementAnnuel = new Réduction(
-            Adhérent.nouveau(
-                AdhérentId.fromString("some unique string"),
+            Abonné.nouveau(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
@@ -29,8 +29,8 @@ public class RéductionTest {
     public void moins_20_pourcent_pour_les_étudiants() {
 
         Réduction réductionAbonnementEtudiant = new Réduction(
-            Adhérent.étudiant(
-                AdhérentId.fromString("some unique string"),
+            Abonné.étudiant(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
@@ -44,8 +44,8 @@ public class RéductionTest {
     public void moins_50_pourcent_pour_les_étudiants_à_l_année() {
 
         Réduction réductionAbonnementEtudiantAnnuel = new Réduction(
-            Adhérent.étudiant(
-                AdhérentId.fromString("some unique string"),
+            Abonné.étudiant(
+                AbonnéId.fromString("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),

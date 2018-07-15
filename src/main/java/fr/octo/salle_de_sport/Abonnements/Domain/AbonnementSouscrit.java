@@ -1,24 +1,24 @@
 package fr.octo.salle_de_sport.Abonnements.Domain;
 
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
-import fr.octo.salle_de_sport.Adherents.Domain.AdhérentId;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 
 public final class AbonnementSouscrit {
 
-    private final String adhérentId;
+    private final String abonnéId;
     private final String formuleId;
     private final String abonnementId;
 
-    public AbonnementSouscrit(Adhérent adhérent, Formule formule, Abonnement abonnement) {
-        this.adhérentId = adhérent.id().toString();
+    public AbonnementSouscrit(Abonné abonné, Formule formule, Abonnement abonnement) {
+        this.abonnéId = abonné.id().toString();
         this.formuleId = formule.id().toString();
         this.abonnementId = abonnement.id().toString();
     }
 
-    public AdhérentId adhérentId() {
-        return AdhérentId.fromString(adhérentId);
+    public AbonnéId abonnéId() {
+        return AbonnéId.fromString(abonnéId);
     }
 
     public FormuleId formuleId() {

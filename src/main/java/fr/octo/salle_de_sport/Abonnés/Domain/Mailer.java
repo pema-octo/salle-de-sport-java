@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Adherents.Domain;
+package fr.octo.salle_de_sport.Abonnés.Domain;
 
 public interface Mailer {
 

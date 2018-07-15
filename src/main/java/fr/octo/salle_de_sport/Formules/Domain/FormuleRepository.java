@@ -4,5 +4,5 @@ public interface FormuleRepository {
 
     void store(Formule formule);
 
-    Formule get(FormuleId adhérentId) throws FormuleRepositoryException;
+    Formule get(FormuleId formuleId) throws FormuleRepositoryException;
 }

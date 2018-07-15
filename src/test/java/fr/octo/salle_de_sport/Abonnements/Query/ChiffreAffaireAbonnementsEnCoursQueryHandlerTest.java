@@ -5,8 +5,8 @@ import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
-import fr.octo.salle_de_sport.Adherents.Domain.Adhérent;
-import fr.octo.salle_de_sport.Adherents.Domain.AdhérentId;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
         abonnementRepository.store(
             new Abonnement(
                 AbonnementId.fromString("unique string 1"),
-                Adhérent.nouveau(AdhérentId.fromString("unique string 2"), "bob@octo.com", "Bob"),
+                Abonné.nouveau(AbonnéId.fromString("unique string 2"), "bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
@@ -48,7 +48,7 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
         abonnementRepository.store(
             new Abonnement(
                 AbonnementId.fromString("unique string 3"),
-                Adhérent.nouveau(AdhérentId.fromString("unique string 4"), "lucy@octo.com", "Lucy"),
+                Abonné.nouveau(AbonnéId.fromString("unique string 4"), "lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )

@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Adherents.Domain;
+package fr.octo.salle_de_sport.Abonnés.Domain;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
