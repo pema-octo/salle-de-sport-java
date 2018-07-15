@@ -4,13 +4,13 @@ import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
 
 final class ChiffreAffaireAbonnementsEnCoursQuery {
 
-    private final String date;
+    private final String àPartirDe;
 
-    ChiffreAffaireAbonnementsEnCoursQuery(MaDate date) {
-        this.date = date.toString();
+    ChiffreAffaireAbonnementsEnCoursQuery(MaDate àPartirDe) {
+        this.àPartirDe = àPartirDe.toString();
     }
 
-    public MaDate date() {
-        return MaDate.fromString(date);
+    MaDate àPartirDe() {
+        return MaDate.fromString(àPartirDe);
     }
 }

@@ -58,6 +58,9 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
             abonnementRepository
         );
 
+        assertEquals(0, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(aujourdhui())), 0);
+        assertEquals(0, abonnementRepository.abonnementsEnCours(aujourdhui()).size());
+
         assertEquals(140, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(dansUnMois())), 0);
         assertEquals(1, abonnementRepository.abonnementsEnCours(dansUnMois()).size());
 

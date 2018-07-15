@@ -15,7 +15,7 @@ final class ChiffreAffaireAbonnementsEnCoursQueryHandler {
 
         Double chiffreAffaire = 0.0;
 
-        for (Abonnement abonnementEnCours : abonnementRepository.abonnementsEnCours(query.date())) {
+        for (Abonnement abonnementEnCours : abonnementRepository.abonnementsEnCours(query.àPartirDe())) {
             chiffreAffaire += abonnementEnCours.restantDu();
         }
 
