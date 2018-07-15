@@ -18,7 +18,7 @@ final class CréerUneNouvelleFormuleCommandHandler {
     FormuleCréée handle(CréerUneNouvelleFormuleCommand command) {
 
         Formule formule = new Formule(
-            FormuleId.fromString(UUID.randomUUID().toString()),
+            new FormuleId(UUID.randomUUID().toString()),
             command.prixDeBase(),
             command.duréeFormule()
         );

@@ -15,11 +15,11 @@ public class RéductionTest {
 
         Réduction réductionAbonnementAnnuel = new Réduction(
             Abonné.nouveau(
-                AbonnéId.fromString("some unique string"),
+                new AbonnéId("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
-            Formule.nouvelleALAnnée(FormuleId.fromString("some unique string"), 400.0)
+            Formule.nouvelleALAnnée(new FormuleId("some unique string"), 400.0)
         );
 
         assertEquals(Réduction.REDUC_ANNEE, réductionAbonnementAnnuel.taux(), 0);
@@ -30,11 +30,11 @@ public class RéductionTest {
 
         Réduction réductionAbonnementEtudiant = new Réduction(
             Abonné.étudiant(
-                AbonnéId.fromString("some unique string"),
+                new AbonnéId("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
-            Formule.nouvelleAuMois(FormuleId.fromString("some unique string"), 400.0)
+            Formule.nouvelleAuMois(new FormuleId("some unique string"), 400.0)
         );
 
         assertEquals(Réduction.REDUC_ETUDIANT, réductionAbonnementEtudiant.taux(), 0);
@@ -45,11 +45,11 @@ public class RéductionTest {
 
         Réduction réductionAbonnementEtudiantAnnuel = new Réduction(
             Abonné.étudiant(
-                AbonnéId.fromString("some unique string"),
+                new AbonnéId("some unique string"),
                 "bob@octo.com",
                 "Bob"
             ),
-            Formule.nouvelleALAnnée(FormuleId.fromString("some unique string"), 400.0)
+            Formule.nouvelleALAnnée(new FormuleId("some unique string"), 400.0)
         );
 
         assertEquals(Réduction.REDUC_ETUDIANT + Réduction.REDUC_ANNEE, réductionAbonnementEtudiantAnnuel.taux(), 0);

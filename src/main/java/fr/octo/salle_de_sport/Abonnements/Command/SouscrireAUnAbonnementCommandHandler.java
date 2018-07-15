@@ -31,7 +31,7 @@ final class SouscrireAUnAbonnementCommandHandler {
         Formule formule = formuleRepository.get(command.formuleId());
 
         Abonnement abonnement = new Abonnement(
-            AbonnementId.fromString(UUID.randomUUID().toString()),
+            new AbonnementId(UUID.randomUUID().toString()),
             abonné,
             formule,
             command.date()

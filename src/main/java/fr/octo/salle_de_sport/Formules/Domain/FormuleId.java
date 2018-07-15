@@ -6,12 +6,8 @@ public final class FormuleId {
 
     private final String id;
 
-    private FormuleId(String id) {
+    public FormuleId(String id) {
         this.id = id;
-    }
-
-    public static FormuleId fromString(String id) {
-        return new FormuleId(id);
     }
 
     @Override

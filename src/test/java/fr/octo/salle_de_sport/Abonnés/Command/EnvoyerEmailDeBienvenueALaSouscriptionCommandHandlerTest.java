@@ -12,11 +12,11 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException, AbonnéRepositoryException {
-        AbonnéId abonnéId = AbonnéId.fromString("some unique string");
-        AbonnementId abonnementId = AbonnementId.fromString("some unique string");
+        AbonnéId abonnéId = new AbonnéId("some unique string");
+        AbonnementId abonnementId = new AbonnementId("some unique string");
 
         Formule formule = Formule.nouvelleALAnnée(
-            FormuleId.fromString("some unique string"),
+            new FormuleId("some unique string"),
             500.0
         );
 

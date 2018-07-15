@@ -19,11 +19,11 @@ final class SouscrireAUnAbonnementCommand {
     }
 
     AbonnéId abonnéId() {
-        return AbonnéId.fromString(abonnéId);
+        return new AbonnéId(abonnéId);
     }
 
     FormuleId formuleId() {
-        return FormuleId.fromString(formuleId);
+        return new FormuleId(formuleId);
     }
 
     public MaDate date() {

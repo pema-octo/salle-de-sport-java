@@ -6,12 +6,8 @@ public final class AbonnéId {
 
     private final String id;
 
-    private AbonnéId(String id) {
+    public AbonnéId(String id) {
         this.id = id;
-    }
-
-    public static AbonnéId fromString(String id) {
-        return new AbonnéId(id);
     }
 
     @Override

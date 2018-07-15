@@ -16,18 +16,18 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
     public void handle() throws AbonnementRepositoryException {
 
         Formule formule = Formule.nouvelleAuMois(
-            FormuleId.fromString("some unique string"),
+            new FormuleId("some unique string"),
             200.0
         );
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
 
-        AbonnementId abonnementId = AbonnementId.fromString("unique string 1");
+        AbonnementId abonnementId = new AbonnementId("unique string 1");
 
         abonnementRepository.store(
             new Abonnement(
                 abonnementId,
-                Abonné.nouveau(AbonnéId.fromString("unique string 2"), "bob@octo.com", "Bob"),
+                Abonné.nouveau(new AbonnéId("unique string 2"), "bob@octo.com", "Bob"),
                 formule,
                 MaDate.fromString("2018-06-09")
             )

@@ -9,6 +9,6 @@ public final class FormuleCréée {
     }
 
     public FormuleId formuleId() {
-        return FormuleId.fromString(formuleId);
+        return new FormuleId(formuleId);
     }
 }

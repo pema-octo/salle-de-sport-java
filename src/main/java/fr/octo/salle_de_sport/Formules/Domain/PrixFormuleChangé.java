@@ -13,7 +13,7 @@ public final class PrixFormuleChangé {
     }
 
     public FormuleId formuleId() {
-        return FormuleId.fromString(formuleId);
+        return new FormuleId(formuleId);
     }
 
     public Prix ancienPrix() {

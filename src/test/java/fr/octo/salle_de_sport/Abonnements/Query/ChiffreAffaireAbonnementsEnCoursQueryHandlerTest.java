@@ -31,7 +31,7 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     public void chiffre_d_affaire_avec_abonnements_en_cours() {
 
         Formule formule = Formule.nouvelleALAnnée(
-            FormuleId.fromString("some unique string"),
+            new FormuleId("some unique string"),
             200.0
         );
 
@@ -39,16 +39,16 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
 
         abonnementRepository.store(
             new Abonnement(
-                AbonnementId.fromString("unique string 1"),
-                Abonné.nouveau(AbonnéId.fromString("unique string 2"), "bob@octo.com", "Bob"),
+                new AbonnementId("unique string 1"),
+                Abonné.nouveau(new AbonnéId("unique string 2"), "bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                AbonnementId.fromString("unique string 3"),
-                Abonné.nouveau(AbonnéId.fromString("unique string 4"), "lucy@octo.com", "Lucy"),
+                new AbonnementId("unique string 3"),
+                Abonné.nouveau(new AbonnéId("unique string 4"), "lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )

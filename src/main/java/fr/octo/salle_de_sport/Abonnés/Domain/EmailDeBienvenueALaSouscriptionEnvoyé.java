@@ -18,6 +18,6 @@ public final class EmailDeBienvenueALaSouscriptionEnvoyé {
     }
 
     public AbonnementId abonnementId() {
-        return AbonnementId.fromString(abonnementId);
+        return new AbonnementId(abonnementId);
     }
 }

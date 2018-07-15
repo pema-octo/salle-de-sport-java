@@ -14,7 +14,7 @@ final class ChangerLePrixDUneFormuleCommand {
     }
 
     FormuleId formuleId() {
-        return FormuleId.fromString(formuleId);
+        return new FormuleId(formuleId);
     }
 
     Prix nouveauPrix() {

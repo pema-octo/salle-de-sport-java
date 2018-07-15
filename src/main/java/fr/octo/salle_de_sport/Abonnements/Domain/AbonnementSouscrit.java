@@ -18,14 +18,14 @@ public final class AbonnementSouscrit {
     }
 
     public AbonnéId abonnéId() {
-        return AbonnéId.fromString(abonnéId);
+        return new AbonnéId(abonnéId);
     }
 
     public FormuleId formuleId() {
-        return FormuleId.fromString(formuleId);
+        return new FormuleId(formuleId);
     }
 
     public AbonnementId abonnementId() {
-        return AbonnementId.fromString(abonnementId);
+        return new AbonnementId(abonnementId);
     }
 }
