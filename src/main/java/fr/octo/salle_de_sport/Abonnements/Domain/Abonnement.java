@@ -11,8 +11,8 @@ public final class Abonnement {
 
     private final AbonnementId id;
     private final FormuleChoisie formuleChoisie;
-    private final List<Période> périodes = new ArrayList<>();
     private final Prix prix;
+    private final List<Période> périodes = new ArrayList<>();
 
     public Abonnement(AbonnementId abonnementId, Adhérent adhérent, Formule formule, MaDate date) {
 
@@ -20,19 +20,19 @@ public final class Abonnement {
 
         this.formuleChoisie = new FormuleChoisie(formule);
 
+        Réduction réduction = new Réduction(adhérent, formule);
+        this.prix = formule.prixDeBase().aprèsRéduction(réduction);
+
         this.périodes.add(
             new Période(date, formule.duréeEnMois())
         );
-
-        Réduction réduction = new Réduction(adhérent, formule);
-        this.prix = formule.prixDeBase().appliqueRéduction(réduction);
     }
 
     public AbonnementId id() {
         return id;
     }
 
-    public String descriptionFormule() {
+    public String descriptionFormuleChoisie() {
         return formuleChoisie.descriptionFormule;
     }
 

@@ -25,10 +25,6 @@ final class SouscrireAUnAbonnementCommandHandler {
         this.abonnementRepository = abonnementRepository;
     }
 
-    public String handles() {
-        return SouscrireAUnAbonnementCommand.class.getCanonicalName();
-    }
-
     public AbonnementSouscrit handle(SouscrireAUnAbonnementCommand command) throws AdhérentRepositoryException, FormuleRepositoryException {
 
         Adhérent adhérent = adhérentRepository.get(command.adhérentId());

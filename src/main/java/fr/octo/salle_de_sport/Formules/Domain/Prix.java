@@ -16,7 +16,7 @@ public final class Prix {
         this.montant = montant.doubleValue();
     }
 
-    public Prix appliqueRéduction(Réduction réduction) {
+    public Prix aprèsRéduction(Réduction réduction) {
         return new Prix(montant * (1 - réduction.taux()));
     }
 

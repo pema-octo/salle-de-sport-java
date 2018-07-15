@@ -15,10 +15,6 @@ final class CréerUneNouvelleFormuleCommandHandler {
         this.formuleRepository = formuleRepository;
     }
 
-    public String handles() {
-        return CréerUneNouvelleFormuleCommand.class.getCanonicalName();
-    }
-
     FormuleCréée handle(CréerUneNouvelleFormuleCommand command) {
 
         Formule formule = new Formule(

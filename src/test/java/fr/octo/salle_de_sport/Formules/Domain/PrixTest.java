@@ -11,7 +11,7 @@ public class PrixTest {
     @Test
     public void un_prix_a_un_montant() {
 
-        Prix prix = new Prix(400.0);
+        Prix prix = new Prix(400);
 
         assertEquals(new Prix(400), prix);
     }
@@ -19,10 +19,10 @@ public class PrixTest {
     @Test
     public void on_peut_appliquer_une_réduction() {
 
-        Prix prix = new Prix(400.0);
+        Prix prix = new Prix(400);
         Réduction réduction = Réduction.auTaux(0.25);
 
-        Prix prixAprèsRéduction = prix.appliqueRéduction(réduction);
+        Prix prixAprèsRéduction = prix.aprèsRéduction(réduction);
 
         assertEquals(new Prix(300), prixAprèsRéduction);
         assertNotEquals(prix, prixAprèsRéduction);

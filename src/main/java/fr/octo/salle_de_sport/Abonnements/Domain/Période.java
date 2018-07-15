@@ -29,10 +29,6 @@ final class Période {
         );
     }
 
-    MaDate dateDeDébut() {
-        return dateDeDébut;
-    }
-
     Boolean contient(MaDate date) {
         return date.après(dateDeDébut) && date.avant(dateDeFin);
     }

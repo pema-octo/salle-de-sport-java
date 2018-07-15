@@ -10,10 +10,6 @@ final class ChangerLePrixDUneFormuleCommandHandler {
         this.formuleRepository = formuleRepository;
     }
 
-    public String handles() {
-        return ChangerLePrixDUneFormuleCommand.class.getCanonicalName();
-    }
-
     PrixFormuleChangé handle(ChangerLePrixDUneFormuleCommand command) throws FormuleRepositoryException {
 
         Formule formule = formuleRepository.get(command.formuleId());
