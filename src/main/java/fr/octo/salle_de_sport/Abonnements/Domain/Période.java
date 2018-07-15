@@ -9,7 +9,7 @@ final class Période {
     private final MaDate dateDeDébut;
     private final MaDate dateDeFin;
 
-    Période(MaDate dateDeDébut, int nbMois) {
+    Période(MaDate dateDeDébut, Integer nbMois) {
         this.dateDeDébut = dateDeDébut;
         this.dateDeFin = dateDeDébut.plusXMois(nbMois).jourDAvant();
     }
@@ -38,7 +38,7 @@ final class Période {
     }
 
     Période suivante() {
-        int nbMoisPériodeCourante = Period.between(dateDeDébut.toLocalDate(), dateDeFin.jourSuivant().toLocalDate()).getMonths();
+        Integer nbMoisPériodeCourante = Period.between(dateDeDébut.toLocalDate(), dateDeFin.jourSuivant().toLocalDate()).getMonths();
 
         return new Période(
             dateDeFin.jourSuivant(),

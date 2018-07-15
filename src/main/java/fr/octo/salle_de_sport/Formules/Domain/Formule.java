@@ -4,7 +4,7 @@ public final class Formule {
 
     private final FormuleId formuleId;
     private Prix prixDeBase;
-    private final int duréeEnMois;
+    private final Integer duréeEnMois;
 
     public Formule(FormuleId formuleId, Double prixDeBase, DuréeFormule duréeEnMois) {
         this.formuleId = formuleId;
@@ -32,11 +32,11 @@ public final class Formule {
         prixDeBase = nouveauPrix;
     }
 
-    public int duréeEnMois() {
+    public Integer duréeEnMois() {
         return duréeEnMois;
     }
 
-    public boolean estALannée() {
+    public Boolean estALannée() {
         return DuréeFormule.ANNEE.nbMois() == duréeEnMois;
     }
 

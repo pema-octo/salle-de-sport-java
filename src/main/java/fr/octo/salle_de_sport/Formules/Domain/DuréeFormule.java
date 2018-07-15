@@ -4,13 +4,13 @@ public enum DuréeFormule {
     MOIS(1),
     ANNEE(12);
 
-    private final int nbMois;
+    private final Integer nbMois;
 
-    DuréeFormule(int nbMois) {
+    DuréeFormule(Integer nbMois) {
         this.nbMois = nbMois;
     }
 
-    public int nbMois() {
+    public Integer nbMois() {
         return nbMois;
     }
 }

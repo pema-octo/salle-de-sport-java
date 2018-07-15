@@ -37,7 +37,7 @@ public final class MaDate {
         return date.isBefore(dateDeFin.date);
     }
 
-    MaDate plusXMois(int nbMois) {
+    MaDate plusXMois(Integer nbMois) {
         return new MaDate(
             date.plus(nbMois, ChronoUnit.MONTHS)
         );

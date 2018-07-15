@@ -5,9 +5,9 @@ public final class Abonné {
     private final AbonnéId id;
     private final String email;
     private final String prénom;
-    private final boolean estEtudiant;
+    private final Boolean estEtudiant;
 
-    private Abonné(AbonnéId abonnéId, String email, String prénom, boolean estEtudiant) {
+    private Abonné(AbonnéId abonnéId, String email, String prénom, Boolean estEtudiant) {
         this.id = abonnéId;
         this.email = email;
         this.prénom = prénom;
@@ -34,7 +34,7 @@ public final class Abonné {
         return prénom;
     }
 
-    public boolean estEtudiant() {
+    public Boolean estEtudiant() {
         return estEtudiant;
     }
 }
