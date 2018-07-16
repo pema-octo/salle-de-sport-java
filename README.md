@@ -14,20 +14,20 @@
 
 - métier en français => code métier en français, on est en 2018 et Java gère très bien les accents
 - utilisation de patterns tactiques du DDD
-  - Aggregate [à lire](https://vaughnvernon.co/?p=838)
-  - Entity [à lire](http://thepaulrayner.com/blog/aggregates-and-entities-in-domain-driven-design/)
-  - Value Object [à lire 1](http://verraes.net/2016/02/type-safety-and-money/) [à lire 2](https://matthiasnoback.nl/2018/03/modelling-quanities-an-exercise-in-designing-value-objects/)
-  - Domain Event [à lire](http://verraes.net/2014/11/domain-events/)
+  - Aggregate => [à lire](https://vaughnvernon.co/?p=838)
+  - Entity => [à lire](http://thepaulrayner.com/blog/aggregates-and-entities-in-domain-driven-design/)
+  - Value Object => [à lire 1](http://verraes.net/2016/02/type-safety-and-money/) => [à lire 2](https://matthiasnoback.nl/2018/03/modelling-quanities-an-exercise-in-designing-value-objects/)
+  - Domain Event => [à lire](http://verraes.net/2014/11/domain-events/)
   - Repository
 - CQRS
 - les Aggregate ids ont leur propres types
 - les Aggregate ids pourraient être des UUID, à voir plus tard si ça simplifierait quelque chose
-- les évènements et les commands stockent des types primitifs pour faciliter l'éventuel stockage [explication](https://matthiasnoback.nl/2018/06/doctrine-orm-and-ddd-aggregates/)
-- utilisation d'une classe MaDate pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage [explication](https://matthiasnoback.nl/2018/02/mocking-at-architectural-boundaries-persistence-and-time/)
-- toutes les classes sont `final` par défaut [explication](https://ocramius.github.io/blog/when-to-declare-classes-final/)
-- pas de préfixes get/set [explication](https://blog.pragmatists.com/refactoring-from-anemic-model-to-ddd-880d3dd3d45f)
-- les messages des exceptions sont centralisés dans les exceptions [explication](http://rosstuck.com/formatting-exception-messages)
-- named constructors [à lire](http://verraes.net/2014/06/named-constructors-in-php/)
+- les évènements et les commands stockent des types primitifs pour faciliter l'éventuel stockage => [explication](https://matthiasnoback.nl/2018/06/doctrine-orm-and-ddd-aggregates/)
+- utilisation d'une classe MaDate pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage => [explication](https://matthiasnoback.nl/2018/02/mocking-at-architectural-boundaries-persistence-and-time/)
+- toutes les classes sont `final` par défaut => [explication](https://ocramius.github.io/blog/when-to-declare-classes-final/)
+- pas de préfixes get/set => [explication](https://blog.pragmatists.com/refactoring-from-anemic-model-to-ddd-880d3dd3d45f)
+- les messages des exceptions sont centralisés dans les exceptions => [explication](http://rosstuck.com/formatting-exception-messages)
+- named constructors => [à lire](http://verraes.net/2014/06/named-constructors-in-php/)
 
 ## Liens
 
