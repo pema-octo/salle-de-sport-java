@@ -1,14 +1,11 @@
 package fr.octo.salle_de_sport.Abonnements.Query;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
-import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,25 +27,20 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     @Test
     public void chiffre_d_affaire_avec_abonnements_en_cours() {
 
-        Formule formule = Formule.nouvelleALAnnée(
-            new FormuleId("some unique string"),
-            200.0
-        );
+        Formule formule = Formule.nouvelleALAnnée(200.0);
 
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
 
         abonnementRepository.store(
             new Abonnement(
-                new AbonnementId("unique string 1"),
-                Abonné.nouveau(new AbonnéId("unique string 2"), "bob@octo.com", "Bob"),
+                Abonné.nouveau("bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                new AbonnementId("unique string 3"),
-                Abonné.nouveau(new AbonnéId("unique string 4"), "lucy@octo.com", "Lucy"),
+                Abonné.nouveau("lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )

@@ -1,9 +1,7 @@
 package fr.octo.salle_de_sport.Abonnements.Domain;
 
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
 
@@ -14,9 +12,8 @@ public class AbonnementTest {
     @Test
     public void prix_de_base_pour_une_souscription_d_un_mois() {
         Abonnement abonnementSansRéduc = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.nouveau(new AbonnéId("some unique string"), "bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new FormuleId("some unique string"), 300.0),
+            Abonné.nouveau("bob@octo.com", "Bob"),
+            Formule.nouvelleAuMois(300.0),
             premierJuin()
         );
 
@@ -26,9 +23,8 @@ public class AbonnementTest {
     @Test
     public void moins_30_pourcent_pour_une_souscription_à_l_année() {
         Abonnement abonnementAvecRéducAnnée = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.nouveau(new AbonnéId("some unique string"), "bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(new FormuleId("some unique string"), 100.0),
+            Abonné.nouveau("bob@octo.com", "Bob"),
+            Formule.nouvelleALAnnée(100.0),
             premierJuin()
         );
 
@@ -38,25 +34,15 @@ public class AbonnementTest {
     @Test
     public void moins_20_pourcent_pour_la_souscription_d_un_étudiant() {
         Abonnement abonnementEtudiantAuMois = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.étudiant(
-                new AbonnéId("some unique string"),
-                "bob@octo.com",
-                "Bob"
-            ),
-            Formule.nouvelleAuMois(new FormuleId("some unique string"), 100.0),
+            Abonné.étudiant("bob@octo.com", "Bob"),
+            Formule.nouvelleAuMois(100.0),
             premierJuin()
         );
         assertEquals(new Prix(80), abonnementEtudiantAuMois.prix());
 
         Abonnement abonnementEtudiantAnnée = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.étudiant(
-                new AbonnéId("some unique string"),
-                "bob@octo.com",
-                "Bob"
-            ),
-            Formule.nouvelleALAnnée(new FormuleId("some unique string"), 100.0),
+            Abonné.étudiant("bob@octo.com", "Bob"),
+            Formule.nouvelleALAnnée(100.0),
             premierJuin()
         );
         assertEquals(new Prix(50), abonnementEtudiantAnnée.prix());
@@ -65,13 +51,8 @@ public class AbonnementTest {
     @Test
     public void un_abonnement_peut_être_en_cours() {
         Abonnement abonnementEnCours = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.nouveau(
-                new AbonnéId("some unique string"),
-                "bob@octo.com",
-                "Bob"
-            ),
-            Formule.nouvelleAuMois(new FormuleId("some unique string"), 100.0),
+            Abonné.nouveau("bob@octo.com", "Bob"),
+            Formule.nouvelleAuMois(100.0),
             premierJuin()
         );
 
@@ -83,13 +64,8 @@ public class AbonnementTest {
     @Test
     public void permet_de_déterminer_s_il_sera_fini_à_une_date() {
         Abonnement abonnementFiniFinJuin = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.nouveau(
-                new AbonnéId("some unique string"),
-                "bob@octo.com",
-                "Bob"
-            ),
-            Formule.nouvelleAuMois(new FormuleId("some unique string"), 100.0),
+            Abonné.nouveau("bob@octo.com", "Bob"),
+            Formule.nouvelleAuMois(100.0),
             premierJuin()
         );
 
@@ -100,13 +76,8 @@ public class AbonnementTest {
     @Test
     public void peut_être_renouvellé() {
         Abonnement abonnement = new Abonnement(
-            new AbonnementId("some unique string"),
-            Abonné.nouveau(
-                new AbonnéId("some unique string"),
-                "bob@octo.com",
-                "Bob"
-            ),
-            Formule.nouvelleAuMois(new FormuleId("some unique string"), 100.0),
+            Abonné.nouveau("bob@octo.com", "Bob"),
+            Formule.nouvelleAuMois(100.0),
             premierJuin()
         );
 

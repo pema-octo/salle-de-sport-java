@@ -11,7 +11,7 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
 
     @Test
     public void handle() throws FormuleRepositoryException {
-        FormuleId formuleId = new FormuleId("some unique string");
+        FormuleId formuleId = new FormuleId();
         Formule formule = Formule.nouvelleALAnnée(formuleId, 450.0);
 
         FormuleRepository formuleRepository = mock(FormuleRepository.class);

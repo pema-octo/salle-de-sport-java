@@ -3,7 +3,6 @@ package fr.octo.salle_de_sport.Abonnés.Command;
 import fr.octo.salle_de_sport.Abonnements.Domain.*;
 import fr.octo.salle_de_sport.Abonnés.Domain.*;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
@@ -12,13 +11,10 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandlerTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException, AbonnéRepositoryException {
-        AbonnéId abonnéId = new AbonnéId("some unique string");
-        AbonnementId abonnementId = new AbonnementId("some unique string");
+        AbonnéId abonnéId = new AbonnéId();
+        AbonnementId abonnementId = new AbonnementId();
 
-        Formule formule = Formule.nouvelleALAnnée(
-            new FormuleId("some unique string"),
-            500.0
-        );
+        Formule formule = Formule.nouvelleALAnnée(500.0);
 
         Abonné abonné = Abonné.nouveau(abonnéId, "bob@octo.com", "Bob");
         AbonnéRepository abonnéRepository = mock(AbonnéRepository.class);

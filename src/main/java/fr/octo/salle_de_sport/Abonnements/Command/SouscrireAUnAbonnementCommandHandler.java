@@ -1,7 +1,6 @@
 package fr.octo.salle_de_sport.Abonnements.Command;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
-import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementSouscrit;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
@@ -10,8 +9,6 @@ import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepositoryException;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
-
-import java.util.UUID;
 
 final class SouscrireAUnAbonnementCommandHandler {
 
@@ -31,7 +28,6 @@ final class SouscrireAUnAbonnementCommandHandler {
         Formule formule = formuleRepository.get(command.formuleId());
 
         Abonnement abonnement = new Abonnement(
-            new AbonnementId(UUID.randomUUID().toString()),
             abonné,
             formule,
             command.date()

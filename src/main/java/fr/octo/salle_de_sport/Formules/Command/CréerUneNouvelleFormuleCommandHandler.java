@@ -2,10 +2,7 @@ package fr.octo.salle_de_sport.Formules.Command;
 
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleCréée;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
-
-import java.util.UUID;
 
 final class CréerUneNouvelleFormuleCommandHandler {
 
@@ -18,7 +15,6 @@ final class CréerUneNouvelleFormuleCommandHandler {
     FormuleCréée handle(CréerUneNouvelleFormuleCommand command) {
 
         Formule formule = new Formule(
-            new FormuleId(UUID.randomUUID().toString()),
             command.prixDeBase(),
             command.duréeFormule()
         );

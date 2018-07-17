@@ -3,9 +3,7 @@ package fr.octo.salle_de_sport.Abonnements.Command;
 import fr.octo.salle_de_sport.Abonnements.Domain.*;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
@@ -15,20 +13,15 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
     @Test
     public void handle() throws AbonnementRepositoryException {
 
-        Formule formule = Formule.nouvelleAuMois(
-            new FormuleId("some unique string"),
-            200.0
-        );
-
         AbonnementRepository abonnementRepository = new AbonnementInMemoryRepository();
 
-        AbonnementId abonnementId = new AbonnementId("unique string 1");
+        AbonnementId abonnementId = new AbonnementId();
 
         abonnementRepository.store(
             new Abonnement(
                 abonnementId,
-                Abonné.nouveau(new AbonnéId("unique string 2"), "bob@octo.com", "Bob"),
-                formule,
+                Abonné.nouveau("bob@octo.com", "Bob"),
+                Formule.nouvelleAuMois(200.0),
                 MaDate.fromString("2018-06-09")
             )
         );

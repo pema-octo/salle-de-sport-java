@@ -7,6 +7,15 @@ public final class Abonné {
     private final String prénom;
     private final Boolean estEtudiant;
 
+    private Abonné(String email, String prénom, Boolean estEtudiant) {
+        this(
+            new AbonnéId(),
+            email,
+            prénom,
+            estEtudiant
+        );
+    }
+
     private Abonné(AbonnéId abonnéId, String email, String prénom, Boolean estEtudiant) {
         this.id = abonnéId;
         this.email = email;
@@ -14,12 +23,16 @@ public final class Abonné {
         this.estEtudiant = estEtudiant;
     }
 
+    public static Abonné nouveau(String email, String prénom) {
+        return new Abonné(email, prénom, false);
+    }
+
     public static Abonné nouveau(AbonnéId abonnéId, String email, String prénom) {
         return new Abonné(abonnéId, email, prénom, false);
     }
 
-    public static Abonné étudiant(AbonnéId abonnéId, String email, String prénom) {
-        return new Abonné(abonnéId, email, prénom, true);
+    public static Abonné étudiant(String email, String prénom) {
+        return new Abonné(email, prénom, true);
     }
 
     public AbonnéId id() {

@@ -27,7 +27,7 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
         FormuleRepository formuleRepository = mock(FormuleRepository.class);
         AbonnementRepository abonnementRepository = mock(AbonnementRepository.class);
 
-        AbonnéId abonnéId = new AbonnéId("some unique string 1");
+        AbonnéId abonnéId = new AbonnéId();
         Abonné abonné = Abonné.nouveau(
             abonnéId,
             "bob@octo.com",
@@ -35,7 +35,7 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
         );
         when(abonnéRepository.get(abonnéId)).thenReturn(abonné);
 
-        FormuleId formuleId = new FormuleId("some unique string 2");
+        FormuleId formuleId = new FormuleId();
         Formule formule = Formule.nouvelleALAnnée(formuleId, 500.0);
         when(formuleRepository.get(formuleId)).thenReturn(formule);
 
