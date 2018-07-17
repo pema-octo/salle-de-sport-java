@@ -1,5 +1,7 @@
 # Salle de sport
 
+## Besoins
+
 - En tant que commercial, je peux créer de nouvelles formules, au mois ou à l'année, avec les règles suivantes :
   - un prix de base est fixé,
   - auquel on applique 30% de réduction si le client souscrit à un abonnement annuel
@@ -20,9 +22,7 @@
   - Domain Event => [à lire](http://verraes.net/2014/11/domain-events/)
   - Repository
 - CQRS
-- les Aggregate ids ont leur propres types
-- les Aggregate ids pourraient être des UUID, à voir plus tard si ça simplifierait quelque chose
-- les évènements et les commands stockent des types primitifs pour faciliter l'éventuel stockage => [explication](https://matthiasnoback.nl/2018/06/doctrine-orm-and-ddd-aggregates/)
+- les ids des Aggregate ont leur propres types => [à lire](https://buildplease.com/pages/vo-ids/)
 - utilisation d'une classe MaDate pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage => [explication](https://matthiasnoback.nl/2018/02/mocking-at-architectural-boundaries-persistence-and-time/)
 - toutes les classes sont `final` par défaut => [explication](https://ocramius.github.io/blog/when-to-declare-classes-final/)
 - pas de préfixes get/set => [explication](https://blog.pragmatists.com/refactoring-from-anemic-model-to-ddd-880d3dd3d45f)

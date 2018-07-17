@@ -24,13 +24,13 @@ final class SouscrireAUnAbonnementCommandHandler {
 
     public AbonnementSouscrit handle(SouscrireAUnAbonnementCommand command) throws AbonnéRepositoryException, FormuleRepositoryException {
 
-        Abonné abonné = abonnéRepository.get(command.abonnéId());
-        Formule formule = formuleRepository.get(command.formuleId());
+        Abonné abonné = abonnéRepository.get(command.abonnéId);
+        Formule formule = formuleRepository.get(command.formuleId);
 
         Abonnement abonnement = new Abonnement(
             abonné,
             formule,
-            command.date()
+            command.date
         );
 
         abonnementRepository.store(abonnement);

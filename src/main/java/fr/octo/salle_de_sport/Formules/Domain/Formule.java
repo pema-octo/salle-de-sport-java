@@ -6,7 +6,7 @@ public final class Formule {
     private Prix prixDeBase;
     private final Integer duréeEnMois;
 
-    public Formule(Double prixDeBase, DuréeFormule duréeEnMois) {
+    public Formule(Prix prixDeBase, DuréeFormule duréeEnMois) {
         this(
             new FormuleId(),
             prixDeBase,
@@ -14,26 +14,26 @@ public final class Formule {
         );
     }
 
-    public Formule(FormuleId formuleId, Double prixDeBase, DuréeFormule duréeEnMois) {
+    private Formule(FormuleId formuleId, Prix prixDeBase, DuréeFormule duréeEnMois) {
         this.formuleId = formuleId;
-        this.prixDeBase = new Prix(prixDeBase);
+        this.prixDeBase = prixDeBase;
         this.duréeEnMois = duréeEnMois.nbMois();
     }
 
     public static Formule nouvelleAuMois(Double prixDeBase) {
-        return new Formule(prixDeBase, DuréeFormule.MOIS);
+        return new Formule(new Prix(prixDeBase), DuréeFormule.MOIS);
     }
 
     public static Formule nouvelleAuMois(FormuleId formuleId, Double prixDeBase) {
-        return new Formule(formuleId, prixDeBase, DuréeFormule.MOIS);
+        return new Formule(formuleId, new Prix(prixDeBase), DuréeFormule.MOIS);
     }
 
     public static Formule nouvelleALAnnée(Double prixDeBase) {
-        return new Formule(prixDeBase, DuréeFormule.ANNEE);
+        return new Formule(new Prix(prixDeBase), DuréeFormule.ANNEE);
     }
 
     public static Formule nouvelleALAnnée(FormuleId formuleId, Double prixDeBase) {
-        return new Formule(formuleId, prixDeBase, DuréeFormule.ANNEE);
+        return new Formule(formuleId, new Prix(prixDeBase), DuréeFormule.ANNEE);
     }
 
     public FormuleId id() {

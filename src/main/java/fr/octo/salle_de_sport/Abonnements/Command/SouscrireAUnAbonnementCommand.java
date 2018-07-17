@@ -8,25 +8,13 @@ import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
 
 final class SouscrireAUnAbonnementCommand {
 
-    private final String abonnéId;
-    private final String formuleId;
-    private final String date;
+    final AbonnéId abonnéId;
+    final FormuleId formuleId;
+    final MaDate date;
 
     SouscrireAUnAbonnementCommand(Abonné abonné, Formule formule, MaDate date) {
-        this.abonnéId = abonné.id().toString();
-        this.formuleId = formule.id().toString();
-        this.date = date.toString();
-    }
-
-    AbonnéId abonnéId() {
-        return new AbonnéId(abonnéId);
-    }
-
-    FormuleId formuleId() {
-        return new FormuleId(formuleId);
-    }
-
-    public MaDate date() {
-        return MaDate.fromString(date);
+        this.abonnéId = abonné.id();
+        this.formuleId = formule.id();
+        this.date = date;
     }
 }

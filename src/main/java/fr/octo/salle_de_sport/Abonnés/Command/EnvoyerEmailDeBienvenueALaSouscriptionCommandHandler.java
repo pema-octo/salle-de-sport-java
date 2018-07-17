@@ -20,8 +20,8 @@ final class EnvoyerEmailDeBienvenueALaSouscriptionCommandHandler {
 
     EmailDeBienvenueALaSouscriptionEnvoyé handle(AbonnementSouscrit event) throws AbonnéRepositoryException, AbonnementRepositoryException {
 
-        Abonné abonné = abonnéRepository.get(event.abonnéId());
-        Abonnement abonnement = abonnementRepository.get(event.abonnementId());
+        Abonné abonné = abonnéRepository.get(event.abonnéId);
+        Abonnement abonnement = abonnementRepository.get(event.abonnementId);
 
         mailer.sendEmail(
             abonné.email(),

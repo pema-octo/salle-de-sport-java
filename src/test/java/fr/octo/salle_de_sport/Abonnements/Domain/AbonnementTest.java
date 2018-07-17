@@ -56,7 +56,7 @@ public class AbonnementTest {
             premierJuin()
         );
 
-        MaDate dateCourantJuin = MaDate.fromString("2018-06-09");
+        MaDate dateCourantJuin = new MaDate("2018-06-09");
 
         assertTrue(abonnementEnCours.estEnCours(dateCourantJuin));
     }
@@ -69,8 +69,8 @@ public class AbonnementTest {
             premierJuin()
         );
 
-        assertFalse(abonnementFiniFinJuin.seraFiniLe(MaDate.fromString("2018-06-30")));
-        assertTrue(abonnementFiniFinJuin.seraFiniLe(MaDate.fromString("2018-07-01")));
+        assertFalse(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-06-30")));
+        assertTrue(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-07-01")));
     }
 
     @Test
@@ -81,16 +81,16 @@ public class AbonnementTest {
             premierJuin()
         );
 
-        assertFalse(abonnement.seraFiniLe(MaDate.fromString("2018-06-30")));
-        assertTrue(abonnement.seraFiniLe(MaDate.fromString("2018-07-01")));
+        assertFalse(abonnement.seraFiniLe(new MaDate("2018-06-30")));
+        assertTrue(abonnement.seraFiniLe(new MaDate("2018-07-01")));
 
         abonnement.renouveller();
 
-        assertFalse(abonnement.seraFiniLe(MaDate.fromString("2018-07-31")));
-        assertTrue(abonnement.seraFiniLe(MaDate.fromString("2018-08-01")));
+        assertFalse(abonnement.seraFiniLe(new MaDate("2018-07-31")));
+        assertTrue(abonnement.seraFiniLe(new MaDate("2018-08-01")));
     }
 
     private MaDate premierJuin() {
-        return MaDate.fromString("2018-06-01");
+        return new MaDate("2018-06-01");
     }
 }

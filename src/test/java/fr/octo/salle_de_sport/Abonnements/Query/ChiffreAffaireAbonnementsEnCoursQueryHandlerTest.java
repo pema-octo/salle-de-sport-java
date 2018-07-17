@@ -61,14 +61,14 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     }
 
     private MaDate aujourdhui() {
-        return MaDate.fromString("2018-06-09");
+        return new MaDate("2018-06-09");
     }
 
     private MaDate dansUnMois() {
-        return MaDate.fromString("2018-07-09");
+        return new MaDate("2018-07-09");
     }
 
     private MaDate dansDeuxMois() {
-        return MaDate.fromString("2018-08-09");
+        return new MaDate("2018-08-09");
     }
 }

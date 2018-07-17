@@ -18,10 +18,8 @@ public final class MaDate {
         this.date = date;
     }
 
-    public static MaDate fromString(String dateStr) {
-        return new MaDate(
-            LocalDate.parse(dateStr, FORMATTER)
-        );
+    public MaDate(String dateStr) {
+        this(LocalDate.parse(dateStr, FORMATTER));
     }
 
     @Override

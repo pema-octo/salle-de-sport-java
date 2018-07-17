@@ -20,7 +20,7 @@ public class PrixTest {
     public void on_peut_appliquer_une_réduction() {
 
         Prix prix = new Prix(400);
-        Réduction réduction = Réduction.auTaux(0.25);
+        Réduction réduction = new Réduction(0.25);
 
         Prix prixAprèsRéduction = prix.aprèsRéduction(réduction);
 

@@ -5,19 +5,11 @@ import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
 
 public final class EmailDeBienvenueALaSouscriptionEnvoyé {
 
-    private final String email;
-    private final String abonnementId;
+    public final String email;
+    public final AbonnementId abonnementId;
 
     public EmailDeBienvenueALaSouscriptionEnvoyé(String email, Abonnement abonnement) {
         this.email = email;
-        this.abonnementId = abonnement.id().toString();
-    }
-
-    public String email() {
-        return email;
-    }
-
-    public AbonnementId abonnementId() {
-        return new AbonnementId(abonnementId);
+        this.abonnementId = abonnement.id();
     }
 }

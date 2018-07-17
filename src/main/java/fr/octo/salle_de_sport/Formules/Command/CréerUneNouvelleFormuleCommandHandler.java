@@ -15,8 +15,8 @@ final class CréerUneNouvelleFormuleCommandHandler {
     FormuleCréée handle(CréerUneNouvelleFormuleCommand command) {
 
         Formule formule = new Formule(
-            command.prixDeBase(),
-            command.duréeFormule()
+            command.prixDeBase,
+            command.duréeFormule
         );
 
         formuleRepository.store(formule);

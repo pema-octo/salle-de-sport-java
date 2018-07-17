@@ -10,7 +10,7 @@ public final class Réduction {
 
     private final Double taux;
 
-    private Réduction(Double taux) {
+    public Réduction(Double taux) {
         this.taux = taux;
     }
 
@@ -26,10 +26,6 @@ public final class Réduction {
         }
 
         this.taux = tauxCalculé;
-    }
-
-    public static Réduction auTaux(Double taux) {
-        return new Réduction(taux);
     }
 
     public Double taux() {

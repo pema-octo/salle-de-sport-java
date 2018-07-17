@@ -2,25 +2,13 @@ package fr.octo.salle_de_sport.Formules.Domain;
 
 public final class PrixFormuleChangé {
 
-    private final String formuleId;
-    private final String ancienPrix;
-    private final String nouveauPrix;
+    public final FormuleId formuleId;
+    public final Prix ancienPrix;
+    public final Prix nouveauPrix;
 
     public PrixFormuleChangé(Formule formule, Prix ancienPrix, Prix nouveauPrix) {
-        this.formuleId = formule.id().toString();
-        this.ancienPrix = String.valueOf(ancienPrix);
-        this.nouveauPrix = String.valueOf(nouveauPrix);
-    }
-
-    public FormuleId formuleId() {
-        return new FormuleId(formuleId);
-    }
-
-    public Prix ancienPrix() {
-        return new Prix(Double.valueOf(ancienPrix));
-    }
-
-    public Prix nouveauPrix() {
-        return new Prix(Double.valueOf(nouveauPrix));
+        this.formuleId = formule.id();
+        this.ancienPrix = ancienPrix;
+        this.nouveauPrix = nouveauPrix;
     }
 }

@@ -22,7 +22,7 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
                 abonnementId,
                 Abonné.nouveau("bob@octo.com", "Bob"),
                 Formule.nouvelleAuMois(200.0),
-                MaDate.fromString("2018-06-09")
+                new MaDate("2018-06-09")
             )
         );
 
@@ -32,16 +32,16 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
 
         tested.handle(
             new RenouvellerLesAbonnementsAutomatiquementCommand(
-                MaDate.fromString("2018-07-09")
+                new MaDate("2018-07-09")
             )
         );
 
-        MaDate dateEnCoursAprèsRenouvellement = MaDate.fromString("2018-08-01");
+        MaDate dateEnCoursAprèsRenouvellement = new MaDate("2018-08-01");
         assertTrue(
             abonnementRepository.get(abonnementId).estEnCours(dateEnCoursAprèsRenouvellement)
         );
 
-        MaDate dateAprèsLaFinAprèsRenouvellement = MaDate.fromString("2018-08-10");
+        MaDate dateAprèsLaFinAprèsRenouvellement = new MaDate("2018-08-10");
         assertTrue(
             abonnementRepository.get(abonnementId).seraFiniLe(dateAprèsLaFinAprèsRenouvellement)
         );

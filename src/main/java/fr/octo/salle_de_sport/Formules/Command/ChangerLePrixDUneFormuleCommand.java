@@ -5,19 +5,11 @@ import fr.octo.salle_de_sport.Formules.Domain.Prix;
 
 final class ChangerLePrixDUneFormuleCommand {
 
-    private final String formuleId;
-    private final String nouveauPrix;
+    final FormuleId formuleId;
+    final Prix nouveauPrix;
 
     ChangerLePrixDUneFormuleCommand(FormuleId formuleId, Prix nouveauPrix) {
-        this.formuleId = formuleId.toString();
-        this.nouveauPrix = nouveauPrix.toString();
-    }
-
-    FormuleId formuleId() {
-        return new FormuleId(formuleId);
-    }
-
-    Prix nouveauPrix() {
-        return new Prix(Double.valueOf(nouveauPrix));
+        this.formuleId = formuleId;
+        this.nouveauPrix = nouveauPrix;
     }
 }

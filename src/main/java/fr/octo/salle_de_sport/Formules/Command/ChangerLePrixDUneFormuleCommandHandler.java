@@ -12,11 +12,11 @@ final class ChangerLePrixDUneFormuleCommandHandler {
 
     PrixFormuleChangé handle(ChangerLePrixDUneFormuleCommand command) throws FormuleRepositoryException {
 
-        Formule formule = formuleRepository.get(command.formuleId());
+        Formule formule = formuleRepository.get(command.formuleId);
 
         Prix ancienPrix = formule.prixDeBase();
 
-        formule.changeDePrix(command.nouveauPrix());
+        formule.changeDePrix(command.nouveauPrix);
 
         formuleRepository.store(formule);
 

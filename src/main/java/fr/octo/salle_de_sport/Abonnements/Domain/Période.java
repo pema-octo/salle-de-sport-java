@@ -14,19 +14,16 @@ final class Période {
         this.dateDeFin = dateDeDébut.plusXMois(nbMois).jourDAvant();
     }
 
+    Période(String période) {
+        this(
+            new MaDate(période.split(AU)[0]),
+            new MaDate(période.split(AU)[1])
+        );
+    }
+
     private Période(MaDate dateDeDébut, MaDate dateDeFin) {
         this.dateDeDébut = dateDeDébut;
         this.dateDeFin = dateDeFin;
-    }
-
-    public static Période fromString(String période) {
-
-        String[] dates = période.split(AU);
-
-        return new Période(
-            MaDate.fromString(dates[0]),
-            MaDate.fromString(dates[1])
-        );
     }
 
     Boolean contient(MaDate date) {

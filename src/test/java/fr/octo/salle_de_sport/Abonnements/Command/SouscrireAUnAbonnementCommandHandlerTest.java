@@ -49,13 +49,13 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
             new SouscrireAUnAbonnementCommand(
                 abonné,
                 formule,
-                MaDate.fromString("2018-06-10")
+                new MaDate("2018-06-10")
             )
         );
 
         verify(abonnementRepository).store(any(Abonnement.class));
 
-        assertEquals(abonnéId, abonnementSouscrit.abonnéId());
-        assertEquals(formuleId, abonnementSouscrit.formuleId());
+        assertEquals(abonnéId, abonnementSouscrit.abonnéId);
+        assertEquals(formuleId, abonnementSouscrit.formuleId);
     }
 }

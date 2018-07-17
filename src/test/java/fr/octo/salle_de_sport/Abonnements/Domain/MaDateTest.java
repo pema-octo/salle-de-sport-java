@@ -9,32 +9,32 @@ public class MaDateTest {
 
     @Test
     public void fromString() {
-        MaDate tested = MaDate.fromString("2018-06-16");
+        MaDate tested = new MaDate("2018-06-16");
 
         assertEquals("2018-06-16", tested.toString());
     }
 
     @Test
     public void après() {
-        MaDate tested = MaDate.fromString("2018-06-16");
+        MaDate tested = new MaDate("2018-06-16");
 
         assertTrue(
-            tested.après(MaDate.fromString("2018-06-15"))
+            tested.après(new MaDate("2018-06-15"))
         );
     }
 
     @Test
     public void avant() {
-        MaDate tested = MaDate.fromString("2018-06-16");
+        MaDate tested = new MaDate("2018-06-16");
 
         assertTrue(
-            tested.avant(MaDate.fromString("2018-06-17"))
+            tested.avant(new MaDate("2018-06-17"))
         );
     }
 
     @Test
     public void plusXMois() {
-        MaDate tested = MaDate.fromString("2018-06-16");
+        MaDate tested = new MaDate("2018-06-16");
 
         assertEquals(
             "2018-09-16",
@@ -44,7 +44,7 @@ public class MaDateTest {
 
     @Test
     public void jourDAvant() {
-        MaDate tested = MaDate.fromString("2018-06-01");
+        MaDate tested = new MaDate("2018-06-01");
 
         assertEquals(
             "2018-05-31",
@@ -54,7 +54,7 @@ public class MaDateTest {
 
     @Test
     public void jourSuivant() {
-        MaDate tested = MaDate.fromString("2018-06-16");
+        MaDate tested = new MaDate("2018-06-16");
 
         assertEquals(
             "2018-06-17",
