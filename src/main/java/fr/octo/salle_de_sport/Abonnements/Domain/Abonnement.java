@@ -14,26 +14,26 @@ public final class Abonnement {
     private final Prix prix;
     private final List<Période> périodes = new ArrayList<>();
 
-    public Abonnement(Abonné abonné, Formule formule, MaDate date) {
+    public Abonnement(Abonné abonné, Formule formule, MaDate dateDeDébut) {
         this(
             new AbonnementId(),
             abonné,
             formule,
-            date
+            dateDeDébut
         );
     }
 
-    public Abonnement(AbonnementId abonnementId, Abonné abonné, Formule formule, MaDate date) {
+    public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule, final MaDate dateDeDébut) {
 
         this.id = abonnementId;
 
         this.formuleChoisie = new FormuleChoisie(formule);
 
-        Réduction réduction = new Réduction(abonné, formule);
+        var réduction = new Réduction(abonné, formule);
         this.prix = formule.prixDeBase().aprèsRéduction(réduction);
 
         this.périodes.add(
-            new Période(date, formule.duréeEnMois())
+            new Période(dateDeDébut, formule.duréeEnMois())
         );
     }
 
@@ -57,11 +57,11 @@ public final class Abonnement {
         return périodes.get(périodes.size() - 1);
     }
 
-    public Boolean estEnCours(MaDate date) {
+    public Boolean estEnCours(final MaDate date) {
         return dernièrePériode().contient(date);
     }
 
-    public Boolean seraFiniLe(MaDate date) {
+    public Boolean seraFiniLe(final MaDate date) {
         return dernièrePériode().avantLaDate(date);
     }
 

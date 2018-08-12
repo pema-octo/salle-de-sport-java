@@ -6,7 +6,7 @@ public final class FormuleRepositoryException extends Exception {
         super(message);
     }
 
-    public static FormuleRepositoryException introuvable(FormuleId formuleId) {
+    public static FormuleRepositoryException introuvable(final FormuleId formuleId) {
         return new FormuleRepositoryException("Formule ["+formuleId+"] introuvable.");
     }
 }

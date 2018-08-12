@@ -4,8 +4,6 @@ import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementsRenouvellésAutomatiquement;
 
-import java.util.Collection;
-
 final class RenouvellerLesAbonnementsAutomatiquementCommandHandler {
 
     private final AbonnementRepository abonnementRepository;
@@ -14,9 +12,9 @@ final class RenouvellerLesAbonnementsAutomatiquementCommandHandler {
         this.abonnementRepository = abonnementRepository;
     }
 
-    AbonnementsRenouvellésAutomatiquement handle(RenouvellerLesAbonnementsAutomatiquementCommand command) {
+    AbonnementsRenouvellésAutomatiquement handle(final RenouvellerLesAbonnementsAutomatiquementCommand command) {
 
-        Collection<Abonnement> abonnementsFinisAPartirDe = abonnementRepository.abonnementsFinisAPartirDe(command.date);
+        var abonnementsFinisAPartirDe = abonnementRepository.abonnementsFinisAPartirDe(command.àPartirDe);
 
         for (Abonnement abonnement : abonnementsFinisAPartirDe) {
             abonnement.renouveller();

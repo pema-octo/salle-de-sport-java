@@ -10,11 +10,11 @@ final class SouscrireAUnAbonnementCommand {
 
     final AbonnéId abonnéId;
     final FormuleId formuleId;
-    final MaDate date;
+    final MaDate dateDeDébut;
 
-    SouscrireAUnAbonnementCommand(Abonné abonné, Formule formule, MaDate date) {
+    SouscrireAUnAbonnementCommand(Abonné abonné, Formule formule, MaDate dateDeDébut) {
         this.abonnéId = abonné.id();
         this.formuleId = formule.id();
-        this.date = date;
+        this.dateDeDébut = dateDeDébut;
     }
 }

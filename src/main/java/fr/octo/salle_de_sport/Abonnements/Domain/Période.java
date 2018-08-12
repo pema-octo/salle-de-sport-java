@@ -26,16 +26,16 @@ final class Période {
         this.dateDeFin = dateDeFin;
     }
 
-    Boolean contient(MaDate date) {
-        return date.après(dateDeDébut) && date.avant(dateDeFin);
+    Boolean contient(final MaDate date) {
+        return date.aprèsOuEgale(dateDeDébut) && date.avant(dateDeFin);
     }
 
-    Boolean avantLaDate(MaDate date) {
+    Boolean avantLaDate(final MaDate date) {
         return date.après(dateDeFin);
     }
 
     Période suivante() {
-        Integer nbMoisPériodeCourante = Period.between(dateDeDébut.toLocalDate(), dateDeFin.jourSuivant().toLocalDate()).getMonths();
+        var nbMoisPériodeCourante = Period.between(dateDeDébut.toLocalDate(), dateDeFin.jourSuivant().toLocalDate()).getMonths();
 
         return new Période(
             dateDeFin.jourSuivant(),

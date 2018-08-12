@@ -11,15 +11,15 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
 
     @Test
     public void handle() throws FormuleRepositoryException {
-        FormuleId formuleId = new FormuleId();
-        Formule formule = Formule.nouvelleALAnnée(formuleId, 450.0);
+        var formuleId = new FormuleId();
+        var formule = Formule.nouvelleALAnnée(formuleId, new Prix(450));
 
-        FormuleRepository formuleRepository = mock(FormuleRepository.class);
+        var formuleRepository = mock(FormuleRepository.class);
         when(formuleRepository.get(formuleId)).thenReturn(formule);
 
-        ChangerLePrixDUneFormuleCommandHandler tested = new ChangerLePrixDUneFormuleCommandHandler(formuleRepository);
+        var tested = new ChangerLePrixDUneFormuleCommandHandler(formuleRepository);
 
-        PrixFormuleChangé event = tested.handle(
+        var event = tested.handle(
             new ChangerLePrixDUneFormuleCommand(
                 formuleId,
                 new Prix(400)

@@ -20,20 +20,20 @@ public final class Formule {
         this.duréeEnMois = duréeEnMois.nbMois();
     }
 
-    public static Formule nouvelleAuMois(Double prixDeBase) {
-        return new Formule(new Prix(prixDeBase), DuréeFormule.MOIS);
+    public static Formule nouvelleAuMois(Prix prixDeBase) {
+        return new Formule(prixDeBase, DuréeFormule.MOIS);
     }
 
-    public static Formule nouvelleAuMois(FormuleId formuleId, Double prixDeBase) {
-        return new Formule(formuleId, new Prix(prixDeBase), DuréeFormule.MOIS);
+    public static Formule nouvelleAuMois(FormuleId formuleId, Prix prixDeBase) {
+        return new Formule(formuleId, prixDeBase, DuréeFormule.MOIS);
     }
 
-    public static Formule nouvelleALAnnée(Double prixDeBase) {
-        return new Formule(new Prix(prixDeBase), DuréeFormule.ANNEE);
+    public static Formule nouvelleALAnnée(Prix prixDeBase) {
+        return new Formule(prixDeBase, DuréeFormule.ANNEE);
     }
 
-    public static Formule nouvelleALAnnée(FormuleId formuleId, Double prixDeBase) {
-        return new Formule(formuleId, new Prix(prixDeBase), DuréeFormule.ANNEE);
+    public static Formule nouvelleALAnnée(FormuleId formuleId, Prix prixDeBase) {
+        return new Formule(formuleId, prixDeBase, DuréeFormule.ANNEE);
     }
 
     public FormuleId id() {
@@ -44,7 +44,7 @@ public final class Formule {
         return prixDeBase;
     }
 
-    public void changeDePrix(Prix nouveauPrix) {
+    public void changeDePrix(final Prix nouveauPrix) {
         prixDeBase = nouveauPrix;
     }
 
@@ -53,7 +53,7 @@ public final class Formule {
     }
 
     public Boolean estALannée() {
-        return DuréeFormule.ANNEE.nbMois() == duréeEnMois;
+        return DuréeFormule.ANNEE.nbMois().equals(duréeEnMois);
     }
 
     public String description() {

@@ -11,18 +11,18 @@ public class PrixTest {
     @Test
     public void un_prix_a_un_montant() {
 
-        Prix prix = new Prix(400);
+        var prix = new Prix(400);
 
-        assertEquals(new Prix(400), prix);
+        assertEquals("400.0", prix.toString());
     }
 
     @Test
     public void on_peut_appliquer_une_réduction() {
 
-        Prix prix = new Prix(400);
-        Réduction réduction = new Réduction(0.25);
+        var prix = new Prix(400);
+        var réduction = new Réduction(0.25);
 
-        Prix prixAprèsRéduction = prix.aprèsRéduction(réduction);
+        var prixAprèsRéduction = prix.aprèsRéduction(réduction);
 
         assertEquals(new Prix(300), prixAprèsRéduction);
         assertNotEquals(prix, prixAprèsRéduction);

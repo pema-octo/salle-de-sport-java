@@ -2,16 +2,12 @@ package fr.octo.salle_de_sport.Abonnements.Command;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
-import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementSouscrit;
 import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
 import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepositoryException;
-import fr.octo.salle_de_sport.Formules.Domain.Formule;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
+import fr.octo.salle_de_sport.Formules.Domain.*;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -23,29 +19,29 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
     @Test
     public void handle() throws AbonnéRepositoryException, FormuleRepositoryException {
 
-        AbonnéRepository abonnéRepository = mock(AbonnéRepository.class);
-        FormuleRepository formuleRepository = mock(FormuleRepository.class);
-        AbonnementRepository abonnementRepository = mock(AbonnementRepository.class);
+        var abonnéRepository = mock(AbonnéRepository.class);
+        var formuleRepository = mock(FormuleRepository.class);
+        var abonnementRepository = mock(AbonnementRepository.class);
 
-        AbonnéId abonnéId = new AbonnéId();
-        Abonné abonné = Abonné.nouveau(
+        var abonnéId = new AbonnéId();
+        var abonné = Abonné.nouveau(
             abonnéId,
             "bob@octo.com",
             "Bob"
         );
         when(abonnéRepository.get(abonnéId)).thenReturn(abonné);
 
-        FormuleId formuleId = new FormuleId();
-        Formule formule = Formule.nouvelleALAnnée(formuleId, 500.0);
+        var formuleId = new FormuleId();
+        var formule = Formule.nouvelleALAnnée(formuleId, new Prix(500));
         when(formuleRepository.get(formuleId)).thenReturn(formule);
 
-        SouscrireAUnAbonnementCommandHandler tested = new SouscrireAUnAbonnementCommandHandler(
+        var tested = new SouscrireAUnAbonnementCommandHandler(
             abonnéRepository,
             formuleRepository,
             abonnementRepository
         );
 
-        AbonnementSouscrit abonnementSouscrit = tested.handle(
+        var abonnementSouscrit = tested.handle(
             new SouscrireAUnAbonnementCommand(
                 abonné,
                 formule,

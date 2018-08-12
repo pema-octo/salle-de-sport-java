@@ -6,7 +6,7 @@ public final class AbonnéRepositoryException extends Throwable {
         super(message);
     }
 
-    public static AbonnéRepositoryException introuvable(AbonnéId abonnéId) {
+    public static AbonnéRepositoryException introuvable(final AbonnéId abonnéId) {
         return new AbonnéRepositoryException("Abonné ["+ abonnéId +"] introuvable.");
     }
 }

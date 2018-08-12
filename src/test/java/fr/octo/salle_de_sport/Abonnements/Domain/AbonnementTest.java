@@ -11,10 +11,10 @@ public class AbonnementTest {
 
     @Test
     public void prix_de_base_pour_une_souscription_d_un_mois() {
-        Abonnement abonnementSansRéduc = new Abonnement(
+        var abonnementSansRéduc = new Abonnement(
             Abonné.nouveau("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(300.0),
-            premierJuin()
+            Formule.nouvelleAuMois(new Prix(300)),
+            cinqJuin()
         );
 
         assertEquals(new Prix(300), abonnementSansRéduc.prix());
@@ -22,10 +22,10 @@ public class AbonnementTest {
 
     @Test
     public void moins_30_pourcent_pour_une_souscription_à_l_année() {
-        Abonnement abonnementAvecRéducAnnée = new Abonnement(
+        var abonnementAvecRéducAnnée = new Abonnement(
             Abonné.nouveau("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(100.0),
-            premierJuin()
+            Formule.nouvelleALAnnée(new Prix(100)),
+            cinqJuin()
         );
 
         assertEquals(new Prix(70), abonnementAvecRéducAnnée.prix());
@@ -33,64 +33,64 @@ public class AbonnementTest {
 
     @Test
     public void moins_20_pourcent_pour_la_souscription_d_un_étudiant() {
-        Abonnement abonnementEtudiantAuMois = new Abonnement(
+        var abonnementEtudiantAuMois = new Abonnement(
             Abonné.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(100.0),
-            premierJuin()
+            Formule.nouvelleAuMois(new Prix(100)),
+            cinqJuin()
         );
         assertEquals(new Prix(80), abonnementEtudiantAuMois.prix());
 
-        Abonnement abonnementEtudiantAnnée = new Abonnement(
+        var abonnementEtudiantAnnée = new Abonnement(
             Abonné.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(100.0),
-            premierJuin()
+            Formule.nouvelleALAnnée(new Prix(100)),
+            cinqJuin()
         );
         assertEquals(new Prix(50), abonnementEtudiantAnnée.prix());
     }
 
     @Test
     public void un_abonnement_peut_être_en_cours() {
-        Abonnement abonnementEnCours = new Abonnement(
+        var abonnementEnCours = new Abonnement(
             Abonné.nouveau("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(100.0),
-            premierJuin()
+            Formule.nouvelleAuMois(new Prix(100)),
+            cinqJuin()
         );
 
-        MaDate dateCourantJuin = new MaDate("2018-06-09");
+        var dateCourantJuin = new MaDate("2018-06-19");
 
         assertTrue(abonnementEnCours.estEnCours(dateCourantJuin));
     }
 
     @Test
     public void permet_de_déterminer_s_il_sera_fini_à_une_date() {
-        Abonnement abonnementFiniFinJuin = new Abonnement(
+        var abonnementFiniFinJuin = new Abonnement(
             Abonné.nouveau("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(100.0),
-            premierJuin()
+            Formule.nouvelleAuMois(new Prix(100)),
+            cinqJuin()
         );
 
-        assertFalse(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-06-30")));
-        assertTrue(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-07-01")));
+        assertFalse(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-07-04")));
+        assertTrue(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-07-05")));
     }
 
     @Test
     public void peut_être_renouvellé() {
-        Abonnement abonnement = new Abonnement(
+        var abonnement = new Abonnement(
             Abonné.nouveau("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(100.0),
-            premierJuin()
+            Formule.nouvelleAuMois(new Prix(100)),
+            cinqJuin()
         );
 
-        assertFalse(abonnement.seraFiniLe(new MaDate("2018-06-30")));
-        assertTrue(abonnement.seraFiniLe(new MaDate("2018-07-01")));
+        assertFalse(abonnement.seraFiniLe(new MaDate("2018-07-04")));
+        assertTrue(abonnement.seraFiniLe(new MaDate("2018-07-05")));
 
         abonnement.renouveller();
 
-        assertFalse(abonnement.seraFiniLe(new MaDate("2018-07-31")));
-        assertTrue(abonnement.seraFiniLe(new MaDate("2018-08-01")));
+        assertFalse(abonnement.seraFiniLe(new MaDate("2018-08-04")));
+        assertTrue(abonnement.seraFiniLe(new MaDate("2018-08-05")));
     }
 
-    private MaDate premierJuin() {
-        return new MaDate("2018-06-01");
+    private MaDate cinqJuin() {
+        return new MaDate("2018-06-05");
     }
 }

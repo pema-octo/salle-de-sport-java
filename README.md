@@ -14,7 +14,7 @@
 
 ## Choix
 
-- métier en français => code métier en français, on est en 2018 et Java gère très bien les accents
+- métier en français => code métier aussi en français, on est en 2018 et Java gère très bien les accents
 - utilisation de patterns tactiques du DDD
   - Aggregate
     - [à lire](https://vaughnvernon.co/?p=838)

@@ -14,7 +14,7 @@ final class CréerUneNouvelleFormuleCommandHandler {
 
     FormuleCréée handle(CréerUneNouvelleFormuleCommand command) {
 
-        Formule formule = new Formule(
+        var formule = new Formule(
             command.prixDeBase,
             command.duréeFormule
         );

@@ -1,6 +1,8 @@
 package fr.octo.salle_de_sport.Formules.Command;
 
-import fr.octo.salle_de_sport.Formules.Domain.*;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
+import fr.octo.salle_de_sport.Formules.Domain.PrixFormuleChangé;
 
 final class ChangerLePrixDUneFormuleCommandHandler {
 
@@ -10,11 +12,11 @@ final class ChangerLePrixDUneFormuleCommandHandler {
         this.formuleRepository = formuleRepository;
     }
 
-    PrixFormuleChangé handle(ChangerLePrixDUneFormuleCommand command) throws FormuleRepositoryException {
+    PrixFormuleChangé handle(final ChangerLePrixDUneFormuleCommand command) throws FormuleRepositoryException {
 
-        Formule formule = formuleRepository.get(command.formuleId);
+        var formule = formuleRepository.get(command.formuleId);
 
-        Prix ancienPrix = formule.prixDeBase();
+        var ancienPrix = formule.prixDeBase();
 
         formule.changeDePrix(command.nouveauPrix);
 

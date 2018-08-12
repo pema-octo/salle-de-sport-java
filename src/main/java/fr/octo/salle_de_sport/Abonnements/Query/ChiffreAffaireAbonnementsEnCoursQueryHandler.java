@@ -11,9 +11,9 @@ final class ChiffreAffaireAbonnementsEnCoursQueryHandler {
         this.abonnementRepository = abonnementRepository;
     }
 
-    Double handle(ChiffreAffaireAbonnementsEnCoursQuery query) {
+    Double handle(final ChiffreAffaireAbonnementsEnCoursQuery query) {
 
-        Double chiffreAffaire = 0.0;
+        var chiffreAffaire = 0.0;
 
         for (Abonnement abonnementEnCours : abonnementRepository.abonnementsEnCours(query.àPartirDe)) {
             chiffreAffaire += abonnementEnCours.restantDu();

@@ -13,11 +13,11 @@ public class CréerUneNouvelleFormuleCommandHandlerTest {
     @Test
     public void creer_une_nouvelle_formule() {
 
-        CréerUneNouvelleFormuleCommandHandler tested = new CréerUneNouvelleFormuleCommandHandler(
+        var tested = new CréerUneNouvelleFormuleCommandHandler(
             new FormuleInMemoryRepository()
         );
 
-        FormuleCréée formuleCréée = tested.handle(
+        var formuleCréée = tested.handle(
             new CréerUneNouvelleFormuleCommand(
                 new Prix(300),
                 DuréeFormule.MOIS

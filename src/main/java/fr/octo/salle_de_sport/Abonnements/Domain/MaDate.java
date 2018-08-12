@@ -27,15 +27,19 @@ public final class MaDate {
         return date.format(FORMATTER);
     }
 
-    Boolean après(MaDate dateDeDébut) {
+    Boolean après(final MaDate dateDeDébut) {
         return date.isAfter(dateDeDébut.date);
     }
 
-    Boolean avant(MaDate dateDeFin) {
+    Boolean aprèsOuEgale(final MaDate dateDeDébut) {
+        return date.isEqual(dateDeDébut.date) || date.isAfter(dateDeDébut.date);
+    }
+
+    Boolean avant(final MaDate dateDeFin) {
         return date.isBefore(dateDeFin.date);
     }
 
-    MaDate plusXMois(Integer nbMois) {
+    MaDate plusXMois(final Integer nbMois) {
         return new MaDate(
             date.plus(nbMois, ChronoUnit.MONTHS)
         );

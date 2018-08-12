@@ -14,8 +14,8 @@ public final class Réduction {
         this.taux = taux;
     }
 
-    Réduction(Abonné abonné, Formule formule) {
-        Double tauxCalculé = 0.0;
+    Réduction(final Abonné abonné, final Formule formule) {
+        var tauxCalculé = 0.0;
 
         if (abonné.estEtudiant()) {
             tauxCalculé += REDUC_ETUDIANT;
