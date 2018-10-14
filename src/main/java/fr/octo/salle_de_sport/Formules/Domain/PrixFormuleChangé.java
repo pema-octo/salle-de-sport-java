@@ -6,8 +6,8 @@ public final class PrixFormuleChangé {
     public final Prix ancienPrix;
     public final Prix nouveauPrix;
 
-    public PrixFormuleChangé(Formule formule, Prix ancienPrix, Prix nouveauPrix) {
-        this.formuleId = formule.id();
+    public PrixFormuleChangé(final FormuleId formuleId, final Prix ancienPrix, final Prix nouveauPrix) {
+        this.formuleId = formuleId;
         this.ancienPrix = ancienPrix;
         this.nouveauPrix = nouveauPrix;
     }

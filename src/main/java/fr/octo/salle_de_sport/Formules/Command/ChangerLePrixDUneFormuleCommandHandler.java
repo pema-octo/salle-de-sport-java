@@ -23,7 +23,7 @@ final class ChangerLePrixDUneFormuleCommandHandler {
         formuleRepository.store(formule);
 
         return new PrixFormuleChangé(
-            formule,
+            formule.id(),
             ancienPrix,
             formule.prixDeBase()
         );

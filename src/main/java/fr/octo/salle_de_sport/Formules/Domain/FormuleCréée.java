@@ -4,7 +4,7 @@ public final class FormuleCréée {
 
     public final FormuleId formuleId;
 
-    public FormuleCréée(Formule formule) {
-        this.formuleId = formule.id();
+    public FormuleCréée(final FormuleId formuleId) {
+        this.formuleId = formuleId;
     }
 }
