@@ -8,7 +8,7 @@ final class ChangerLePrixDUneFormuleCommand {
     final FormuleId formuleId;
     final Prix nouveauPrix;
 
-    ChangerLePrixDUneFormuleCommand(FormuleId formuleId, Prix nouveauPrix) {
+    ChangerLePrixDUneFormuleCommand(final FormuleId formuleId, final Prix nouveauPrix) {
         this.formuleId = formuleId;
         this.nouveauPrix = nouveauPrix;
     }

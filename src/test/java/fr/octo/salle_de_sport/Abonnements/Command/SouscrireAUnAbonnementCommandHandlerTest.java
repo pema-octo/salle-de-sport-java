@@ -43,8 +43,8 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
 
         var abonnementSouscrit = tested.handle(
             new SouscrireAUnAbonnementCommand(
-                abonné,
-                formule,
+                abonné.id(),
+                formule.id(),
                 new MaDate("2018-06-10")
             )
         );

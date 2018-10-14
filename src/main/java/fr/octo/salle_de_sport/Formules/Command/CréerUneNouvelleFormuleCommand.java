@@ -8,7 +8,7 @@ final class CréerUneNouvelleFormuleCommand {
     final Prix prixDeBase;
     final DuréeFormule duréeFormule;
 
-    CréerUneNouvelleFormuleCommand(Prix prixDeBase, DuréeFormule duréeFormule) {
+    CréerUneNouvelleFormuleCommand(final Prix prixDeBase, final DuréeFormule duréeFormule) {
         this.prixDeBase = prixDeBase;
         this.duréeFormule = duréeFormule;
     }

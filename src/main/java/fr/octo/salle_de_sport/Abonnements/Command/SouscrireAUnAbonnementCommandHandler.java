@@ -33,6 +33,10 @@ final class SouscrireAUnAbonnementCommandHandler {
 
         abonnementRepository.store(abonnement);
 
-        return new AbonnementSouscrit(abonné, formule, abonnement);
+        return new AbonnementSouscrit(
+            abonné.id(),
+            formule.id(),
+            abonnement.id()
+        );
     }
 }
