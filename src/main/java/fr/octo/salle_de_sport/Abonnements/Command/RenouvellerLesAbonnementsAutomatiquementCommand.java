@@ -1,12 +1,12 @@
 package fr.octo.salle_de_sport.Abonnements.Command;
 
-import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
+import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 
 final class RenouvellerLesAbonnementsAutomatiquementCommand {
 
-    final MaDate àPartirDe;
+    final DateCustom àPartirDe;
 
-    RenouvellerLesAbonnementsAutomatiquementCommand(final MaDate àPartirDe) {
+    RenouvellerLesAbonnementsAutomatiquementCommand(final DateCustom àPartirDe) {
         this.àPartirDe = àPartirDe;
     }
 }

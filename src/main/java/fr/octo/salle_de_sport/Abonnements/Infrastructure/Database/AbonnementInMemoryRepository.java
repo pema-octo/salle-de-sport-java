@@ -34,7 +34,7 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
     }
 
     @Override
-    public Collection<Abonnement> abonnementsEnCours(MaDate date) {
+    public Collection<Abonnement> abonnementsEnCours(DateCustom date) {
 
         Collection<Abonnement> abonnementsEnCours = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
     }
 
     @Override
-    public Collection<Abonnement> abonnementsFinisAPartirDe(MaDate date) {
+    public Collection<Abonnement> abonnementsFinisAPartirDe(DateCustom date) {
 
         Collection<Abonnement> abonnementsFinisAPartirDe = new ArrayList<>();
 

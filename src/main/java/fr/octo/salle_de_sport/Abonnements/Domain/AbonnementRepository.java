@@ -10,7 +10,7 @@ public interface AbonnementRepository {
 
     Abonnement get(AbonnementId abonnementId) throws AbonnementRepositoryException;
 
-    Collection<Abonnement> abonnementsEnCours(MaDate date);
+    Collection<Abonnement> abonnementsEnCours(DateCustom date);
 
-    Collection<Abonnement> abonnementsFinisAPartirDe(MaDate date);
+    Collection<Abonnement> abonnementsFinisAPartirDe(DateCustom date);
 }

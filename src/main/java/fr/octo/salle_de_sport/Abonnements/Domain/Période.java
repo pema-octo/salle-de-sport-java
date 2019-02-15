@@ -6,31 +6,31 @@ final class Période {
 
     private static final String AU = " au ";
 
-    private final MaDate dateDeDébut;
-    private final MaDate dateDeFin;
+    private final DateCustom dateDeDébut;
+    private final DateCustom dateDeFin;
 
-    Période(MaDate dateDeDébut, Integer nbMois) {
+    Période(DateCustom dateDeDébut, Integer nbMois) {
         this.dateDeDébut = dateDeDébut;
         this.dateDeFin = dateDeDébut.plusXMois(nbMois).jourDAvant();
     }
 
     Période(String période) {
         this(
-            new MaDate(période.split(AU)[0]),
-            new MaDate(période.split(AU)[1])
+            new DateCustom(période.split(AU)[0]),
+            new DateCustom(période.split(AU)[1])
         );
     }
 
-    private Période(MaDate dateDeDébut, MaDate dateDeFin) {
+    private Période(DateCustom dateDeDébut, DateCustom dateDeFin) {
         this.dateDeDébut = dateDeDébut;
         this.dateDeFin = dateDeFin;
     }
 
-    Boolean contient(final MaDate date) {
-        return date.aprèsOuEgale(dateDeDébut) && date.avant(dateDeFin);
+    Boolean contient(final DateCustom date) {
+        return date.aprèsOuÉgale(dateDeDébut) && date.avant(dateDeFin);
     }
 
-    Boolean avantLaDate(final MaDate date) {
+    Boolean avantLaDate(final DateCustom date) {
         return date.après(dateDeFin);
     }
 

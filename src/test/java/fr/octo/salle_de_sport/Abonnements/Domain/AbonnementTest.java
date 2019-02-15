@@ -56,7 +56,7 @@ public class AbonnementTest {
             cinqJuin()
         );
 
-        var dateCourantJuin = new MaDate("2018-06-19");
+        var dateCourantJuin = new DateCustom("2018-06-19");
 
         assertTrue(abonnementEnCours.estEnCours(dateCourantJuin));
     }
@@ -69,8 +69,8 @@ public class AbonnementTest {
             cinqJuin()
         );
 
-        assertFalse(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-07-04")));
-        assertTrue(abonnementFiniFinJuin.seraFiniLe(new MaDate("2018-07-05")));
+        assertFalse(abonnementFiniFinJuin.seraFiniLe(new DateCustom("2018-07-04")));
+        assertTrue(abonnementFiniFinJuin.seraFiniLe(new DateCustom("2018-07-05")));
     }
 
     @Test
@@ -81,16 +81,16 @@ public class AbonnementTest {
             cinqJuin()
         );
 
-        assertFalse(abonnement.seraFiniLe(new MaDate("2018-07-04")));
-        assertTrue(abonnement.seraFiniLe(new MaDate("2018-07-05")));
+        assertFalse(abonnement.seraFiniLe(new DateCustom("2018-07-04")));
+        assertTrue(abonnement.seraFiniLe(new DateCustom("2018-07-05")));
 
         abonnement.renouveller();
 
-        assertFalse(abonnement.seraFiniLe(new MaDate("2018-08-04")));
-        assertTrue(abonnement.seraFiniLe(new MaDate("2018-08-05")));
+        assertFalse(abonnement.seraFiniLe(new DateCustom("2018-08-04")));
+        assertTrue(abonnement.seraFiniLe(new DateCustom("2018-08-05")));
     }
 
-    private MaDate cinqJuin() {
-        return new MaDate("2018-06-05");
+    private DateCustom cinqJuin() {
+        return new DateCustom("2018-06-05");
     }
 }

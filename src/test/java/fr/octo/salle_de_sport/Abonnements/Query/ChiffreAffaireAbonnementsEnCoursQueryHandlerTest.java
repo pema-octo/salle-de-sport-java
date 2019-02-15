@@ -1,7 +1,7 @@
 package fr.octo.salle_de_sport.Abonnements.Query;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
-import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
+import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
@@ -60,15 +60,15 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
         assertEquals(2, abonnementRepository.abonnementsEnCours(dansDeuxMois()).size());
     }
 
-    private MaDate aujourdhui() {
-        return new MaDate("2018-06-09");
+    private DateCustom aujourdhui() {
+        return new DateCustom("2018-06-09");
     }
 
-    private MaDate dansUnMois() {
-        return new MaDate("2018-07-09");
+    private DateCustom dansUnMois() {
+        return new DateCustom("2018-07-09");
     }
 
-    private MaDate dansDeuxMois() {
-        return new MaDate("2018-08-09");
+    private DateCustom dansDeuxMois() {
+        return new DateCustom("2018-08-09");
     }
 }

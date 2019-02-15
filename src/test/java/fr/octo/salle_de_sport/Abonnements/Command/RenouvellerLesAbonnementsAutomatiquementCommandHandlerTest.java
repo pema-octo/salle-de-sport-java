@@ -3,7 +3,7 @@ package fr.octo.salle_de_sport.Abonnements.Command;
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepositoryException;
-import fr.octo.salle_de_sport.Abonnements.Domain.MaDate;
+import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
@@ -26,7 +26,7 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
                 abonnementId,
                 Abonné.nouveau("bob@octo.com", "Bob"),
                 Formule.nouvelleAuMois(new Prix(200)),
-                new MaDate("2018-06-09")
+                new DateCustom("2018-06-09")
             )
         );
 
@@ -36,16 +36,16 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
 
         tested.handle(
             new RenouvellerLesAbonnementsAutomatiquementCommand(
-                new MaDate("2018-07-09")
+                new DateCustom("2018-07-09")
             )
         );
 
-        var dateEnCoursAprèsRenouvellement = new MaDate("2018-08-01");
+        var dateEnCoursAprèsRenouvellement = new DateCustom("2018-08-01");
         assertTrue(
             abonnementRepository.get(abonnementId).estEnCours(dateEnCoursAprèsRenouvellement)
         );
 
-        var dateAprèsLaFinAprèsRenouvellement = new MaDate("2018-08-10");
+        var dateAprèsLaFinAprèsRenouvellement = new DateCustom("2018-08-10");
         assertTrue(
             abonnementRepository.get(abonnementId).seraFiniLe(dateAprèsLaFinAprèsRenouvellement)
         );

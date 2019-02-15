@@ -4,21 +4,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public final class MaDate {
+public final class DateCustom {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
     private final LocalDate date;
 
-    public MaDate() {
+    public DateCustom() {
         this.date = LocalDate.now();
     }
 
-    private MaDate(LocalDate date) {
+    private DateCustom(LocalDate date) {
         this.date = date;
     }
 
-    public MaDate(String dateStr) {
+    public DateCustom(String dateStr) {
         this(LocalDate.parse(dateStr, FORMATTER));
     }
 
@@ -27,30 +27,30 @@ public final class MaDate {
         return date.format(FORMATTER);
     }
 
-    Boolean après(final MaDate dateDeDébut) {
+    Boolean après(final DateCustom dateDeDébut) {
         return date.isAfter(dateDeDébut.date);
     }
 
-    Boolean aprèsOuEgale(final MaDate dateDeDébut) {
+    Boolean aprèsOuÉgale(final DateCustom dateDeDébut) {
         return date.isEqual(dateDeDébut.date) || date.isAfter(dateDeDébut.date);
     }
 
-    Boolean avant(final MaDate dateDeFin) {
+    Boolean avant(final DateCustom dateDeFin) {
         return date.isBefore(dateDeFin.date);
     }
 
-    MaDate plusXMois(final Integer nbMois) {
-        return new MaDate(
+    DateCustom plusXMois(final Integer nbMois) {
+        return new DateCustom(
             date.plus(nbMois, ChronoUnit.MONTHS)
         );
     }
 
-    MaDate jourDAvant() {
-        return new MaDate(date.minusDays(1));
+    DateCustom jourDAvant() {
+        return new DateCustom(date.minusDays(1));
     }
 
-    MaDate jourSuivant() {
-        return new MaDate(date.plusDays(1));
+    DateCustom jourSuivant() {
+        return new DateCustom(date.plusDays(1));
     }
 
     LocalDate toLocalDate() {

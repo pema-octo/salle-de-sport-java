@@ -24,8 +24,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
         var abonnement = new Abonnement(
             abonnementId,
             abonné,
-            formule,
-            new MaDate()
+            formule
         );
         var abonnementRepository = mock(AbonnementRepository.class);
         when(abonnementRepository.get(abonnementId)).thenReturn(abonnement);

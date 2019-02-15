@@ -14,7 +14,7 @@ public final class Abonnement {
     private final Prix prix;
     private final List<Période> périodes = new ArrayList<>();
 
-    public Abonnement(Abonné abonné, Formule formule, MaDate dateDeDébut) {
+    public Abonnement(Abonné abonné, Formule formule, DateCustom dateDeDébut) {
         this(
             new AbonnementId(),
             abonné,
@@ -23,7 +23,16 @@ public final class Abonnement {
         );
     }
 
-    public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule, final MaDate dateDeDébut) {
+    public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule) {
+        this(
+            abonnementId,
+            abonné,
+            formule,
+            new DateCustom()
+        );
+    }
+
+    public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule, final DateCustom dateDeDébut) {
 
         this.id = abonnementId;
 
@@ -57,11 +66,11 @@ public final class Abonnement {
         return périodes.get(périodes.size() - 1);
     }
 
-    public Boolean estEnCours(final MaDate date) {
+    public Boolean estEnCours(final DateCustom date) {
         return dernièrePériode().contient(date);
     }
 
-    public Boolean seraFiniLe(final MaDate date) {
+    public Boolean seraFiniLe(final DateCustom date) {
         return dernièrePériode().avantLaDate(date);
     }
 
