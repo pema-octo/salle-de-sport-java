@@ -8,7 +8,7 @@ public abstract class AggregateId {
     protected final String id;
 
     protected AggregateId() {
-        this.id = UUID.randomUUID().toString();
+        this(UUID.randomUUID().toString());
     }
 
     protected AggregateId(String id) {
