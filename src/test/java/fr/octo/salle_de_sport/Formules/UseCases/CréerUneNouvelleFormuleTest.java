@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Formules.Command;
+package fr.octo.salle_de_sport.Formules.UseCases;
 
 import fr.octo.salle_de_sport.Formules.Domain.DuréeFormule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleCréée;
@@ -8,20 +8,18 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class CréerUneNouvelleFormuleCommandHandlerTest {
+public class CréerUneNouvelleFormuleTest {
 
     @Test
     public void creer_une_nouvelle_formule() {
 
-        var tested = new CréerUneNouvelleFormuleCommandHandler(
+        var tested = new CréerUneNouvelleFormule(
             new FormuleInMemoryRepository()
         );
 
         var formuleCréée = tested.handle(
-            new CréerUneNouvelleFormuleCommand(
-                new Prix(300),
-                DuréeFormule.MOIS
-            )
+            new Prix(300),
+            DuréeFormule.MOIS
         );
 
         assertTrue(formuleCréée instanceof FormuleCréée);

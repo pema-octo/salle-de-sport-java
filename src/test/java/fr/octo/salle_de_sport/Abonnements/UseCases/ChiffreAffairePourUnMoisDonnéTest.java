@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Abonnements.Query;
+package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ChiffreAffairePourUnMoisDonnéQueryHandlerTest {
+public class ChiffreAffairePourUnMoisDonnéTest {
 
     @Test
     public void chiffre_d_affaire_pour_un_mois_donné_avec_abonnements_en_cours() {
@@ -35,14 +35,14 @@ public class ChiffreAffairePourUnMoisDonnéQueryHandlerTest {
             )
         );
 
-        var tested = new ChiffreAffairePourUnMoisDonnéQueryHandler(
+        var tested = new ChiffreAffairePourUnMoisDonné(
             abonnementRepository
         );
 
-        assertEquals(50, tested.handle(new ChiffreAffairePourUnMoisDonnéQuery(aujourdhui)), 0);
+        assertEquals(50, tested.handle(aujourdhui), 0);
         assertEquals(1, abonnementRepository.abonnementsEnCours(aujourdhui).size());
 
-        assertEquals(350, tested.handle(new ChiffreAffairePourUnMoisDonnéQuery(dansUnMois)), 0);
+        assertEquals(350, tested.handle(dansUnMois), 0);
         assertEquals(1, abonnementRepository.abonnementsEnCours(dansUnMois).size());
     }
 }

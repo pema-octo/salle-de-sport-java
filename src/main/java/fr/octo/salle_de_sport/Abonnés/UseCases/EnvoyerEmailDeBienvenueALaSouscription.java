@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Abonnés.Command;
+package fr.octo.salle_de_sport.Abonnés.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepositoryException;
@@ -8,13 +8,13 @@ import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepositoryException;
 import fr.octo.salle_de_sport.Abonnés.Domain.EmailDeBienvenueALaSouscriptionEnvoyé;
 import fr.octo.salle_de_sport.Abonnés.Domain.Mailer;
 
-final class EnvoyerEmailDeBienvenueALaSouscriptionEventHandler {
+final class EnvoyerEmailDeBienvenueALaSouscription {
 
     private final AbonnéRepository abonnéRepository;
     private final AbonnementRepository abonnementRepository;
     private final Mailer mailer;
 
-    EnvoyerEmailDeBienvenueALaSouscriptionEventHandler(AbonnéRepository abonnéRepository, AbonnementRepository abonnementRepository, Mailer mailer) {
+    EnvoyerEmailDeBienvenueALaSouscription(AbonnéRepository abonnéRepository, AbonnementRepository abonnementRepository, Mailer mailer) {
         this.abonnéRepository = abonnéRepository;
         this.abonnementRepository = abonnementRepository;
         this.mailer = mailer;

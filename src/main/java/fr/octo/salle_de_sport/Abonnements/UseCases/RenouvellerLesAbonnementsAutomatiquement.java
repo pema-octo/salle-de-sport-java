@@ -1,20 +1,21 @@
-package fr.octo.salle_de_sport.Abonnements.Command;
+package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementsRenouvellésAutomatiquement;
+import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 
-final class RenouvellerLesAbonnementsAutomatiquementCommandHandler {
+final class RenouvellerLesAbonnementsAutomatiquement {
 
     private final AbonnementRepository abonnementRepository;
 
-    RenouvellerLesAbonnementsAutomatiquementCommandHandler(AbonnementRepository abonnementRepository) {
+    RenouvellerLesAbonnementsAutomatiquement(AbonnementRepository abonnementRepository) {
         this.abonnementRepository = abonnementRepository;
     }
 
-    AbonnementsRenouvellésAutomatiquement handle(final RenouvellerLesAbonnementsAutomatiquementCommand command) {
+    AbonnementsRenouvellésAutomatiquement handle(final DateCustom àPartirDe) {
 
-        var abonnementsFinisAPartirDe = abonnementRepository.abonnementsFinisAPartirDe(command.àPartirDe);
+        var abonnementsFinisAPartirDe = abonnementRepository.abonnementsFinisAPartirDe(àPartirDe);
 
         for (Abonnement abonnement : abonnementsFinisAPartirDe) {
             abonnement.renouveller();

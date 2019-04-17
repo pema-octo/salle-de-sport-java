@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Abonnés.Command;
+package fr.octo.salle_de_sport.Abonnés.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.*;
 import fr.octo.salle_de_sport.Abonnés.Domain.*;
@@ -6,9 +6,10 @@ import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
 
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
+public class EnvoyerEmailDeBienvenueALaSouscriptionTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException, AbonnéRepositoryException {
@@ -31,7 +32,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
 
         var mailer = mock(Mailer.class);
 
-        var tested = new EnvoyerEmailDeBienvenueALaSouscriptionEventHandler(
+        var tested = new EnvoyerEmailDeBienvenueALaSouscription(
             abonnéRepository,
             abonnementRepository,
             mailer

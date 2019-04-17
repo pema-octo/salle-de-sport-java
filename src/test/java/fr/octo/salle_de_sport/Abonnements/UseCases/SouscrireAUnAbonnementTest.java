@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Abonnements.Command;
+package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class SouscrireAUnAbonnementCommandHandlerTest {
+public class SouscrireAUnAbonnementTest {
 
     @Test
     public void handle() throws AbonnéRepositoryException, FormuleRepositoryException {
@@ -35,18 +35,16 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
         var formule = Formule.nouvelleALAnnée(formuleId, new Prix(500));
         when(formuleRepository.get(formuleId)).thenReturn(formule);
 
-        var tested = new SouscrireAUnAbonnementCommandHandler(
+        var tested = new SouscrireAUnAbonnement(
             abonnéRepository,
             formuleRepository,
             abonnementRepository
         );
 
         var abonnementSouscrit = tested.handle(
-            new SouscrireAUnAbonnementCommand(
-                abonné.id(),
-                formule.id(),
-                new DateCustom("2018-06-10")
-            )
+            abonné.id(),
+            formule.id(),
+            new DateCustom("2018-06-10")
         );
 
         verify(abonnementRepository).store(any(Abonnement.class));

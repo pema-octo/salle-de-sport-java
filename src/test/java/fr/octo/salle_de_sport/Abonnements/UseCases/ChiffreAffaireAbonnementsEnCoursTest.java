@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Abonnements.Query;
+package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
@@ -10,16 +10,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
+public class ChiffreAffaireAbonnementsEnCoursTest {
 
     @Test
     public void chiffre_d_affaire_avec_aucun_abonnement_en_cours() {
 
-        var tested = new ChiffreAffaireAbonnementsEnCoursQueryHandler(
+        var tested = new ChiffreAffaireAbonnementsEnCours(
             new AbonnementInMemoryRepository()
         );
 
-        var chiffreAffaire = tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(aujourdhui()));
+        var chiffreAffaire = tested.handle(aujourdhui());
 
         assertEquals(0, chiffreAffaire, 0);
     }
@@ -46,17 +46,17 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
             )
         );
 
-        var tested = new ChiffreAffaireAbonnementsEnCoursQueryHandler(
+        var tested = new ChiffreAffaireAbonnementsEnCours(
             abonnementRepository
         );
 
-        assertEquals(140, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(aujourdhui())), 0);
+        assertEquals(140, tested.handle(aujourdhui()), 0);
         assertEquals(1, abonnementRepository.abonnementsEnCours(aujourdhui()).size());
 
-        assertEquals(280, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(dansUnMois())), 0);
+        assertEquals(280, tested.handle(dansUnMois()), 0);
         assertEquals(2, abonnementRepository.abonnementsEnCours(dansUnMois()).size());
 
-        assertEquals(280, tested.handle(new ChiffreAffaireAbonnementsEnCoursQuery(dansDeuxMois())), 0);
+        assertEquals(280, tested.handle(dansDeuxMois()), 0);
         assertEquals(2, abonnementRepository.abonnementsEnCours(dansDeuxMois()).size());
     }
 

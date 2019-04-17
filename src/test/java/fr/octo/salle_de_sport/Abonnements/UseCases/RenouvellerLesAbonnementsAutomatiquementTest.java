@@ -1,4 +1,4 @@
-package fr.octo.salle_de_sport.Abonnements.Command;
+package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
+public class RenouvellerLesAbonnementsAutomatiquementTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException {
@@ -30,14 +30,12 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
             )
         );
 
-        RenouvellerLesAbonnementsAutomatiquementCommandHandler tested = new RenouvellerLesAbonnementsAutomatiquementCommandHandler(
+        RenouvellerLesAbonnementsAutomatiquement tested = new RenouvellerLesAbonnementsAutomatiquement(
             abonnementRepository
         );
 
         tested.handle(
-            new RenouvellerLesAbonnementsAutomatiquementCommand(
-                new DateCustom("2018-07-09")
-            )
+            new DateCustom("2018-07-09")
         );
 
         var dateEnCoursAprèsRenouvellement = new DateCustom("2018-08-01");

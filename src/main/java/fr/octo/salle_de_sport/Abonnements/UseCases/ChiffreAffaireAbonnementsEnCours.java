@@ -1,21 +1,22 @@
-package fr.octo.salle_de_sport.Abonnements.Query;
+package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
+import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 
-final class ChiffreAffaireAbonnementsEnCoursQueryHandler {
+final class ChiffreAffaireAbonnementsEnCours {
 
     private final AbonnementRepository abonnementRepository;
 
-    ChiffreAffaireAbonnementsEnCoursQueryHandler(AbonnementRepository abonnementRepository) {
+    ChiffreAffaireAbonnementsEnCours(AbonnementRepository abonnementRepository) {
         this.abonnementRepository = abonnementRepository;
     }
 
-    Double handle(final ChiffreAffaireAbonnementsEnCoursQuery query) {
+    Double handle(DateCustom àPartirDe) {
 
         var chiffreAffaire = 0.0;
 
-        for (Abonnement abonnementEnCours : abonnementRepository.abonnementsEnCours(query.àPartirDe)) {
+        for (Abonnement abonnementEnCours : abonnementRepository.abonnementsEnCours(àPartirDe)) {
             chiffreAffaire += abonnementEnCours.restantDu();
         }
 
