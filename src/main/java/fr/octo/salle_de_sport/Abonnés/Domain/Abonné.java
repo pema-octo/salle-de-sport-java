@@ -5,34 +5,20 @@ public final class Abonné {
     private final AbonnéId id;
     private final String email;
     private final String prénom;
-    private final Boolean estEtudiant;
+    private Boolean estEtudiant;
 
-    private Abonné(String email, String prénom, Boolean estEtudiant) {
-        this(
-            new AbonnéId(),
-            email,
-            prénom,
-            estEtudiant
-        );
-    }
-
-    private Abonné(AbonnéId abonnéId, String email, String prénom, Boolean estEtudiant) {
-        this.id = abonnéId;
+    public Abonné(String email, String prénom) {
+        this.id = new AbonnéId();
         this.email = email;
         this.prénom = prénom;
-        this.estEtudiant = estEtudiant;
-    }
-
-    public static Abonné nouveau(String email, String prénom) {
-        return new Abonné(email, prénom, false);
-    }
-
-    public static Abonné nouveau(AbonnéId abonnéId, String email, String prénom) {
-        return new Abonné(abonnéId, email, prénom, false);
+        this.estEtudiant = false;
     }
 
     public static Abonné étudiant(String email, String prénom) {
-        return new Abonné(email, prénom, true);
+        var abonné = new Abonné(email, prénom);
+        abonné.estEtudiant = true;
+
+        return abonné;
     }
 
     public AbonnéId id() {

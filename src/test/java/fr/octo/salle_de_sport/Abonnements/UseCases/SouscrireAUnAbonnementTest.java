@@ -4,7 +4,6 @@ import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéId;
 import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepositoryException;
 import fr.octo.salle_de_sport.Formules.Domain.*;
@@ -23,13 +22,8 @@ public class SouscrireAUnAbonnementTest {
         var formuleRepository = mock(FormuleRepository.class);
         var abonnementRepository = mock(AbonnementRepository.class);
 
-        var abonnéId = new AbonnéId();
-        var abonné = Abonné.nouveau(
-            abonnéId,
-            "bob@octo.com",
-            "Bob"
-        );
-        when(abonnéRepository.get(abonnéId)).thenReturn(abonné);
+        var abonné = new Abonné("bob@octo.com", "Bob");
+        when(abonnéRepository.get(abonné.id())).thenReturn(abonné);
 
         var formuleId = new FormuleId();
         var formule = Formule.nouvelleALAnnée(formuleId, new Prix(500));
@@ -49,7 +43,7 @@ public class SouscrireAUnAbonnementTest {
 
         verify(abonnementRepository).store(any(Abonnement.class));
 
-        assertEquals(abonnéId, abonnementSouscrit.abonnéId);
+        assertEquals(abonné.id(), abonnementSouscrit.abonnéId);
         assertEquals(formuleId, abonnementSouscrit.formuleId);
     }
 }

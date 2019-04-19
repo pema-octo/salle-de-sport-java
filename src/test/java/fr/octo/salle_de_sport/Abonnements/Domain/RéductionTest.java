@@ -13,7 +13,7 @@ public class RéductionTest {
     public void moins_30_pourcent_à_l_année() {
 
         var réductionAbonnementAnnuel = new Réduction(
-            Abonné.nouveau("bob@octo.com", "Bob"),
+            new Abonné("bob@octo.com", "Bob"),
             Formule.nouvelleALAnnée(new Prix(400))
         );
 
