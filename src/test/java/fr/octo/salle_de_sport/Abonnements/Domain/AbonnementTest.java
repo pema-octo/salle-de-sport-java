@@ -13,7 +13,7 @@ public class AbonnementTest {
     public void prix_de_base_pour_une_souscription_d_un_mois() {
         var abonnementSansRéduc = new Abonnement(
             new Abonné("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new Prix(300)),
+            Formule.auMois(new Prix(300)),
             cinqJuin()
         );
 
@@ -24,7 +24,7 @@ public class AbonnementTest {
     public void moins_30_pourcent_pour_une_souscription_à_l_année() {
         var abonnementAvecRéducAnnée = new Abonnement(
             new Abonné("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(new Prix(100)),
+            Formule.aLAnnée(new Prix(100)),
             cinqJuin()
         );
 
@@ -35,14 +35,14 @@ public class AbonnementTest {
     public void moins_20_pourcent_pour_la_souscription_d_un_étudiant() {
         var abonnementEtudiantAuMois = new Abonnement(
             Abonné.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new Prix(100)),
+            Formule.auMois(new Prix(100)),
             cinqJuin()
         );
         assertEquals(new Prix(80), abonnementEtudiantAuMois.prix());
 
         var abonnementEtudiantAnnée = new Abonnement(
             Abonné.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(new Prix(100)),
+            Formule.aLAnnée(new Prix(100)),
             cinqJuin()
         );
         assertEquals(new Prix(50), abonnementEtudiantAnnée.prix());
@@ -52,7 +52,7 @@ public class AbonnementTest {
     public void un_abonnement_peut_être_en_cours() {
         var abonnementEnCours = new Abonnement(
             new Abonné("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new Prix(100)),
+            Formule.auMois(new Prix(100)),
             cinqJuin()
         );
 
@@ -65,7 +65,7 @@ public class AbonnementTest {
     public void permet_de_déterminer_s_il_sera_fini_à_une_date() {
         var abonnementFiniFinJuin = new Abonnement(
             new Abonné("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new Prix(100)),
+            Formule.auMois(new Prix(100)),
             cinqJuin()
         );
 
@@ -77,7 +77,7 @@ public class AbonnementTest {
     public void peut_être_renouvellé() {
         var abonnement = new Abonnement(
             new Abonné("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new Prix(100)),
+            Formule.auMois(new Prix(100)),
             cinqJuin()
         );
 

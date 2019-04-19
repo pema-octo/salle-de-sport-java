@@ -7,33 +7,17 @@ public final class Formule {
     private final Integer duréeEnMois;
 
     public Formule(Prix prixDeBase, DuréeFormule duréeEnMois) {
-        this(
-            new FormuleId(),
-            prixDeBase,
-            duréeEnMois
-        );
-    }
-
-    private Formule(FormuleId formuleId, Prix prixDeBase, DuréeFormule duréeEnMois) {
-        this.formuleId = formuleId;
+        this.formuleId = new FormuleId();
         this.prixDeBase = prixDeBase;
         this.duréeEnMois = duréeEnMois.nbMois();
     }
 
-    public static Formule nouvelleAuMois(Prix prixDeBase) {
+    public static Formule auMois(Prix prixDeBase) {
         return new Formule(prixDeBase, DuréeFormule.MOIS);
     }
 
-    public static Formule nouvelleAuMois(FormuleId formuleId, Prix prixDeBase) {
-        return new Formule(formuleId, prixDeBase, DuréeFormule.MOIS);
-    }
-
-    public static Formule nouvelleALAnnée(Prix prixDeBase) {
+    public static Formule aLAnnée(Prix prixDeBase) {
         return new Formule(prixDeBase, DuréeFormule.ANNEE);
-    }
-
-    public static Formule nouvelleALAnnée(FormuleId formuleId, Prix prixDeBase) {
-        return new Formule(formuleId, prixDeBase, DuréeFormule.ANNEE);
     }
 
     public FormuleId id() {
