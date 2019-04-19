@@ -21,6 +21,6 @@ final class CréerUneNouvelleFormuleCommandHandler {
 
         formuleRepository.store(formule);
 
-        return new FormuleCréée(formule.id());
+        return new FormuleCréée(formule);
     }
 }
