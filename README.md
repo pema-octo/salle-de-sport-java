@@ -29,7 +29,7 @@
 - CQRS
 - les ids des Aggregate ont leur propres types
   - [à lire](https://buildplease.com/pages/vo-ids/)
-- utilisation d'une classe MaDate pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage
+- utilisation d'une classe DateCustom pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage
   - [explication](https://matthiasnoback.nl/2018/02/mocking-at-architectural-boundaries-persistence-and-time/)
 - toutes les classes sont `final` par défaut
   - [explication](https://ocramius.github.io/blog/when-to-declare-classes-final/)
