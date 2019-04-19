@@ -26,7 +26,6 @@
   - Domain Event
     - [à lire](http://verraes.net/2014/11/domain-events/)
   - Repository
-- CQRS
 - les ids des Aggregate ont leur propres types
   - [à lire](https://buildplease.com/pages/vo-ids/)
 - utilisation d'une classe MaDate pour masquer l'implem choisie (`LocalDate`) et centraliser le formattage
