@@ -15,17 +15,7 @@ public final class Abonnement {
     private final List<Période> périodes = new ArrayList<>();
 
     public Abonnement(Abonné abonné, Formule formule, DateCustom dateDeDébut) {
-        this(
-            new AbonnementId(),
-            abonné,
-            formule,
-            dateDeDébut
-        );
-    }
-
-    public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule, final DateCustom dateDeDébut) {
-
-        this.id = abonnementId;
+        this.id = new AbonnementId();
 
         this.formuleChoisie = new FormuleChoisie(formule);
 
