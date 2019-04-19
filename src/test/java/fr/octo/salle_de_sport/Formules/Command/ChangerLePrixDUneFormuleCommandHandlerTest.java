@@ -14,7 +14,7 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
 
     @Test
     public void handle() throws FormuleRepositoryException {
-        var formule = Formule.nouvelleALAnnée(new Prix(450));
+        var formule = Formule.aLAnnée(new Prix(450));
 
         var formuleRepository = mock(FormuleRepository.class);
         when(formuleRepository.get(formule.id())).thenReturn(formule);

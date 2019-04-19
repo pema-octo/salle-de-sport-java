@@ -14,7 +14,7 @@ public class RéductionTest {
 
         var réductionAbonnementAnnuel = new Réduction(
             new Abonné("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(new Prix(400))
+            Formule.aLAnnée(new Prix(400))
         );
 
         assertEquals(Réduction.REDUC_ANNEE, réductionAbonnementAnnuel.taux(), 0);
@@ -25,7 +25,7 @@ public class RéductionTest {
 
         var réductionAbonnementEtudiant = new Réduction(
             Abonné.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleAuMois(new Prix(400))
+            Formule.auMois(new Prix(400))
         );
 
         assertEquals(Réduction.REDUC_ETUDIANT, réductionAbonnementEtudiant.taux(), 0);
@@ -36,7 +36,7 @@ public class RéductionTest {
 
         var réductionAbonnementEtudiantAnnuel = new Réduction(
             Abonné.étudiant("bob@octo.com", "Bob"),
-            Formule.nouvelleALAnnée(new Prix(400))
+            Formule.aLAnnée(new Prix(400))
         );
 
         assertEquals(Réduction.REDUC_ETUDIANT + Réduction.REDUC_ANNEE, réductionAbonnementEtudiantAnnuel.taux(), 0);

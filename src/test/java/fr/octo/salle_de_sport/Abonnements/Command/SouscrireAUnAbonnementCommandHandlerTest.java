@@ -28,7 +28,7 @@ public class SouscrireAUnAbonnementCommandHandlerTest {
         var abonné = new Abonné("bob@octo.com", "Bob");
         when(abonnéRepository.get(abonné.id())).thenReturn(abonné);
 
-        var formule = Formule.nouvelleALAnnée(new Prix(500));
+        var formule = Formule.aLAnnée(new Prix(500));
         when(formuleRepository.get(formule.id())).thenReturn(formule);
 
         var tested = new SouscrireAUnAbonnementCommandHandler(

@@ -15,7 +15,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException, AbonnéRepositoryException {
-        var formule = Formule.nouvelleALAnnée(new Prix(500));
+        var formule = Formule.aLAnnée(new Prix(500));
 
         var abonné = new Abonné("bob@octo.com", "Bob");
         var abonnéRepository = mock(AbonnéRepository.class);

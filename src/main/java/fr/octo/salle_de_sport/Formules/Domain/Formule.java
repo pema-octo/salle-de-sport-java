@@ -12,11 +12,11 @@ public final class Formule {
         this.duréeEnMois = duréeEnMois.nbMois();
     }
 
-    public static Formule nouvelleAuMois(Prix prixDeBase) {
+    public static Formule auMois(Prix prixDeBase) {
         return new Formule(prixDeBase, DuréeFormule.MOIS);
     }
 
-    public static Formule nouvelleALAnnée(Prix prixDeBase) {
+    public static Formule aLAnnée(Prix prixDeBase) {
         return new Formule(prixDeBase, DuréeFormule.ANNEE);
     }
 

@@ -27,7 +27,7 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
     @Test
     public void chiffre_d_affaire_avec_abonnements_en_cours() {
 
-        var formule = Formule.nouvelleALAnnée(new Prix(200));
+        var formule = Formule.aLAnnée(new Prix(200));
 
         var abonnementRepository = new AbonnementInMemoryRepository();
 
