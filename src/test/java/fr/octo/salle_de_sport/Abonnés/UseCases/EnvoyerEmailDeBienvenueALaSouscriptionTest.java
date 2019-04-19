@@ -14,7 +14,6 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionTest {
     @Test
     public void handle() throws AbonnementRepositoryException, AbonnéRepositoryException {
         var abonnéId = new AbonnéId();
-        var abonnementId = new AbonnementId();
 
         var formule = Formule.nouvelleALAnnée(new Prix(500));
 
@@ -23,13 +22,12 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionTest {
         when(abonnéRepository.get(abonnéId)).thenReturn(abonné);
 
         var abonnement = new Abonnement(
-            abonnementId,
             abonné,
             formule,
             new DateCustom()
         );
         var abonnementRepository = mock(AbonnementRepository.class);
-        when(abonnementRepository.get(abonnementId)).thenReturn(abonnement);
+        when(abonnementRepository.get(abonnement.id())).thenReturn(abonnement);
 
         var mailer = mock(Mailer.class);
 

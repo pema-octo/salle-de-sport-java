@@ -1,7 +1,6 @@
 package fr.octo.salle_de_sport.Abonnements.UseCases;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
-import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementId;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepositoryException;
 import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
@@ -19,16 +18,13 @@ public class RenouvellerLesAbonnementsAutomatiquementTest {
 
         var abonnementRepository = new AbonnementInMemoryRepository();
 
-        var abonnementId = new AbonnementId();
-
-        abonnementRepository.store(
-            new Abonnement(
-                abonnementId,
-                Abonné.nouveau("bob@octo.com", "Bob"),
-                Formule.nouvelleAuMois(new Prix(200)),
-                new DateCustom("2018-06-09")
-            )
+        var abonnement = new Abonnement(
+            Abonné.nouveau("bob@octo.com", "Bob"),
+            Formule.nouvelleAuMois(new Prix(200)),
+            new DateCustom("2018-06-09")
         );
+
+        abonnementRepository.store(abonnement);
 
         RenouvellerLesAbonnementsAutomatiquement tested = new RenouvellerLesAbonnementsAutomatiquement(
             abonnementRepository
@@ -40,12 +36,12 @@ public class RenouvellerLesAbonnementsAutomatiquementTest {
 
         var dateEnCoursAprèsRenouvellement = new DateCustom("2018-08-01");
         assertTrue(
-            abonnementRepository.get(abonnementId).estEnCours(dateEnCoursAprèsRenouvellement)
+            abonnementRepository.get(abonnement.id()).estEnCours(dateEnCoursAprèsRenouvellement)
         );
 
         var dateAprèsLaFinAprèsRenouvellement = new DateCustom("2018-08-10");
         assertTrue(
-            abonnementRepository.get(abonnementId).seraFiniLe(dateAprèsLaFinAprèsRenouvellement)
+            abonnementRepository.get(abonnement.id()).seraFiniLe(dateAprèsLaFinAprèsRenouvellement)
         );
     }
 }
