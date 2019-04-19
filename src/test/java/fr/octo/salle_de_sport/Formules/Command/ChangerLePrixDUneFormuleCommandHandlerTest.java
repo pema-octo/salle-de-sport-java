@@ -1,6 +1,9 @@
 package fr.octo.salle_de_sport.Formules.Command;
 
-import fr.octo.salle_de_sport.Formules.Domain.*;
+import fr.octo.salle_de_sport.Formules.Domain.Formule;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
+import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,17 +14,16 @@ public class ChangerLePrixDUneFormuleCommandHandlerTest {
 
     @Test
     public void handle() throws FormuleRepositoryException {
-        var formuleId = new FormuleId();
-        var formule = Formule.nouvelleALAnnée(formuleId, new Prix(450));
+        var formule = Formule.nouvelleALAnnée(new Prix(450));
 
         var formuleRepository = mock(FormuleRepository.class);
-        when(formuleRepository.get(formuleId)).thenReturn(formule);
+        when(formuleRepository.get(formule.id())).thenReturn(formule);
 
         var tested = new ChangerLePrixDUneFormuleCommandHandler(formuleRepository);
 
         var event = tested.handle(
             new ChangerLePrixDUneFormuleCommand(
-                formuleId,
+                formule.id(),
                 new Prix(400)
             )
         );
