@@ -1,6 +1,6 @@
 package fr.octo.salle_de_sport.Formules.Domain;
 
-import fr.octo.craft.ddd.AggregateId;
+import fr.octo.salle_de_sport.AggregateId;
 
 public final class FormuleId extends AggregateId {
 

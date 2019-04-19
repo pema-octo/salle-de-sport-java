@@ -1,4 +1,4 @@
-package fr.octo.craft.ddd;
+package fr.octo.salle_de_sport;
 
 import java.util.Objects;
 import java.util.UUID;
