@@ -33,14 +33,14 @@ public class ChiffreAffaireAbonnementsEnCoursQueryHandlerTest {
 
         abonnementRepository.store(
             new Abonnement(
-                Abonné.nouveau("bob@octo.com", "Bob"),
+                new Abonné("bob@octo.com", "Bob"),
                 formule,
                 aujourdhui()
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                Abonné.nouveau("lucy@octo.com", "Lucy"),
+                new Abonné("lucy@octo.com", "Lucy"),
                 formule,
                 dansUnMois()
             )

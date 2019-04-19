@@ -19,7 +19,7 @@ public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
         var abonnementRepository = new AbonnementInMemoryRepository();
 
         var abonnement = new Abonnement(
-            Abonné.nouveau("bob@octo.com", "Bob"),
+            new Abonné("bob@octo.com", "Bob"),
             Formule.nouvelleAuMois(new Prix(200)),
             new DateCustom("2018-06-09")
         );

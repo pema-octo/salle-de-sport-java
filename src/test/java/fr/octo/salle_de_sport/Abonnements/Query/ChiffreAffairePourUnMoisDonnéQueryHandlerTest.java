@@ -22,14 +22,14 @@ public class ChiffreAffairePourUnMoisDonnéQueryHandlerTest {
 
         abonnementRepository.store(
             new Abonnement(
-                Abonné.nouveau("bob@octo.com", "Bob"),
+                new Abonné("bob@octo.com", "Bob"),
                 Formule.nouvelleAuMois(new Prix(50)),
                 aujourdhui
             )
         );
         abonnementRepository.store(
             new Abonnement(
-                Abonné.nouveau("lucy@octo.com", "Lucy"),
+                new Abonné("lucy@octo.com", "Lucy"),
                 Formule.nouvelleALAnnée(new Prix(500)),
                 dansUnMois
             )

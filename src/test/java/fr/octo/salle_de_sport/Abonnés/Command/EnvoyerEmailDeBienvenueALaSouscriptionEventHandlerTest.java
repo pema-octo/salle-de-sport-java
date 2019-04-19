@@ -1,7 +1,10 @@
 package fr.octo.salle_de_sport.Abonnés.Command;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.*;
-import fr.octo.salle_de_sport.Abonnés.Domain.*;
+import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepositoryException;
+import fr.octo.salle_de_sport.Abonnés.Domain.Mailer;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
@@ -12,13 +15,11 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
 
     @Test
     public void handle() throws AbonnementRepositoryException, AbonnéRepositoryException {
-        var abonnéId = new AbonnéId();
-
         var formule = Formule.nouvelleALAnnée(new Prix(500));
 
-        var abonné = Abonné.nouveau(abonnéId, "bob@octo.com", "Bob");
+        var abonné = new Abonné("bob@octo.com", "Bob");
         var abonnéRepository = mock(AbonnéRepository.class);
-        when(abonnéRepository.get(abonnéId)).thenReturn(abonné);
+        when(abonnéRepository.get(abonné.id())).thenReturn(abonné);
 
         var abonnement = new Abonnement(
             abonné,
