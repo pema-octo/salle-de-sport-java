@@ -23,15 +23,6 @@ public final class Abonnement {
         );
     }
 
-    public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule) {
-        this(
-            abonnementId,
-            abonné,
-            formule,
-            new DateCustom()
-        );
-    }
-
     public Abonnement(final AbonnementId abonnementId, final Abonné abonné, final Formule formule, final DateCustom dateDeDébut) {
 
         this.id = abonnementId;
