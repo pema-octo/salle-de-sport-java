@@ -21,7 +21,7 @@ final class ChangerLePrixDUneFormule {
         formuleRepository.store(formule);
 
         return new PrixFormuleChangé(
-            formule.id(),
+            formule,
             ancienPrix,
             formule.prixDeBase()
         );

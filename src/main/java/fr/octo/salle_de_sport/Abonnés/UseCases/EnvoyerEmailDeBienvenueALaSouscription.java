@@ -32,7 +32,7 @@ final class EnvoyerEmailDeBienvenueALaSouscription {
 
         return new EmailDeBienvenueALaSouscriptionEnvoyé(
             abonné.email(),
-            abonnement.id()
+            abonnement
         );
     }
 }

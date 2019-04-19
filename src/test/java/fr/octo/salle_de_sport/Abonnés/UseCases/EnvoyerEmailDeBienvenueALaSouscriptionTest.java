@@ -41,9 +41,9 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionTest {
 
         tested.handle(
             new AbonnementSouscrit(
-                abonné.id(),
-                formule.id(),
-                abonnement.id()
+                abonné,
+                formule,
+                abonnement
             )
         );
 
