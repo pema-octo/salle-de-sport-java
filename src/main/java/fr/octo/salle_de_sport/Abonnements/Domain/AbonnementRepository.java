@@ -8,7 +8,7 @@ public interface AbonnementRepository {
 
     void storeAll(Collection<Abonnement> abonnements);
 
-    Abonnement get(AbonnementId abonnementId) throws AbonnementRepositoryException;
+    Abonnement get(AbonnementId abonnementId) throws AbonnementNotFoundException;
 
     Collection<Abonnement> abonnementsEnCours(DateCustom date);
 

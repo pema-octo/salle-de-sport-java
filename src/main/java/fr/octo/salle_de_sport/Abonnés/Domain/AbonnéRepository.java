@@ -4,5 +4,5 @@ public interface AbonnéRepository {
 
     void store(Abonné abonné);
 
-    Abonné get(AbonnéId abonnéId) throws AbonnéRepositoryException;
+    Abonné get(AbonnéId abonnéId) throws AbonnéNotFoundException;
 }

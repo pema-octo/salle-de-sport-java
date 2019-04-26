@@ -1,8 +1,8 @@
 package fr.octo.salle_de_sport.Formules.Command;
 
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleNotFoundException;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.when;
 public class ChangerLePrixDUneFormuleCommandHandlerTest {
 
     @Test
-    public void handle() throws FormuleRepositoryException {
+    public void handle() throws FormuleNotFoundException {
         var formule = Formule.aLAnnée(new Prix(450));
 
         var formuleRepository = mock(FormuleRepository.class);

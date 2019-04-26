@@ -2,8 +2,8 @@ package fr.octo.salle_de_sport.Formules.Infrastructure.Database;
 
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleId;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleNotFoundException;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,13 +18,13 @@ public final class FormuleInMemoryRepository implements FormuleRepository {
     }
 
     @Override
-    public Formule get(FormuleId formuleId) throws FormuleRepositoryException {
+    public Formule get(FormuleId formuleId) throws FormuleNotFoundException {
         for (Formule formule : formules) {
             if (formule.id().equals(formuleId)) {
                 return formule;
             }
         }
 
-        throw FormuleRepositoryException.introuvable(formuleId);
+        throw FormuleNotFoundException.introuvable(formuleId);
     }
 }

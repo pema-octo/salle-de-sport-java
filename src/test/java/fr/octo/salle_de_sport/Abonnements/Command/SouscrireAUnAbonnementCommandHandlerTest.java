@@ -4,11 +4,11 @@ import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
+import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéNotFoundException;
 import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepositoryException;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
+import fr.octo.salle_de_sport.Formules.Domain.FormuleNotFoundException;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 public class SouscrireAUnAbonnementCommandHandlerTest {
 
     @Test
-    public void handle() throws AbonnéRepositoryException, FormuleRepositoryException {
+    public void handle() throws AbonnéNotFoundException, FormuleNotFoundException {
 
         var abonnéRepository = mock(AbonnéRepository.class);
         var formuleRepository = mock(FormuleRepository.class);

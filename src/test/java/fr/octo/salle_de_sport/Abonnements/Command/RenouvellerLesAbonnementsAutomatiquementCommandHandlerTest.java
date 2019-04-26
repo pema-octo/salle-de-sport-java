@@ -1,7 +1,7 @@
 package fr.octo.salle_de_sport.Abonnements.Command;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
-import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepositoryException;
+import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementNotFoundException;
 import fr.octo.salle_de_sport.Abonnements.Domain.DateCustom;
 import fr.octo.salle_de_sport.Abonnements.Infrastructure.Database.AbonnementInMemoryRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
 public class RenouvellerLesAbonnementsAutomatiquementCommandHandlerTest {
 
     @Test
-    public void handle() throws AbonnementRepositoryException {
+    public void handle() throws AbonnementNotFoundException {
 
         var abonnementRepository = new AbonnementInMemoryRepository();
 

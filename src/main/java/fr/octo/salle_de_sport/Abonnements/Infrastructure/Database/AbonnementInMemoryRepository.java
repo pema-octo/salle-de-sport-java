@@ -22,7 +22,7 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
     }
 
     @Override
-    public Abonnement get(AbonnementId abonnementId) throws AbonnementRepositoryException {
+    public Abonnement get(AbonnementId abonnementId) throws AbonnementNotFoundException {
 
         for (Abonnement abonnement : abonnements) {
             if (abonnement.id().equals(abonnementId)) {
@@ -30,7 +30,7 @@ public final class AbonnementInMemoryRepository implements AbonnementRepository 
             }
         }
 
-        throw AbonnementRepositoryException.introuvable(abonnementId);
+        throw AbonnementNotFoundException.introuvable(abonnementId);
     }
 
     @Override

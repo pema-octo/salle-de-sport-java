@@ -1,7 +1,7 @@
 package fr.octo.salle_de_sport.Formules.Command;
 
+import fr.octo.salle_de_sport.Formules.Domain.FormuleNotFoundException;
 import fr.octo.salle_de_sport.Formules.Domain.FormuleRepository;
-import fr.octo.salle_de_sport.Formules.Domain.FormuleRepositoryException;
 import fr.octo.salle_de_sport.Formules.Domain.PrixFormuleChangé;
 
 final class ChangerLePrixDUneFormuleCommandHandler {
@@ -12,7 +12,7 @@ final class ChangerLePrixDUneFormuleCommandHandler {
         this.formuleRepository = formuleRepository;
     }
 
-    PrixFormuleChangé handle(final ChangerLePrixDUneFormuleCommand command) throws FormuleRepositoryException {
+    PrixFormuleChangé handle(final ChangerLePrixDUneFormuleCommand command) throws FormuleNotFoundException {
 
         var formule = formuleRepository.get(command.formuleId);
 
