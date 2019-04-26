@@ -3,10 +3,7 @@ package fr.octo.salle_de_sport.Abonnés.Command;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementNotFoundException;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementSouscrit;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéNotFoundException;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
-import fr.octo.salle_de_sport.Abonnés.Domain.EmailDeBienvenueALaSouscriptionEnvoyé;
-import fr.octo.salle_de_sport.Abonnés.Domain.Mailer;
+import fr.octo.salle_de_sport.Abonnés.Domain.*;
 
 final class AbonnementSouscritEventHandler {
 
@@ -20,7 +17,7 @@ final class AbonnementSouscritEventHandler {
         this.mailer = mailer;
     }
 
-    EmailDeBienvenueALaSouscriptionEnvoyé handle(final AbonnementSouscrit event) throws AbonnéNotFoundException, AbonnementNotFoundException {
+    EmailDeBienvenueALaSouscriptionEnvoyé handle(final AbonnementSouscrit event) throws AbonnéNotFoundException, AbonnementNotFoundException, EmailNotSendException {
 
         var abonné = abonnéRepository.get(event.abonnéId);
         var abonnement = abonnementRepository.get(event.abonnementId);

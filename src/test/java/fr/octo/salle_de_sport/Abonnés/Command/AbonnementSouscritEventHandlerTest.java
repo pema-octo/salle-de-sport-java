@@ -1,10 +1,7 @@
 package fr.octo.salle_de_sport.Abonnés.Command;
 
 import fr.octo.salle_de_sport.Abonnements.Domain.*;
-import fr.octo.salle_de_sport.Abonnés.Domain.Abonné;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéNotFoundException;
-import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
-import fr.octo.salle_de_sport.Abonnés.Domain.Mailer;
+import fr.octo.salle_de_sport.Abonnés.Domain.*;
 import fr.octo.salle_de_sport.Formules.Domain.Formule;
 import fr.octo.salle_de_sport.Formules.Domain.Prix;
 import org.junit.Test;
@@ -14,7 +11,7 @@ import static org.mockito.Mockito.*;
 public class AbonnementSouscritEventHandlerTest {
 
     @Test
-    public void handle() throws AbonnementNotFoundException, AbonnéNotFoundException {
+    public void handle() throws AbonnementNotFoundException, AbonnéNotFoundException, EmailNotSendException {
         var formule = Formule.aLAnnée(new Prix(500));
 
         var abonné = new Abonné("bob@octo.com", "Bob");
