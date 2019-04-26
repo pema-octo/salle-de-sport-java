@@ -1,5 +1,6 @@
 package fr.octo.salle_de_sport.Abonnés.Command;
 
+import fr.octo.salle_de_sport.Abonnements.Domain.Abonnement;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementNotFoundException;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementRepository;
 import fr.octo.salle_de_sport.Abonnements.Domain.AbonnementSouscrit;
@@ -17,19 +18,23 @@ final class AbonnementSouscritEventHandler {
         this.mailer = mailer;
     }
 
-    EmailDeBienvenueALaSouscriptionEnvoyé handle(final AbonnementSouscrit event) throws AbonnéNotFoundException, AbonnementNotFoundException, EmailNotSendException {
+    EmailDeBienvenueALaSouscriptionEnvoyé handle(final AbonnementSouscrit event) throws EmailDeBienvenueALaSouscriptionPasEnvoyéException {
 
-        var abonné = abonnéRepository.get(event.abonnéId);
-        var abonnement = abonnementRepository.get(event.abonnementId);
+        try {
+            Abonné abonné = abonnéRepository.get(event.abonnéId);
+            Abonnement abonnement = abonnementRepository.get(event.abonnementId);
 
-        mailer.sendEmail(
-            abonné.email(),
-            "Bienvenu(e) chez CraftGym "+ abonné.prénom()+", profite bien de ton abonnement "+abonnement.descriptionFormuleChoisie()+"."
-        );
+            mailer.sendEmail(
+                abonné.email(),
+                "Bienvenu(e) chez CraftGym " + abonné.prénom() + ", profite bien de ton abonnement " + abonnement.descriptionFormuleChoisie() + "."
+            );
 
-        return new EmailDeBienvenueALaSouscriptionEnvoyé(
-            abonné.email(),
-            abonnement
-        );
+            return new EmailDeBienvenueALaSouscriptionEnvoyé(
+                abonné.email(),
+                abonnement
+            );
+        } catch (AbonnéNotFoundException | AbonnementNotFoundException | EmailNotSendException e) {
+            throw new EmailDeBienvenueALaSouscriptionPasEnvoyéException(e.getMessage());
+        }
     }
 }
