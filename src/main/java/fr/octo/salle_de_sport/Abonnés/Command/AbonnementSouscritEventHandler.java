@@ -8,13 +8,13 @@ import fr.octo.salle_de_sport.Abonnés.Domain.AbonnéRepository;
 import fr.octo.salle_de_sport.Abonnés.Domain.EmailDeBienvenueALaSouscriptionEnvoyé;
 import fr.octo.salle_de_sport.Abonnés.Domain.Mailer;
 
-final class EnvoyerEmailDeBienvenueALaSouscriptionEventHandler {
+final class AbonnementSouscritEventHandler {
 
     private final AbonnéRepository abonnéRepository;
     private final AbonnementRepository abonnementRepository;
     private final Mailer mailer;
 
-    EnvoyerEmailDeBienvenueALaSouscriptionEventHandler(AbonnéRepository abonnéRepository, AbonnementRepository abonnementRepository, Mailer mailer) {
+    AbonnementSouscritEventHandler(AbonnéRepository abonnéRepository, AbonnementRepository abonnementRepository, Mailer mailer) {
         this.abonnéRepository = abonnéRepository;
         this.abonnementRepository = abonnementRepository;
         this.mailer = mailer;

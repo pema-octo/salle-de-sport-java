@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
+public class AbonnementSouscritEventHandlerTest {
 
     @Test
     public void handle() throws AbonnementNotFoundException, AbonnéNotFoundException {
@@ -31,7 +31,7 @@ public class EnvoyerEmailDeBienvenueALaSouscriptionEventHandlerTest {
 
         var mailer = mock(Mailer.class);
 
-        var tested = new EnvoyerEmailDeBienvenueALaSouscriptionEventHandler(
+        var tested = new AbonnementSouscritEventHandler(
             abonnéRepository,
             abonnementRepository,
             mailer
